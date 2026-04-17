@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Ganesh Chowdary — Data Science &amp; Full-Stack Developer</title>
+  <meta name="description" content="B.Tech 2026 Data Science | Agentic AI | Full Stack Java Developer | Building intelligent digital solutions with cutting-edge technology." />
+  <meta property="og:title" content="Sai Ganesh Chowdary — Portfolio" />
+  <meta property="og:description" content="Data Science · Agentic AI · Full-Stack Dev" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" />
+
+  <!-- Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-ring"></div>
+      <div class="preloader-text">
+        <span class="preloader-label">INITIALIZING</span>
+        <span class="preloader-dots">...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo" data-hover>
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="SG Logo">
+        <rect x="1" y="1" width="26" height="26" rx="4" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 18V14.5C8 12.567 9.567 11 11.5 11H14M14 11V18M14 11H16.5C18.433 11 20 12.567 20 14.5V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>SAI GANESH</span>
+    </a>
+    <div class="nav-links">
+      <a href="#about" class="nav-link" data-hover>About</a>
+      <a href="#experience" class="nav-link" data-hover>Experience</a>
+      <a href="#projects" class="nav-link" data-hover>Projects</a>
+      <a href="#skills" class="nav-link" data-hover>Skills</a>
+      <a href="#education" class="nav-link" data-hover>Education</a>
+      <a href="#contact" class="nav-link" data-hover>Contact</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" data-hover aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#about" class="mobile-link" data-hover>About</a>
+    <a href="#experience" class="mobile-link" data-hover>Experience</a>
+    <a href="#projects" class="mobile-link" data-hover>Projects</a>
+    <a href="#skills" class="mobile-link" data-hover>Skills</a>
+    <a href="#education" class="mobile-link" data-hover>Education</a>
+    <a href="#contact" class="mobile-link" data-hover>Contact</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="robotCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="tag-bracket">[</span>
+        <span class="tag-text">PORTFOLIO_v2.0</span>
+        <span class="tag-bracket">]</span>
+      </div>
+      <h1 class="hero-name" data-splitting>
+        <span class="line">SAI GANESH</span>
+        <span class="line accent">CHOWDARY</span>
+      </h1>
+      <p class="hero-tagline">Data Science · Agentic AI · Full-Stack Dev</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary" data-hover>
+          <span>VIEW PROJECTS</span>
+          <i class="ph ph-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-outline" data-hover>
+          <span>CONTACT ME</span>
+        </a>
+      </div>
+      <div class="hero-status">
+        <div class="status-dot"></div>
+        <span>Available for opportunities</span>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">ABOUT<span class="accent">_ME</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I am <strong>Puttigampala Sai Ganesh Chowdary</strong>, a B.Tech student in Data Science at Narasaraopeta Engineering College (2026 batch). Passionate about building intelligent digital solutions using Agentic AI, machine learning, and full-stack development.</p>
+          <p>With hands-on experience in designing autonomous AI workflows, building Java/Spring Boot applications, and creating data-driven dashboards, I bring together analytical thinking and engineering execution to solve real-world problems.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card" data-hover>
+            <span class="stat-value" data-count="95.46">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Fraud Detection Accuracy</span>
+          </div>
+          <div class="stat-card" data-hover>
+            <span class="stat-value" data-count="500">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Data Queries / Session</span>
+          </div>
+          <div class="stat-card" data-hover>
+            <span class="stat-value" data-count="200">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Test Users Served</span>
+          </div>
+          <div class="stat-card" data-hover>
+            <span class="stat-value" data-count="15">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Efficiency Improvement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">WORK<span class="accent">_EXP</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item" data-hover>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Nov 2025 — Mar 2026</span>
+              <span class="timeline-type">Remote</span>
+            </div>
+            <h3 class="timeline-role">Agentic AI Intern</h3>
+            <p class="timeline-company">Datavalley India Pvt. Ltd.</p>
+            <ul class="timeline-details">
+              <li>Engineered autonomous system workflows using Agentic AI frameworks, reducing manual task handling by 40%</li>
+              <li>Processed and analyzed 500+ unique data queries per session using intelligent agent pipelines</li>
+              <li>Conducted hands-on AI sessions for APSCHE-affiliated students across multiple institutions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item" data-hover>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">May 2025 — Jun 2025</span>
+              <span class="timeline-type">Hyderabad</span>
+            </div>
+            <h3 class="timeline-role">Full Stack Java Intern</h3>
+            <p class="timeline-company">SkillDzire</p>
+            <ul class="timeline-details">
+              <li>Built a full-stack web application using Java, Spring Boot, and React, onboarding 200+ test users</li>
+              <li>Achieved 20% faster delivery through optimized CI/CD pipeline and agile practices</li>
+              <li>Implemented multi-factor authentication (MFA) improving application security posture</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">PROJ<span class="accent">_ECTS</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card project-featured" data-hover>
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon"><i class="ph ph-shield-check"></i></div>
+            <span class="project-badge">MAIN PROJECT</span>
+          </div>
+          <h3 class="project-title">E-Commerce Transaction Fraud Detection</h3>
+          <p class="project-subtitle">Using Machine Learning — WCFA-25, Nov 2025</p>
+          <p class="project-desc">Built an advanced fraud detection system combining ANN + DNN architectures, achieving 95.46% accuracy and 97.04% AUC. Integrated Explainable AI (XAI), SMOTE for class balancing, and LDA for dimensionality reduction.</p>
+          <div class="project-stats">
+            <span class="project-stat"><strong>95.46%</strong> Accuracy</span>
+            <span class="project-stat"><strong>97.04%</strong> AUC</span>
+          </div>
+          <div class="project-tags">
+            <span class="tag">ANN/DNN</span>
+            <span class="tag">XAI</span>
+            <span class="tag">SMOTE</span>
+            <span class="tag">LDA</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="project-card" data-hover>
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon"><i class="ph ph-shield-warning"></i></div>
+          </div>
+          <h3 class="project-title">Cyber Crime Awareness Campaign</h3>
+          <p class="project-subtitle">May 2025</p>
+          <p class="project-desc">Designed and executed a comprehensive digital awareness campaign educating communities about cyber threats, phishing attacks, and online safety best practices.</p>
+          <div class="project-tags">
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Awareness</span>
+            <span class="tag">Community</span>
+          </div>
+        </div>
+        <div class="project-card" data-hover>
+          <div class="project-glow"></div>
+          <div class="project-header">
+            <div class="project-icon"><i class="ph ph-chart-bar"></i></div>
+          </div>
+          <h3 class="project-title">Airport Authority Data Analytics</h3>
+          <p class="project-subtitle">Aug 2024</p>
+          <p class="project-desc">Created interactive Power BI dashboards for 4 airport departments, delivering actionable insights that improved operational efficiency by 15%.</p>
+          <div class="project-tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Data Analytics</span>
+            <span class="tag">Dashboard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">SKILL<span class="accent">_SET</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="ph ph-code"></i> Languages</h3>
+          <div class="skill-items">
+            <div class="skill-chip" data-hover>Java</div>
+            <div class="skill-chip" data-hover>Python</div>
+            <div class="skill-chip" data-hover>SQL</div>
+            <div class="skill-chip" data-hover>HTML/CSS</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="ph ph-stack"></i> Frameworks</h3>
+          <div class="skill-items">
+            <div class="skill-chip" data-hover>Spring Boot</div>
+            <div class="skill-chip" data-hover>React</div>
+            <div class="skill-chip" data-hover>Agentic AI</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="ph ph-chart-line-up"></i> Data &amp; AI</h3>
+          <div class="skill-items">
+            <div class="skill-chip" data-hover>Power BI</div>
+            <div class="skill-chip" data-hover>Machine Learning</div>
+            <div class="skill-chip" data-hover>ANN/DNN</div>
+            <div class="skill-chip" data-hover>XAI</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="ph ph-wrench"></i> Tools</h3>
+          <div class="skill-items">
+            <div class="skill-chip" data-hover>Git/GitHub</div>
+            <div class="skill-chip" data-hover>CI/CD</div>
+            <div class="skill-chip" data-hover>UI/UX Design</div>
+            <div class="skill-chip" data-hover>IoT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">EDU<span class="accent">_CATION</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card" data-hover>
+          <div class="edu-icon"><i class="ph ph-graduation-cap"></i></div>
+          <h3 class="edu-degree">B.Tech in Data Science</h3>
+          <p class="edu-school">Narasaraopeta Engineering College</p>
+          <div class="edu-meta">
+            <span class="edu-score">CGPA: 7.56</span>
+            <span class="edu-year">2022 — 2026</span>
+          </div>
+        </div>
+        <div class="edu-card" data-hover>
+          <div class="edu-icon"><i class="ph ph-books"></i></div>
+          <h3 class="edu-degree">Intermediate (MPC)</h3>
+          <p class="edu-school">Sri Chaitanya Junior College</p>
+          <div class="edu-meta">
+            <span class="edu-score">CGPA: 68.5</span>
+          </div>
+        </div>
+        <div class="edu-card" data-hover>
+          <div class="edu-icon"><i class="ph ph-student"></i></div>
+          <h3 class="edu-degree">SSC</h3>
+          <p class="edu-school">Sai Adithya High School</p>
+          <div class="edu-meta">
+            <span class="edu-score">CGPA: 10.0 / 10.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">CERT<span class="accent">_S</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card" data-hover>
+          <div class="cert-icon"><i class="ph ph-robot"></i></div>
+          <h3 class="cert-name">Agentic AI Internship Certificate</h3>
+          <p class="cert-issuer">Datavalley India — Mar 2026</p>
+        </div>
+        <div class="cert-card" data-hover>
+          <div class="cert-icon"><i class="ph ph-certificate"></i></div>
+          <h3 class="cert-name">NPTEL Elite: Introduction to IoT</h3>
+          <p class="cert-issuer">NPTEL — Apr 2025 · Score: 68%</p>
+        </div>
+        <div class="cert-card" data-hover>
+          <div class="cert-icon"><i class="ph ph-chart-pie-slice"></i></div>
+          <h3 class="cert-name">Power BI Data Storytellers Workshop</h3>
+          <p class="cert-issuer">Alice Soft — Jul 2024</p>
+        </div>
+        <div class="cert-card" data-hover>
+          <div class="cert-icon"><i class="ph ph-coffee"></i></div>
+          <h3 class="cert-name">Full Stack Java Development</h3>
+          <p class="cert-issuer">SkillDzire — Jun 2025</p>
+        </div>
+        <div class="cert-card" data-hover>
+          <div class="cert-icon"><i class="ph ph-paint-brush"></i></div>
+          <h3 class="cert-name">UI &amp; UX Workshop: Intuitive Designs</h3>
+          <p class="cert-issuer">Alice Soft — Dec 2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">07</span>
+        <h2 class="section-title">CONTACT<span class="accent">_ME</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-intro">Interested in collaborating or have an opportunity? Let's connect.</p>
+          <div class="contact-links">
+            <a href="mailto:saiganeshsaisai@gmail.com" class="contact-link" data-hover target="_blank" rel="noopener noreferrer">
+              <i class="ph ph-envelope"></i>
+              <span>saiganeshsaisai@gmail.com</span>
+            </a>
+            <a href="tel:+916304111353" class="contact-link" data-hover>
+              <i class="ph ph-phone"></i>
+              <span>+91 63041 11353</span>
+            </a>
+            <a href="https://www.linkedin.com/in/saiganesh" class="contact-link" data-hover target="_blank" rel="noopener noreferrer">
+              <i class="ph ph-linkedin-logo"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/saiganesh" class="contact-link" data-hover target="_blank" rel="noopener noreferrer">
+              <i class="ph ph-github-logo"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <span class="footer-copy">&copy; 2026 Sai Ganesh Chowdary</span>
+        <span class="footer-tagline">Built with passion &amp; code</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./assets/js/main.js"></script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  var scrollRaf=0;
+  function emitScroll(){
+    scrollRaf=0;
+    var x=window.scrollX||window.pageXOffset||0;
+    var y=window.scrollY||window.pageYOffset||0;
+    window.parent.postMessage({type:'INLINE_EDIT_SCROLL',scrollX:x,scrollY:y},'*');
+  }
+  window.addEventListener('scroll',function(){
+    if(scrollRaf)return;
+    scrollRaf=requestAnimationFrame(emitScroll);
+  },{passive:true,capture:true});
+  emitScroll();
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>
