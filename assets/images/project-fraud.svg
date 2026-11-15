@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgFraud" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a0f"/>
+      <stop offset="50%" stop-color="#12131a"/>
+      <stop offset="100%" stop-color="#07080c"/>
+    </linearGradient>
+    <linearGradient id="cardGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="fraudLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="70%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgFraud)"/>
+
+  <!-- Grid pattern -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <path d="M0,100 H1200 M0,200 H1200 M0,300 H1200 M0,400 H1200 M0,500 H1200 M0,600 H1200 M0,700 H1200"/>
+    <path d="M100,0 V800 M200,0 V800 M300,0 V800 M400,0 V800 M500,0 V800 M600,0 V800 M700,0 V800 M800,0 V800 M900,0 V800 M1000,0 V800 M1100,0 V800"/>
+  </g>
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="350" cy="380" r="220" fill="#38bdf8" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="850" cy="450" r="260" fill="#818cf8" opacity="0.06" filter="url(#glow)"/>
+
+  <!-- Glassmorphic Dashboard Window -->
+  <rect x="140" y="100" width="920" height="600" rx="20" fill="#111219" fill-opacity="0.85" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.5"/>
+  <rect x="140" y="100" width="920" height="52" rx="20" fill="#181922" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <!-- Window Controls -->
+  <circle cx="175" cy="126" r="6" fill="#ef4444" opacity="0.8"/>
+  <circle cx="197" cy="126" r="6" fill="#eab308" opacity="0.8"/>
+  <circle cx="219" cy="126" r="6" fill="#22c55e" opacity="0.8"/>
+  <text x="600" y="131" fill="#888888" font-family="'DM Sans',sans-serif" font-size="13" font-weight="600" text-anchor="middle" letter-spacing="1">E-COMMERCE FRAUD DETECTION ENGINE · ML PIPELINE</text>
+
+  <!-- Metric Cards Row -->
+  <!-- Metric 1 -->
+  <rect x="180" y="180" width="260" height="110" rx="14" fill="#151722" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="210" y="215" fill="#888888" font-family="'Inter',sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">MODEL ACCURACY</text>
+  <text x="210" y="262" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="36" font-weight="800">95.46%</text>
+  <circle cx="395" cy="235" r="18" fill="#10b981" fill-opacity="0.15"/>
+  <path d="M388 235 L393 240 L402 230" stroke="#10b981" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Metric 2 -->
+  <rect x="470" y="180" width="260" height="110" rx="14" fill="#151722" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="500" y="215" fill="#888888" font-family="'Inter',sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">ROC-AUC SCORE</text>
+  <text x="500" y="262" fill="#38bdf8" font-family="'DM Sans',sans-serif" font-size="36" font-weight="800">97.04%</text>
+  <circle cx="685" cy="235" r="18" fill="#38bdf8" fill-opacity="0.15"/>
+  <path d="M680 238 L685 230 L690 238" stroke="#38bdf8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Metric 3 -->
+  <rect x="760" y="180" width="260" height="110" rx="14" fill="#151722" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="790" y="215" fill="#888888" font-family="'Inter',sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">STATUS</text>
+  <text x="790" y="260" fill="#22c55e" font-family="'DM Sans',sans-serif" font-size="28" font-weight="800">VERIFIED</text>
+  <circle cx="975" cy="235" r="18" fill="#22c55e" fill-opacity="0.15"/>
+  <circle cx="975" cy="235" r="6" fill="#22c55e"/>
+
+  <!-- Main Chart Area -->
+  <rect x="180" y="315" width="840" height="340" rx="16" fill="#151722" stroke="#ffffff" stroke-opacity="0.08"/>
+
+  <!-- Chart Grid Lines -->
+  <line x1="220" y1="360" x2="980" y2="360" stroke="#ffffff" stroke-opacity="0.05" stroke-dasharray="4"/>
+  <line x1="220" y1="420" x2="980" y2="420" stroke="#ffffff" stroke-opacity="0.05" stroke-dasharray="4"/>
+  <line x1="220" y1="480" x2="980" y2="480" stroke="#ffffff" stroke-opacity="0.05" stroke-dasharray="4"/>
+  <line x1="220" y1="540" x2="980" y2="540" stroke="#ffffff" stroke-opacity="0.05" stroke-dasharray="4"/>
+  <line x1="220" y1="600" x2="980" y2="600" stroke="#ffffff" stroke-opacity="0.08"/>
+
+  <!-- Transaction Frequency Curves -->
+  <path d="M 220 560 Q 300 550, 360 480 T 500 520 T 640 430 T 780 370 T 920 350 L 980 340" fill="none" stroke="url(#accentBlue)" stroke-width="3" filter="url(#glow)"/>
+  
+  <!-- Shaded Area Under Curve -->
+  <path d="M 220 560 Q 300 550, 360 480 T 500 520 T 640 430 T 780 370 T 920 350 L 980 340 V 600 H 220 Z" fill="url(#cardGlow)"/>
+
+  <!-- Anomaly Alert Indicator Point -->
+  <circle cx="780" cy="370" r="10" fill="#ef4444" fill-opacity="0.3" filter="url(#glow)"/>
+  <circle cx="780" cy="370" r="5" fill="#ef4444"/>
+  <!-- Callout Tooltip -->
+  <rect x="710" y="300" width="140" height="42" rx="8" fill="#1f1a24" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="780" y="325" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="11" font-weight="700" text-anchor="middle">ANOMALY: 99.2%</text>
+
+  <!-- Credit Card Hologram Representation (Floating on Bottom Left) -->
+  <g transform="translate(210, 460)">
+    <rect width="210" height="120" rx="12" fill="#1c1e2b" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+    <rect x="18" y="24" width="34" height="24" rx="4" fill="#fbbf24" opacity="0.85"/>
+    <line x1="18" y1="75" x2="130" y2="75" stroke="#ffffff" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round"/>
+    <text x="18" y="105" fill="#888888" font-family="'JetBrains Mono',monospace" font-size="11">SECURE TRANSACTION</text>
+  </g>
+</svg>
