@@ -1,687 +1,2267 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Puttigampala Sai Ganesh Chowdary — Data Science &amp; Agentic AI Engineer</title>
-  <meta name="description" content="Portfolio of Puttigampala Sai Ganesh Chowdary — Data Science (B.Tech 2026), Agentic AI Intern, Full-Stack Java Developer." />
-  
+  <title>PUTTIGAMPALA — Data Science &amp; Agentic AI Engineer</title>
+  <meta name="description" content="Portfolio of Puttigampala Sai Ganesh Chowdary — Data Science &amp; Agentic AI Engineer. B.Tech Data Science (2022-2026)." />
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='900' fill='%23ffffff'>P</text></svg>" />
 
-  <!-- Google Fonts: Plus Jakarta Sans, DM Sans & Newsreader (Elite Editorial Aesthetic) -->
+  <!-- Google Fonts: DM Sans & Inter (Exact Sienna Framer Typography) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400;1,9..40,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Phosphor Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" />
+  <style>
+    /* ==========================================================================
+       SIENNA FRAMER TEMPLATE DESIGN SYSTEM
+       Theme: Pure Pitch Black (#000000 / #050505), Charcoal (#111111 / #141414),
+       Typography: DM Sans (Bold Display & Headlines) + Inter (Clean Body & Meta)
+       ========================================================================== */
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-black: #000000;
+      --bg-card: #111111;
+      --bg-card-hover: #181818;
+      --bg-surface: #141414;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-card: rgba(255, 255, 255, 0.12);
+      --border-hover: rgba(255, 255, 255, 0.28);
+      --text-white: #ffffff;
+      --text-muted: #888888;
+      --text-subtle: #71717a;
+      --accent-green: #22c55e;
+      --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 1320px;
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --radius-pill: 9999px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION (Sienna Fixed Nav)
+       ========================================================================== */
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.3s var(--ease);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo .logo-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--text-white);
+      border-radius: 50%;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-item a {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s var(--ease);
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-item a:hover,
+    .nav-item a.active {
+      color: var(--text-white);
+    }
+
+    .nav-item a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--text-white);
+      transition: width 0.3s var(--ease);
+    }
+
+    .nav-item a:hover::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-enquire {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-white);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-pill);
+      padding: 10px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+    }
+
+    .btn-enquire:hover {
+      background: var(--text-white);
+      color: var(--bg-black);
+      border-color: var(--text-white);
+      transform: translateY(-1px);
+    }
+
+    .btn-enquire svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .btn-enquire:hover svg {
+      transform: translate(2px, -2px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-card);
+      color: var(--text-white);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(380px, 85vw);
+      background: #0d0d0d;
+      border-left: 1px solid var(--border-card);
+      z-index: 2000;
+      padding: 36px 30px;
+      transform: translateX(100%);
+      transition: transform 0.4s var(--ease);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .mobile-drawer-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: var(--text-white);
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mobile-drawer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .mobile-drawer-link {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-white);
+      text-transform: uppercase;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1999;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .drawer-overlay.open {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       HERO SECTION (Giant Wordmark & 3-Column Photography Cards)
+       ========================================================================== */
+
+    .hero-section {
+      padding-top: 130px;
+      padding-bottom: 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-display-title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 13.5vw, 195px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.88;
+      text-transform: uppercase;
+      color: var(--text-white);
+      margin: 0 auto 48px;
+      user-select: none;
+      text-align: center;
+    }
+
+    .hero-photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .hero-photo-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+    }
+
+    .hero-photo-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--border-hover);
+    }
+
+    .hero-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .hero-photo-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .hero-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      text-align: left;
+    }
+
+    .hero-photo-tag {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .hero-photo-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       SECTION HEADERS & BREADCRUMBS
+       ========================================================================== */
+
+    .section-crumb {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-headline {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      text-transform: uppercase;
+      color: var(--text-white);
+      margin-bottom: 40px;
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION (Asymmetric Split & Full Parallax Quote)
+       ========================================================================== */
+
+    .about-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-pill);
+      padding: 8px 18px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-white);
+      margin-bottom: 24px;
+    }
+
+    .status-dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 10px var(--accent-green);
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .about-headline {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--text-white);
+    }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 10px;
+    }
+
+    .about-p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: #a1a1aa;
+    }
+
+    .about-ctas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-solid {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--bg-black);
+      background: var(--text-white);
+      padding: 13px 30px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s var(--ease);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-solid:hover {
+      background: #e5e5e5;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-white);
+      background: transparent;
+      border: 1px solid var(--border-card);
+      padding: 13px 30px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s var(--ease);
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--text-white);
+    }
+
+    /* Parallax Highlight Card */
+    .about-highlight-card {
+      margin-top: 60px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 60px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-highlight-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .highlight-quote {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text-white);
+      max-width: 900px;
+      margin: 0 auto 36px;
+    }
+
+    .highlight-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 36px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .stat-box {
+      text-align: center;
+    }
+
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--text-white);
+      line-height: 1;
+    }
+
+    .stat-lbl {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       GALLERY / SELECTED WORK (Staggered Editorial Grid)
+       ========================================================================== */
+
+    .gallery-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .gallery-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      overflow: hidden;
+      transition: all 0.4s var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .gallery-item.offset-col {
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-item.offset-col {
+        margin-top: 0;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-img-box {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 16/11;
+      background: #1e1e1e;
+      position: relative;
+    }
+
+    .gallery-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .gallery-item:hover .gallery-img-box img {
+      transform: scale(1.05);
+    }
+
+    .gallery-meta {
+      margin-top: 20px;
+    }
+
+    .gallery-tag-date {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .gallery-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-top: 8px;
+    }
+
+    .gallery-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #9ca3af;
+      margin-top: 8px;
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       SERVICES SECTION & TILTED PREVIEWS
+       ========================================================================== */
+
+    .services-section {
+      padding: 100px 0 60px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      letter-spacing: 0.05em;
+    }
+
+    .service-preview-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+      position: relative;
+      margin: 16px 0;
+    }
+
+    .tilted-chip {
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-white);
+      position: absolute;
+      transition: transform 0.4s var(--ease);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .chip-left {
+      transform: rotate(-6deg) translateX(-18px);
+    }
+
+    .chip-right {
+      transform: rotate(6deg) translateX(18px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .service-card:hover .chip-left {
+      transform: rotate(-2deg) translateX(-24px);
+    }
+
+    .service-card:hover .chip-right {
+      transform: rotate(2deg) translateX(24px);
+    }
+
+    .service-footer {
+      margin-top: 16px;
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .service-brief {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* Infinite Marquee Banner */
+    .marquee-wrapper {
+      margin-top: 60px;
+      background: #0a0a0a;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 24px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      display: flex;
+    }
+
+    .marquee-content {
+      display: flex;
+      gap: 32px;
+      animation: marqueeScroll 25s linear infinite;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-white);
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       CERTIFICATES SECTION (LIGHTBOX MODAL INTERACTION)
+       User Requirement: "certificates should open when I click on individual titles"
+       ========================================================================== */
+
+    .certificates-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .certs-intro-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .certs-sub {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 500px;
+    }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .cert-card-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      position: relative;
+    }
+
+    .cert-card-item:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--text-white);
+      transform: translateY(-4px);
+    }
+
+    .cert-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .cert-badge-idx {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .cert-arrow-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      transition: all 0.3s var(--ease);
+    }
+
+    .cert-card-item:hover .cert-arrow-icon {
+      background: var(--text-white);
+      color: var(--bg-black);
+      transform: translate(2px, -2px);
+    }
+
+    .cert-title-link {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.3;
+      margin-bottom: 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cert-card-item:hover .cert-title-link {
+      text-decoration: underline;
+    }
+
+    .cert-issuer {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #a1a1aa;
+    }
+
+    .cert-bottom-info {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cert-date {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-subtle);
+      font-weight: 500;
+    }
+
+    .cert-click-prompt {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-green);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 5000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      opacity: 0;
+      transition: opacity 0.3s var(--ease);
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-box {
+      max-width: 950px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-img-frame {
+      width: 100%;
+      max-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-card);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+    }
+
+    .lightbox-img-frame img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .lightbox-caption-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding: 0 8px;
+    }
+
+    .lightbox-caption-text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .lightbox-caption-sub {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: -48px;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-card);
+      color: var(--text-white);
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lightbox-close-btn:hover {
+      background: var(--text-white);
+      color: var(--bg-black);
+    }
+
+    /* ==========================================================================
+       EDUCATION & EXPERIENCE SECTIONS (Editorial Rows)
+       ========================================================================== */
+
+    .timeline-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      gap: 32px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border-subtle);
+      align-items: start;
+      transition: background 0.2s var(--ease);
+    }
+
+    .timeline-row:last-child {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .timeline-row:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    @media (max-width: 850px) {
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    .timeline-date {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .timeline-main-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .timeline-sub-title {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: #a1a1aa;
+      margin-top: 4px;
+    }
+
+    .timeline-detail-tag {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-subtle);
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       ARTICLES / PROJECTS SECTION
+       ========================================================================== */
+
+    .articles-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s var(--ease);
+    }
+
+    .article-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .article-img-wrap {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: #191919;
+    }
+
+    .article-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .article-card:hover .article-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .article-content {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .article-tag-row {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .article-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.35;
+    }
+
+    .article-summary {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #9ca3af;
+      margin-top: 10px;
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       CONTACT SECTION & FORM
+       ========================================================================== */
+
+    .contact-section {
+      padding: 120px 0;
+      background: #080808;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.5vw, 54px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: var(--text-white);
+    }
+
+    .contact-tagline {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: #a1a1aa;
+      margin: 20px 0 36px;
+      line-height: 1.6;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-method-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-white);
+      transition: color 0.3s;
+    }
+
+    .contact-method-link:hover {
+      color: #38bdf8;
+    }
+
+    .contact-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-field label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .form-input {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-white);
+      background: #000000;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-input:focus {
+      border-color: var(--text-white);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit-form {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--bg-black);
+      background: var(--text-white);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 15px 32px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      margin-top: 8px;
+      width: fit-content;
+    }
+
+    .btn-submit-form:hover {
+      background: #e5e5e5;
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       FOOTER & GIANT DISPLAY WORDMARK
+       ========================================================================== */
+
+    .site-footer {
+      background: #000000;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 80px;
+      padding-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .footer-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand-statement {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--text-white);
+      max-width: 400px;
+      line-height: 1.35;
+    }
+
+    .footer-nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav-links a {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .footer-nav-links a:hover {
+      color: var(--text-white);
+    }
+
+    .footer-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 40px 0 28px;
+    }
+
+    .footer-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-social-link {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-white);
+      transition: opacity 0.3s;
+    }
+
+    .footer-social-link:hover {
+      opacity: 0.7;
+    }
+
+    /* Giant Wordmark At Very Bottom of Page (Signature Sienna Feature) */
+    .footer-giant-wordmark {
+      font-family: var(--font-display);
+      font-size: clamp(60px, 14vw, 220px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.82;
+      text-transform: uppercase;
+      color: #171717;
+      text-align: center;
+      user-select: none;
+      margin-top: 60px;
+      margin-bottom: -15px;
+      transition: color 0.4s var(--ease);
+    }
+
+    .footer-giant-wordmark:hover {
+      color: #262626;
+    }
+  </style>
 </head>
-<body class="sienna-body">
+<body>
 
-  <!-- Ambient Glow Background -->
-  <div class="ambient-glow-wrapper">
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-  </div>
-
-  <!-- Header / Navigation (Sienna Floating Island) -->
-  <header class="sienna-header">
-    <nav class="sienna-nav">
-      <!-- Logo / Name Initial -->
-      <a href="#hero" class="nav-logo">
-        <span class="logo-mark">P</span>
-        <span class="logo-text">Puttigampala</span>
+  <!-- ==========================================================================
+       SITE HEADER & FIXED NAVIGATION
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-dot"></span>
+        PUTTIGAMPALA
       </a>
 
-      <!-- Navigation Links -->
-      <div class="nav-links-desktop">
-        <a href="#hero" class="s-nav-link active">Home</a>
-        <a href="#about" class="s-nav-link">About</a>
-        <a href="#certificates" class="s-nav-link">Certificates</a>
-        <a href="#gallery" class="s-nav-link">Gallery</a>
-        <a href="#services" class="s-nav-link">Services</a>
-        <a href="#education" class="s-nav-link">Education</a>
-        <a href="#experience" class="s-nav-link">Experience</a>
-      </div>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#hero" class="active">HOME</a></li>
+        <li class="nav-item"><a href="#about">ABOUT</a></li>
+        <li class="nav-item"><a href="#gallery">GALLERY</a></li>
+        <li class="nav-item"><a href="#services">SERVICES</a></li>
+        <li class="nav-item"><a href="#certificates">CERTIFICATES</a></li>
+        <li class="nav-item"><a href="#academics">ACADEMICS</a></li>
+        <li class="nav-item"><a href="#experience">EXPERIENCE</a></li>
+        <li class="nav-item"><a href="#articles">ARTICLES</a></li>
+      </ul>
 
-      <!-- Action Button -->
-      <div class="nav-cta-wrapper">
-        <a href="#contact" class="btn-sienna-pill">
-          <span>Enquire</span>
-          <i class="ph ph-arrow-up-right font-bold"></i>
+      <div class="header-actions">
+        <a href="#contact" class="btn-enquire">
+          ENQUIRE
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
-        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Toggle menu">
-          <i class="ph ph-list" id="toggle-icon"></i>
+        <button class="mobile-menu-btn" id="mobileMenuOpen" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
-    </nav>
-
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu-drawer" class="mobile-drawer hidden">
-      <a href="#hero" class="m-link">Home</a>
-      <a href="#about" class="m-link">About</a>
-      <a href="#certificates" class="m-link">Certificates</a>
-      <a href="#gallery" class="m-link">Gallery</a>
-      <a href="#services" class="m-link">Services</a>
-      <a href="#education" class="m-link">Education</a>
-      <a href="#experience" class="m-link">Experience</a>
-      <a href="#contact" class="m-link btn-m-cta">Get In Touch</a>
     </div>
   </header>
 
-  <main class="sienna-main">
+  <!-- Mobile Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span class="brand-logo">PUTTIGAMPALA</span>
+      <button class="mobile-drawer-close" id="mobileMenuClose">&times;</button>
+    </div>
+    <nav class="mobile-drawer-nav">
+      <a href="#hero" class="mobile-drawer-link">HOME</a>
+      <a href="#about" class="mobile-drawer-link">ABOUT</a>
+      <a href="#gallery" class="mobile-drawer-link">GALLERY</a>
+      <a href="#services" class="mobile-drawer-link">SERVICES</a>
+      <a href="#certificates" class="mobile-drawer-link">CERTIFICATES</a>
+      <a href="#academics" class="mobile-drawer-link">ACADEMICS</a>
+      <a href="#experience" class="mobile-drawer-link">EXPERIENCE</a>
+      <a href="#articles" class="mobile-drawer-link">ARTICLES</a>
+      <a href="#contact" class="mobile-drawer-link">ENQUIRE</a>
+    </nav>
+  </aside>
 
-    <!-- Section: Hero (Sienna Editorial Typography & Refined Framing) -->
-    <section id="hero" class="section-hero">
-      <div class="hero-header-block">
-        <h1 class="hero-massive-title">
-          Data Science &amp; <span class="serif-italic">Agentic AI</span> Specialist crafting striking systems &amp; <span class="serif-italic">intelligent</span> solutions.
-        </h1>
-      </div>
+  <!-- ==========================================================================
+       HERO SECTION (Giant Wordmark & 3-Column Photography Cards)
+       ========================================================================== -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <!-- Colossal Display Title exactly like Sienna Framer -->
+        <h1 class="hero-display-title">PUTTIGAMPALA</h1>
 
-      <div class="hero-bottom-grid">
-        <div class="hero-status-col">
-          <div class="status-pill">
-            <span class="pulse-dot"></span>
-            <span>available for work</span>
-          </div>
-
-          <!-- User avatar badge with crisp framing -->
-          <div class="user-hero-avatar-card">
-            <img src="./assets/images/profile-1-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary" class="hero-avatar-img" />
-            <div class="avatar-meta">
-              <span class="avatar-name">P. Sai Ganesh Chowdary</span>
-              <span class="avatar-role">Data Science &middot; B.Tech 2026</span>
+        <!-- 3-Column Photography Cards with Sai Ganesh's Photos -->
+        <div class="hero-photos-grid">
+          <div class="hero-photo-card">
+            <img src="./assets/images/profile-1-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 1" />
+            <div class="hero-photo-overlay">
+              <span class="hero-photo-tag">ENGINEER</span>
+              <h3 class="hero-photo-title">Sai Ganesh Chowdary</h3>
             </div>
           </div>
-        </div>
 
-        <div class="hero-bio-col">
-          <p class="hero-bio-text">
-            Based in Andhra Pradesh, India, I am <strong>Puttigampala Sai Ganesh Chowdary</strong>, a Data Science undergraduate and Agentic AI Engineer. From autonomous multi-agent pipelines to resilient Java/Spring Boot enterprise backends, my work embodies bold engineering rigour and attention to detail.
-          </p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn-sienna-outline">
-              <span>Let's talk</span>
-              <i class="ph ph-arrow-down font-bold"></i>
-            </a>
-            <a href="#certificates" class="btn-sienna-ghost">
-              <span>View certificates</span>
-              <i class="ph ph-arrow-right"></i>
-            </a>
+          <div class="hero-photo-card">
+            <img src="./assets/images/profile-2-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 2" />
+            <div class="hero-photo-overlay">
+              <span class="hero-photo-tag">SPECIALIZATION</span>
+              <h3 class="hero-photo-title">Data Science &amp; Agentic AI</h3>
+            </div>
+          </div>
+
+          <div class="hero-photo-card">
+            <img src="./assets/images/profile-3-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 3" />
+            <div class="hero-photo-overlay">
+              <span class="hero-photo-tag">DEVELOPER</span>
+              <h3 class="hero-photo-title">Full-Stack &amp; ML Systems</h3>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section: About (Two-Column with Refined Portrait Card) -->
-    <section id="about" class="section-about">
-      <div class="about-grid">
-        <!-- Left: Refined Portrait Container -->
-        <div class="about-visual-col">
-          <div class="about-portrait-card">
-            <div class="portrait-img-box">
-              <img id="main-about-photo" src="./assets/images/profile-1-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary Portrait" class="about-portrait-img" />
-              <div class="portrait-badge">
-                <span class="p-name">Puttigampala Sai Ganesh</span>
-                <span class="p-role">Agentic AI &amp; Full-Stack</span>
-              </div>
+    <!-- ==========================================================================
+         ABOUT SECTION (Asymmetric Split & Full Parallax Quote)
+         ========================================================================== -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-left">
+            <div class="status-pill">
+              <span class="status-dot-pulse"></span>
+              AVAILABLE FOR WORK
             </div>
+            <h2 class="about-headline">
+              ANDHRA PRADESH-BASED DATA SCIENCE &amp; AGENTIC AI SPECIALIST.
+            </h2>
+          </div>
 
-            <!-- Thumbnail view switcher -->
-            <div class="portrait-thumbnails">
-              <div class="thumb-pill active" onclick="switchAboutPhoto('./assets/images/profile-1-hd.jpg', this)">
-                <img src="./assets/images/profile-1-hd.jpg" alt="View 1" />
-              </div>
-              <div class="thumb-pill" onclick="switchAboutPhoto('./assets/images/profile-2-hd.jpg', this)">
-                <img src="./assets/images/profile-2-hd.jpg" alt="View 2" />
-              </div>
-              <div class="thumb-pill" onclick="switchAboutPhoto('./assets/images/profile-3-hd.jpg', this)">
-                <img src="./assets/images/profile-3-hd.jpg" alt="View 3" />
-              </div>
-              <div class="thumb-pill" onclick="switchAboutPhoto('./assets/images/profile-4-hd.jpg', this)">
-                <img src="./assets/images/profile-4-hd.jpg" alt="View 4" />
-              </div>
+          <div class="about-right">
+            <p class="about-p">
+              I am Puttigampala Sai Ganesh Chowdary, a Data Science undergraduate (B.Tech 2022–2026) at Narasaraopeta Engineering College (CGPA 7.56). I specialize in architecting intelligent systems, training robust machine learning models, and engineering full-stack Java solutions.
+            </p>
+            <p class="about-p">
+              Through my internships as an Agentic AI Intern at Datavalley India and Full Stack Java Intern at SkillDzire, I translate complex data into autonomous AI agents, production pipelines, and mission-critical applications.
+            </p>
+
+            <div class="about-ctas">
+              <a href="#contact" class="btn-solid">Let's talk</a>
+              <a href="#gallery" class="btn-outline">Explore Work</a>
             </div>
           </div>
         </div>
 
-        <!-- Right: Story & High-Impact Stats Matrix -->
-        <div class="about-text-col">
-          <div class="section-tag">/ About Me</div>
-          <h2 class="about-heading">
-            My passion is to bridge <span class="serif-italic">neural intelligence</span> with scalable software execution.
-          </h2>
-          <p class="about-desc">
-            Step into my world, where autonomous agent pipelines meet enterprise software execution, and complex data patterns transform into high-impact digital solutions. As a B.Tech Data Science student at <strong>Narasaraopeta Engineering College</strong>, I bring analytical thinking and engineering execution together.
-          </p>
+        <!-- Parallax Highlight Card -->
+        <div class="about-highlight-card">
+          <blockquote class="highlight-quote">
+            "My passion is to craft autonomous intelligent systems, predictive machine learning pipelines, and robust software that solve high-impact challenges."
+          </blockquote>
 
-          <!-- Core Stats Matrix -->
-          <div class="stats-matrix">
+          <div class="highlight-stats">
             <div class="stat-box">
-              <span class="stat-number">95.46%</span>
-              <span class="stat-label">ML Fraud Detection Accuracy</span>
+              <div class="stat-val">95.5%</div>
+              <div class="stat-lbl">ML Model Accuracy</div>
             </div>
             <div class="stat-box">
-              <span class="stat-number">500+</span>
-              <span class="stat-label">Queries / Session via Agents</span>
+              <div class="stat-val">7.56</div>
+              <div class="stat-lbl">B.Tech CGPA</div>
             </div>
             <div class="stat-box">
-              <span class="stat-number">200+</span>
-              <span class="stat-label">Test Users Onboarded</span>
+              <div class="stat-val">5+</div>
+              <div class="stat-lbl">Certifications</div>
             </div>
             <div class="stat-box">
-              <span class="stat-number">7.56</span>
-              <span class="stat-label">B.Tech Data Science CGPA</span>
-            </div>
-          </div>
-
-          <!-- Academic Snapshot -->
-          <div class="academic-snapshot">
-            <div class="academic-row">
-              <span class="acad-degree">B.Tech Data Science</span>
-              <span class="acad-school">Narasaraopeta Engineering College</span>
-              <span class="acad-score">CGPA 7.56 (2022–2026)</span>
-            </div>
-            <div class="academic-row">
-              <span class="acad-degree">Intermediate (MPC)</span>
-              <span class="acad-school">Sri Chaitanya Junior College</span>
-              <span class="acad-score">68.5% (2020–2022)</span>
-            </div>
-            <div class="academic-row">
-              <span class="acad-degree">Secondary School (SSC)</span>
-              <span class="acad-school">Sai Adithya High School</span>
-              <span class="acad-score">CGPA 10.0 (2019–2020)</span>
+              <div class="stat-val">10.0</div>
+              <div class="stat-lbl">SSC Grade Points</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section: Certificates (Direct Click on Titles to Open Lightbox) -->
-    <section id="certificates" class="section-certificates">
-      <div class="section-header-row">
-        <div>
-          <div class="section-tag">/ Certifications</div>
-          <h2 class="section-heading">Verified Accreditations &amp; Credentials</h2>
-        </div>
-        <p class="section-subtext">Click on any certificate title to inspect the full document</p>
-      </div>
+    <!-- ==========================================================================
+         GALLERY / SELECTED WORK (Staggered Editorial Grid)
+         ========================================================================== -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <span class="section-crumb">/ GALLERY</span>
+        <h2 class="section-headline">WHERE EVERY MODEL TELLS A STORY</h2>
 
-      <!-- Elegant Clickable Certificate List -->
-      <div class="cert-interactive-list">
-        <!-- Cert 1 -->
-        <div class="cert-item-row group">
-          <div class="cert-item-left">
-            <span class="cert-idx">01</span>
-            <div>
-              <h3 class="cert-clickable-title" onclick="openCertModal('Agentic AI Internship Certificate', 'Datavalley India Pvt. Ltd. · Mar 2026', './assets/certs/cert-1.jpg', 'Engineered autonomous system workflows using Agentic AI frameworks, reducing manual query handling by 40%.')">
-                <span>Agentic AI Internship Certificate</span>
-                <i class="ph ph-arrow-up-right title-icon"></i>
-              </h3>
-              <p class="cert-meta">Datavalley India Pvt. Ltd. &middot; March 2026 &middot; Autonomous Agent Pipelines</p>
+        <div class="gallery-grid">
+          <!-- Item 1 -->
+          <div class="gallery-item">
+            <div class="gallery-img-box">
+              <img src="./assets/images/profile-4-hd.jpg" alt="E-Commerce Fraud Detection" />
+            </div>
+            <div class="gallery-meta">
+              <span class="gallery-tag-date">/ · MACHINE LEARNING · 2025</span>
+              <h3 class="gallery-title">E-Commerce Fraud Detection System</h3>
+              <p class="gallery-desc">
+                High-performance classification model achieving 95.46% accuracy and 97.04% AUC for identifying real-time fraudulent transactions and anomalous behavior.
+              </p>
             </div>
           </div>
-          <button class="btn-inspect-pill" onclick="openCertModal('Agentic AI Internship Certificate', 'Datavalley India Pvt. Ltd. · Mar 2026', './assets/certs/cert-1.jpg', 'Engineered autonomous system workflows using Agentic AI frameworks, reducing manual query handling by 40%.')">
-            <i class="ph ph-certificate"></i>
-            <span>View Certificate</span>
-          </button>
-        </div>
 
-        <!-- Cert 2 -->
-        <div class="cert-item-row group">
-          <div class="cert-item-left">
-            <span class="cert-idx">02</span>
-            <div>
-              <h3 class="cert-clickable-title" onclick="openCertModal('NPTEL Elite: Introduction to IoT', 'NPTEL / IIT Kharagpur · Apr 2025 · Score: 68%', './assets/certs/cert-2.jpg', 'Elite certification awarded by IIT Kharagpur with 68% score covering Internet of Things architectures, sensor telemetry, and embedded protocols.')">
-                <span>NPTEL Elite: Introduction to IoT</span>
-                <i class="ph ph-arrow-up-right title-icon"></i>
-              </h3>
-              <p class="cert-meta">NPTEL &middot; IIT Kharagpur &middot; April 2025 &middot; <strong class="highlight-elite">Score 68% (Elite)</strong></p>
+          <!-- Item 2 (Offset Column) -->
+          <div class="gallery-item offset-col">
+            <div class="gallery-img-box">
+              <img src="./assets/images/profile-1-hd.jpg" alt="Agentic AI Autonomous Systems" />
+            </div>
+            <div class="gallery-meta">
+              <span class="gallery-tag-date">/ · ARTIFICIAL INTELLIGENCE · 2026</span>
+              <h3 class="gallery-title">Agentic AI Multi-Agent Workflows</h3>
+              <p class="gallery-desc">
+                Autonomous agent framework engineered at Datavalley India incorporating LLM reasoning, stateful memory, and API tool calling for automated execution.
+              </p>
             </div>
           </div>
-          <button class="btn-inspect-pill" onclick="openCertModal('NPTEL Elite: Introduction to IoT', 'NPTEL / IIT Kharagpur · Apr 2025 · Score: 68%', './assets/certs/cert-2.jpg', 'Elite certification awarded by IIT Kharagpur with 68% score covering Internet of Things architectures, sensor telemetry, and embedded protocols.')">
-            <i class="ph ph-certificate"></i>
-            <span>View Certificate</span>
-          </button>
-        </div>
 
-        <!-- Cert 3 -->
-        <div class="cert-item-row group">
-          <div class="cert-item-left">
-            <span class="cert-idx">03</span>
-            <div>
-              <h3 class="cert-clickable-title" onclick="openCertModal('Power BI Data Storytellers', 'Alice Soft · Jul 2024', './assets/certs/cert-3.jpg', 'Executive training in data modeling, DAX queries, and storytelling with interactive Power BI dashboards.')">
-                <span>Power BI Data Storytellers Workshop</span>
-                <i class="ph ph-arrow-up-right title-icon"></i>
-              </h3>
-              <p class="cert-meta">Alice Soft &middot; July 2024 &middot; Data Visualization &amp; DAX Modeling</p>
+          <!-- Item 3 -->
+          <div class="gallery-item">
+            <div class="gallery-img-box">
+              <img src="./assets/images/profile-2-hd.jpg" alt="Cyber Crime Awareness Campaign" />
+            </div>
+            <div class="gallery-meta">
+              <span class="gallery-tag-date">/ · FULL-STACK WEB · 2025</span>
+              <h3 class="gallery-title">Cyber Crime Awareness &amp; Prevention Hub</h3>
+              <p class="gallery-desc">
+                Community-driven digital platform providing threat education, security checklists, cyber safety protocols, and incident guidance for users.
+              </p>
             </div>
           </div>
-          <button class="btn-inspect-pill" onclick="openCertModal('Power BI Data Storytellers', 'Alice Soft · Jul 2024', './assets/certs/cert-3.jpg', 'Executive training in data modeling, DAX queries, and storytelling with interactive Power BI dashboards.')">
-            <i class="ph ph-certificate"></i>
-            <span>View Certificate</span>
-          </button>
-        </div>
 
-        <!-- Cert 4 -->
-        <div class="cert-item-row group">
-          <div class="cert-item-left">
-            <span class="cert-idx">04</span>
-            <div>
-              <h3 class="cert-clickable-title" onclick="openCertModal('Full Stack Java Development', 'SkillDzire · Jun 2025', './assets/certs/cert-4.jpg', 'Comprehensive full-stack engineering covering Java 17, Spring Boot microservices, React, and PostgreSQL deployment for 200+ users.')">
-                <span>Full Stack Java Development</span>
-                <i class="ph ph-arrow-up-right title-icon"></i>
-              </h3>
-              <p class="cert-meta">SkillDzire &middot; June 2025 &middot; Spring Boot, React &amp; Cloud Deployment</p>
+          <!-- Item 4 (Offset Column) -->
+          <div class="gallery-item offset-col">
+            <div class="gallery-img-box">
+              <img src="./assets/images/profile-3-hd.jpg" alt="Airport Authority Analytics" />
             </div>
-          </div>
-          <button class="btn-inspect-pill" onclick="openCertModal('Full Stack Java Development', 'SkillDzire · Jun 2025', './assets/certs/cert-4.jpg', 'Comprehensive full-stack engineering covering Java 17, Spring Boot microservices, React, and PostgreSQL deployment for 200+ users.')">
-            <i class="ph ph-certificate"></i>
-            <span>View Certificate</span>
-          </button>
-        </div>
-
-        <!-- Cert 5 -->
-        <div class="cert-item-row group">
-          <div class="cert-item-left">
-            <span class="cert-idx">05</span>
-            <div>
-              <h3 class="cert-clickable-title" onclick="openCertModal('UI &amp; UX Design Workshop', 'Alice Soft · Dec 2024', './assets/certs/cert-5.jpg', 'Hands-on intensive workshop focusing on user experience heuristics, interface design systems, and Figma wireframing.')">
-                <span>UI &amp; UX Design Workshop</span>
-                <i class="ph ph-arrow-up-right title-icon"></i>
-              </h3>
-              <p class="cert-meta">Alice Soft &middot; December 2024 &middot; Design Systems &amp; UX Architecture</p>
+            <div class="gallery-meta">
+              <span class="gallery-tag-date">/ · DATA ANALYTICS &amp; BI · 2024</span>
+              <h3 class="gallery-title">Airport Authority Data Analytics Dashboard</h3>
+              <p class="gallery-desc">
+                Interactive Power BI executive dashboards analyzing flight delay frequencies, passenger throughput density, and operational capacity metrics.
+              </p>
             </div>
-          </div>
-          <button class="btn-inspect-pill" onclick="openCertModal('UI &amp; UX Design Workshop', 'Alice Soft · Dec 2024', './assets/certs/cert-5.jpg', 'Hands-on intensive workshop focusing on user experience heuristics, interface design systems, and Figma wireframing.')">
-            <i class="ph ph-certificate"></i>
-            <span>View Certificate</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Gallery (Sienna Visual Card Grid) -->
-    <section id="gallery" class="section-gallery">
-      <div class="gallery-header">
-        <div class="section-tag">/ Gallery</div>
-        <h2 class="gallery-heading">Where Every <span class="serif-italic">Project &amp; Document</span> Tells a Story</h2>
-      </div>
-
-      <div class="gallery-grid">
-        <!-- Item 1: Capstone -->
-        <article class="gallery-card group">
-          <div class="card-media" onclick="openCertModal('E-Commerce Transaction Fraud Detection', 'WCFA-25 Research Capstone · Nov 2025', './assets/certs/cert-1.jpg', 'Advanced fraud detection system combining ANN + DNN architectures with 95.46% accuracy and 97.04% AUC.')">
-            <img src="./assets/certs/cert-1.jpg" alt="Fraud Detection" class="card-img" />
-            <div class="media-tag">/ Machine Learning · Nov 2025</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title-link" onclick="openCertModal('E-Commerce Transaction Fraud Detection', 'WCFA-25 Research Capstone · Nov 2025', './assets/certs/cert-1.jpg', 'Advanced fraud detection system combining ANN + DNN architectures with 95.46% accuracy and 97.04% AUC.')">
-              <span>E-Commerce Transaction Fraud Detection</span>
-              <i class="ph ph-arrow-up-right"></i>
-            </h3>
-            <p class="card-subtitle">Hybrid ANN/DNN · 95.46% Accuracy · WCFA-25</p>
-          </div>
-        </article>
-
-        <!-- Item 2: Agentic AI -->
-        <article class="gallery-card group">
-          <div class="card-media" onclick="openCertModal('Agentic AI Internship Certificate', 'Datavalley India · Mar 2026', './assets/certs/cert-1.jpg', 'Engineered autonomous workflows reducing manual task handling by 40% and automated 500+ unique queries per session.')">
-            <img src="./assets/certs/cert-1.jpg" alt="Agentic AI Internship" class="card-img" />
-            <div class="media-tag">/ Internship · Mar 2026</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title-link" onclick="openCertModal('Agentic AI Internship Certificate', 'Datavalley India · Mar 2026', './assets/certs/cert-1.jpg', 'Engineered autonomous workflows reducing manual task handling by 40% and automated 500+ unique queries per session.')">
-              <span>Agentic AI Internship</span>
-              <i class="ph ph-arrow-up-right"></i>
-            </h3>
-            <p class="card-subtitle">Datavalley India · Autonomous Agent Systems</p>
-          </div>
-        </article>
-
-        <!-- Item 3: NPTEL Elite IoT -->
-        <article class="gallery-card group">
-          <div class="card-media" onclick="openCertModal('NPTEL Elite: Introduction to IoT', 'IIT Kharagpur · Apr 2025', './assets/certs/cert-2.jpg', 'Certified Elite by IIT Kharagpur with 68% score covering sensor networks, IoT protocols, and connected architectures.')">
-            <img src="./assets/certs/cert-2.jpg" alt="NPTEL IoT Certificate" class="card-img" />
-            <div class="media-tag">/ Certification · Apr 2025</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title-link" onclick="openCertModal('NPTEL Elite: Introduction to IoT', 'IIT Kharagpur · Apr 2025', './assets/certs/cert-2.jpg', 'Certified Elite by IIT Kharagpur with 68% score covering sensor networks, IoT protocols, and connected architectures.')">
-              <span>NPTEL Elite: Intro to IoT</span>
-              <i class="ph ph-arrow-up-right"></i>
-            </h3>
-            <p class="card-subtitle">IIT Kharagpur · Score 68% (Elite)</p>
-          </div>
-        </article>
-
-        <!-- Item 4: Full Stack Java -->
-        <article class="gallery-card group">
-          <div class="card-media" onclick="openCertModal('Full Stack Java Development Certificate', 'SkillDzire · Jun 2025', './assets/certs/cert-4.jpg', 'Designed and deployed full-stack web applications using Spring Boot, React, and PostgreSQL for 200+ test users.')">
-            <img src="./assets/certs/cert-4.jpg" alt="Full Stack Java Certificate" class="card-img" />
-            <div class="media-tag">/ Engineering · Jun 2025</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title-link" onclick="openCertModal('Full Stack Java Development Certificate', 'SkillDzire · Jun 2025', './assets/certs/cert-4.jpg', 'Designed and deployed full-stack web applications using Spring Boot, React, and PostgreSQL for 200+ test users.')">
-              <span>Full Stack Java Development</span>
-              <i class="ph ph-arrow-up-right"></i>
-            </h3>
-            <p class="card-subtitle">SkillDzire · Spring Boot &amp; React</p>
-          </div>
-        </article>
-
-        <!-- Item 5: Power BI Data Storytellers -->
-        <article class="gallery-card group">
-          <div class="card-media" onclick="openCertModal('Power BI Data Storytellers Workshop', 'Alice Soft · Jul 2024', './assets/certs/cert-3.jpg', 'Specialized workshop in building executive dashboards, DAX queries, and narrative data visualization.')">
-            <img src="./assets/certs/cert-3.jpg" alt="Power BI Workshop" class="card-img" />
-            <div class="media-tag">/ Analytics · Jul 2024</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title-link" onclick="openCertModal('Power BI Data Storytellers Workshop', 'Alice Soft · Jul 2024', './assets/certs/cert-3.jpg', 'Specialized workshop in building executive dashboards, DAX queries, and narrative data visualization.')">
-              <span>Power BI Data Storytellers</span>
-              <i class="ph ph-arrow-up-right"></i>
-            </h3>
-            <p class="card-subtitle">Alice Soft · Business Intelligence &amp; DAX</p>
-          </div>
-        </article>
-
-        <!-- Item 6: UI & UX Workshop -->
-        <article class="gallery-card group">
-          <div class="card-media" onclick="openCertModal('UI & UX Design Workshop', 'Alice Soft · Dec 2024', './assets/certs/cert-5.jpg', 'Comprehensive training in user experience heuristics, wireframing, and modern web interaction design.')">
-            <img src="./assets/certs/cert-5.jpg" alt="UI & UX Certificate" class="card-img" />
-            <div class="media-tag">/ Design · Dec 2024</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title-link" onclick="openCertModal('UI & UX Design Workshop', 'Alice Soft · Dec 2024', './assets/certs/cert-5.jpg', 'Comprehensive training in user experience heuristics, wireframing, and modern web interaction design.')">
-              <span>UI &amp; UX Workshop</span>
-              <i class="ph ph-arrow-up-right"></i>
-            </h3>
-            <p class="card-subtitle">Alice Soft · Design Systems &amp; Wireframing</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Section: Services (Sienna Numbered Accordion) -->
-    <section id="services" class="section-services">
-      <div class="services-header">
-        <div class="section-tag">/ Services</div>
-        <h2 class="services-heading">How I Bring Your <span class="serif-italic">Vision</span> to Life?</h2>
-      </div>
-
-      <div class="services-list">
-        <!-- 01 -->
-        <div class="service-row">
-          <div class="service-num">/ 01</div>
-          <div class="service-main">
-            <h3 class="service-title">Agentic AI &amp; Autonomous Workflows</h3>
-            <p class="service-desc">Architecting multi-agent reasoning loops, autonomous tool-calling pipelines, and autonomous agent systems that reduce operational overhead.</p>
-          </div>
-          <div class="service-tags">
-            <span>Agentic Frameworks</span>
-            <span>Task Orchestration</span>
-            <span>LLM Tool-Calling</span>
-          </div>
-        </div>
-
-        <!-- 02 -->
-        <div class="service-row">
-          <div class="service-num">/ 02</div>
-          <div class="service-main">
-            <h3 class="service-title">Full-Stack Java &amp; Spring Boot Microservices</h3>
-            <p class="service-desc">Developing resilient, enterprise-grade backend APIs, secure OAuth/MFA authentication, and high-performance React frontends.</p>
-          </div>
-          <div class="service-tags">
-            <span>Java 17/21</span>
-            <span>Spring Boot</span>
-            <span>REST APIs</span>
-          </div>
-        </div>
-
-        <!-- 03 -->
-        <div class="service-row">
-          <div class="service-num">/ 03</div>
-          <div class="service-main">
-            <h3 class="service-title">Machine Learning &amp; Deep Neural Networks</h3>
-            <p class="service-desc">Training ANN/DNN models, implementing Explainable AI (XAI), and balancing extreme datasets with SMOTE and LDA.</p>
-          </div>
-          <div class="service-tags">
-            <span>ANN / DNN</span>
-            <span>Explainable AI</span>
-            <span>Scikit-Learn</span>
-          </div>
-        </div>
-
-        <!-- 04 -->
-        <div class="service-row">
-          <div class="service-num">/ 04</div>
-          <div class="service-main">
-            <h3 class="service-title">Data Analytics &amp; Power BI Storytelling</h3>
-            <p class="service-desc">Creating executive dashboards with actionable insights that streamline departmental KPIs and boost operational efficiency by 15%+.</p>
-          </div>
-          <div class="service-tags">
-            <span>Power BI</span>
-            <span>SQL Analysis</span>
-            <span>Data Modeling</span>
-          </div>
-        </div>
-
-        <!-- 05 -->
-        <div class="service-row">
-          <div class="service-num">/ 05</div>
-          <div class="service-main">
-            <h3 class="service-title">Cybersecurity Awareness &amp; Application Hardening</h3>
-            <p class="service-desc">Designing digital defense campaigns, phishing mitigation protocols, and implementing secure software lifecycle practices.</p>
-          </div>
-          <div class="service-tags">
-            <span>Defense Hygiene</span>
-            <span>Threat Awareness</span>
-            <span>MFA Security</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section: Education (Academic Foundations) -->
-    <section id="education" class="section-education">
-      <div class="education-header">
-        <div class="section-tag">/ Education</div>
-        <h2 class="education-heading">Academic Journey &amp; Foundations</h2>
+    <!-- ==========================================================================
+         SERVICES SECTION (Tilted Cards & Marquee Banner)
+         ========================================================================== -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <span class="section-crumb">/ SERVICES</span>
+        <h2 class="section-headline">HOW I BRING YOUR VISION TO LIFE?</h2>
+
+        <div class="services-grid">
+          <!-- Service 01 -->
+          <div class="service-card">
+            <span class="service-num">/ 01</span>
+            <div class="service-preview-visual">
+              <div class="tilted-chip chip-left">Multi-Agent</div>
+              <div class="tilted-chip chip-right">LangChain</div>
+            </div>
+            <div class="service-footer">
+              <h3 class="service-title">Agentic AI Systems</h3>
+              <p class="service-brief">Autonomous agent orchestration, tool calling, reasoning loops, and intelligent task automation.</p>
+            </div>
+          </div>
+
+          <!-- Service 02 -->
+          <div class="service-card">
+            <span class="service-num">/ 02</span>
+            <div class="service-preview-visual">
+              <div class="tilted-chip chip-left">Scikit-Learn</div>
+              <div class="tilted-chip chip-right">95% Accuracy</div>
+            </div>
+            <div class="service-footer">
+              <h3 class="service-title">Machine Learning</h3>
+              <p class="service-brief">Supervised &amp; unsupervised learning, fraud classification, predictive models, and statistical analysis.</p>
+            </div>
+          </div>
+
+          <!-- Service 03 -->
+          <div class="service-card">
+            <span class="service-num">/ 03</span>
+            <div class="service-preview-visual">
+              <div class="tilted-chip chip-left">Spring Boot</div>
+              <div class="tilted-chip chip-right">REST APIs</div>
+            </div>
+            <div class="service-footer">
+              <h3 class="service-title">Full-Stack Java</h3>
+              <p class="service-brief">Enterprise backend development with Java, Spring Boot, Hibernate, microservices, and clean architecture.</p>
+            </div>
+          </div>
+
+          <!-- Service 04 -->
+          <div class="service-card">
+            <span class="service-num">/ 04</span>
+            <div class="service-preview-visual">
+              <div class="tilted-chip chip-left">Power BI</div>
+              <div class="tilted-chip chip-right">DAX ETL</div>
+            </div>
+            <div class="service-footer">
+              <h3 class="service-title">Data Analytics &amp; BI</h3>
+              <p class="service-brief">Interactive dashboards, complex KPI modeling, data storytelling, and automated reporting pipelines.</p>
+            </div>
+          </div>
+
+          <!-- Service 05 -->
+          <div class="service-card">
+            <span class="service-num">/ 05</span>
+            <div class="service-preview-visual">
+              <div class="tilted-chip chip-left">Pandas</div>
+              <div class="tilted-chip chip-right">Automation</div>
+            </div>
+            <div class="service-footer">
+              <h3 class="service-title">Python Engineering</h3>
+              <p class="service-brief">Data manipulation, automated scripting, API web scraping, and production script orchestration.</p>
+            </div>
+          </div>
+
+          <!-- Service 06 -->
+          <div class="service-card">
+            <span class="service-num">/ 06</span>
+            <div class="service-preview-visual">
+              <div class="tilted-chip chip-left">IIT Kharagpur</div>
+              <div class="tilted-chip chip-right">IoT Elite</div>
+            </div>
+            <div class="service-footer">
+              <h3 class="service-title">Cloud &amp; Smart IoT</h3>
+              <p class="service-brief">NPTEL Elite certified IoT protocols, smart edge sensors, cloud telemetry, and connected devices.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="education-cards-grid">
-        <div class="edu-sienna-card">
-          <div class="edu-top-row">
-            <span class="edu-step">01</span>
-            <span class="edu-timeline">2022 — 2026</span>
-          </div>
-          <h3 class="edu-degree-title">B.Tech in Data Science</h3>
-          <p class="edu-institution">Narasaraopeta Engineering College</p>
-          <div class="edu-footer">
-            <span class="edu-badge-highlight">CGPA: 7.56</span>
-            <span class="edu-location">Andhra Pradesh</span>
-          </div>
-        </div>
-
-        <div class="edu-sienna-card">
-          <div class="edu-top-row">
-            <span class="edu-step">02</span>
-            <span class="edu-timeline">2020 — 2022</span>
-          </div>
-          <h3 class="edu-degree-title">Intermediate (MPC)</h3>
-          <p class="edu-institution">Sri Chaitanya Junior College</p>
-          <div class="edu-footer">
-            <span class="edu-badge-highlight">Score: 68.5%</span>
-            <span class="edu-location">Andhra Pradesh</span>
-          </div>
-        </div>
-
-        <div class="edu-sienna-card">
-          <div class="edu-top-row">
-            <span class="edu-step">03</span>
-            <span class="edu-timeline">2019 — 2020</span>
-          </div>
-          <h3 class="edu-degree-title">Secondary School (SSC)</h3>
-          <p class="edu-institution">Sai Adithya High School</p>
-          <div class="edu-footer">
-            <span class="edu-badge-highlight">CGPA: 10.0 / 10.0</span>
-            <span class="edu-location">Andhra Pradesh</span>
-          </div>
+      <!-- Marquee Banner -->
+      <div class="marquee-wrapper">
+        <div class="marquee-content">
+          <span>EXPLORE MASTERPIECES IN THE PORTFOLIO ★</span>
+          <span>DATA SCIENCE &amp; AGENTIC AI SPECIALIST ★</span>
+          <span>MACHINE LEARNING ★ FULL STACK JAVA ★</span>
+          <span>POWER BI ANALYTICS ★ CERTIFIED CREDENTIALS ★</span>
+          <span>EXPLORE MASTERPIECES IN THE PORTFOLIO ★</span>
+          <span>DATA SCIENCE &amp; AGENTIC AI SPECIALIST ★</span>
+          <span>MACHINE LEARNING ★ FULL STACK JAVA ★</span>
+          <span>POWER BI ANALYTICS ★ CERTIFIED CREDENTIALS ★</span>
         </div>
       </div>
     </section>
 
-    <!-- Section: Experience -->
-    <section id="experience" class="section-experience">
-      <div class="experience-header">
-        <div class="section-tag">/ Experience</div>
-        <h2 class="experience-heading">Professional Milestones</h2>
-      </div>
-
-      <div class="experience-timeline">
-        <!-- Experience 1 -->
-        <div class="exp-row">
-          <div class="exp-dates">Nov 2025 — Mar 2026</div>
-          <div class="exp-body">
-            <div class="exp-meta">
-              <span class="exp-role">Agentic AI Intern</span>
-              <span class="exp-org">Datavalley India Pvt. Ltd. · Remote</span>
-            </div>
-            <ul class="exp-bullets">
-              <li>Engineered autonomous system workflows using Agentic AI frameworks, reducing manual query handling by 40%.</li>
-              <li>Processed and analyzed 500+ unique data queries per session using intelligent agent pipelines.</li>
-              <li>Conducted hands-on AI training sessions for APSCHE-affiliated students across multiple institutions.</li>
-            </ul>
+    <!-- ==========================================================================
+         CERTIFICATES SECTION (LIGHTBOX MODAL INTERACTION)
+         ========================================================================== -->
+    <section class="certificates-section" id="certificates">
+      <div class="container">
+        <div class="certs-intro-row">
+          <div>
+            <span class="section-crumb">/ CERTIFICATES</span>
+            <h2 class="section-headline">VERIFIED CREDENTIALS &amp; ACHIEVEMENTS</h2>
           </div>
-        </div>
-
-        <!-- Experience 2 -->
-        <div class="exp-row">
-          <div class="exp-dates">May 2025 — Jun 2025</div>
-          <div class="exp-body">
-            <div class="exp-meta">
-              <span class="exp-role">Full Stack Java Intern</span>
-              <span class="exp-org">SkillDzire · Hyderabad</span>
-            </div>
-            <ul class="exp-bullets">
-              <li>Built a full-stack web application using Java, Spring Boot, and React, onboarding 200+ test users.</li>
-              <li>Achieved 20% faster delivery through optimized CI/CD pipeline automation and agile team practices.</li>
-              <li>Implemented multi-factor authentication (MFA) protocols to bolster application security.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Contact (Sienna Editorial Callout) -->
-    <section id="contact" class="section-contact">
-      <div class="contact-callout-box">
-        <div class="contact-headline-group">
-          <div class="section-tag">/ Contact</div>
-          <h2 class="contact-huge-title">
-            Every challenge holds a <span class="serif-italic">breakthrough</span> waiting to be engineered.
-          </h2>
-          <p class="contact-sub-text">
-            I am available for engineering roles, technical internships, and innovative AI collaborations. Let's start the conversation.
+          <p class="certs-sub">
+            Click on any credential title or card below to open the official verified high-resolution certificate in full view.
           </p>
         </div>
 
-        <div class="contact-channels-grid">
-          <!-- LinkedIn Channel (Verified URL with real profile) -->
-          <a href="https://www.linkedin.com/in/puttigampala-sai-ganesh-chowdary-246665287/" target="_blank" rel="noopener noreferrer" class="contact-item-card">
-            <div class="item-icon-box">
-              <i class="ph ph-linkedin-logo"></i>
+        <div class="certs-grid">
+          <!-- Cert 1 -->
+          <div class="cert-card-item" data-cert="1" data-title="Agentic AI Certification" data-org="Datavalley India · March 2026">
+            <div>
+              <div class="cert-top-row">
+                <span class="cert-badge-idx">/ 01 · ARTIFICIAL INTELLIGENCE</span>
+                <div class="cert-arrow-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </div>
+              </div>
+              <h3 class="cert-title-link">Agentic AI Certification</h3>
+              <p class="cert-issuer">Datavalley India</p>
             </div>
-            <div class="item-info">
-              <span class="item-type">LinkedIn Profile</span>
-              <span class="item-value">puttigampala-sai-ganesh-chowdary</span>
+            <div class="cert-bottom-info">
+              <span class="cert-date">March 2026</span>
+              <span class="cert-click-prompt">Click to view →</span>
             </div>
-            <i class="ph ph-arrow-up-right item-arrow"></i>
-          </a>
+          </div>
 
-          <!-- Email Channel -->
-          <a href="mailto:saiganeshsaisai@gmail.com" class="contact-item-card">
-            <div class="item-icon-box">
-              <i class="ph ph-envelope-simple"></i>
+          <!-- Cert 2 -->
+          <div class="cert-card-item" data-cert="2" data-title="NPTEL IoT — Elite Certificate (Score: 68%)" data-org="IIT Kharagpur · April 2025">
+            <div>
+              <div class="cert-top-row">
+                <span class="cert-badge-idx">/ 02 · INTERNET OF THINGS</span>
+                <div class="cert-arrow-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </div>
+              </div>
+              <h3 class="cert-title-link">NPTEL IoT — Elite Certificate</h3>
+              <p class="cert-issuer">IIT Kharagpur (Score: 68%)</p>
             </div>
-            <div class="item-info">
-              <span class="item-type">Direct Email</span>
-              <span class="item-value">saiganeshsaisai@gmail.com</span>
+            <div class="cert-bottom-info">
+              <span class="cert-date">April 2025</span>
+              <span class="cert-click-prompt">Click to view →</span>
             </div>
-            <i class="ph ph-arrow-up-right item-arrow"></i>
-          </a>
+          </div>
 
-          <!-- GitHub Channel -->
-          <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer" class="contact-item-card">
-            <div class="item-icon-box">
-              <i class="ph ph-github-logo"></i>
+          <!-- Cert 3 -->
+          <div class="cert-card-item" data-cert="3" data-title="Power BI Certification" data-org="Alice Soft · July 2024">
+            <div>
+              <div class="cert-top-row">
+                <span class="cert-badge-idx">/ 03 · BUSINESS INTELLIGENCE</span>
+                <div class="cert-arrow-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </div>
+              </div>
+              <h3 class="cert-title-link">Power BI Data Analytics</h3>
+              <p class="cert-issuer">Alice Soft</p>
             </div>
-            <div class="item-info">
-              <span class="item-type">GitHub Profile</span>
-              <span class="item-value">github.com/saiganesh4444</span>
+            <div class="cert-bottom-info">
+              <span class="cert-date">July 2024</span>
+              <span class="cert-click-prompt">Click to view →</span>
             </div>
-            <i class="ph ph-arrow-up-right item-arrow"></i>
-          </a>
+          </div>
 
-          <!-- Phone Channel -->
-          <a href="tel:+916304111353" class="contact-item-card">
-            <div class="item-icon-box">
-              <i class="ph ph-phone"></i>
+          <!-- Cert 4 -->
+          <div class="cert-card-item" data-cert="4" data-title="Full Stack Java Development" data-org="SkillDzire · June 2025">
+            <div>
+              <div class="cert-top-row">
+                <span class="cert-badge-idx">/ 04 · SOFTWARE ENGINEERING</span>
+                <div class="cert-arrow-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </div>
+              </div>
+              <h3 class="cert-title-link">Full Stack Java Development</h3>
+              <p class="cert-issuer">SkillDzire</p>
             </div>
-            <div class="item-info">
-              <span class="item-type">Phone / WhatsApp</span>
-              <span class="item-value">+91 63041 11353</span>
+            <div class="cert-bottom-info">
+              <span class="cert-date">June 2025</span>
+              <span class="cert-click-prompt">Click to view →</span>
             </div>
-            <i class="ph ph-arrow-up-right item-arrow"></i>
-          </a>
+          </div>
+
+          <!-- Cert 5 -->
+          <div class="cert-card-item" data-cert="5" data-title="UI/UX Design Workshop" data-org="Alice Soft · December 2024">
+            <div>
+              <div class="cert-top-row">
+                <span class="cert-badge-idx">/ 05 · PRODUCT DESIGN</span>
+                <div class="cert-arrow-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </div>
+              </div>
+              <h3 class="cert-title-link">UI/UX Design Workshop</h3>
+              <p class="cert-issuer">Alice Soft</p>
+            </div>
+            <div class="cert-bottom-info">
+              <span class="cert-date">December 2024</span>
+              <span class="cert-click-prompt">Click to view →</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Footer Bottom -->
-      <footer class="sienna-footer">
-        <div class="footer-left">
-          <span>&copy; 2026 Puttigampala Sai Ganesh Chowdary. All rights reserved.</span>
-        </div>
-        <div class="footer-social-links">
-          <a href="https://www.linkedin.com/in/puttigampala-sai-ganesh-chowdary-246665287/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="mailto:saiganeshsaisai@gmail.com">Email</a>
-        </div>
-      </footer>
     </section>
 
-  </main>
-
-  <!-- Interactive Document Lightbox Modal -->
-  <div id="certModal" class="sienna-modal hidden" onclick="handleModalBackdrop(event)">
-    <div class="modal-dialog">
-      <div class="modal-head">
-        <div>
-          <h4 id="modalTitle" class="m-title">Certificate Inspection</h4>
-          <p id="modalIssuer" class="m-issuer"></p>
+    <!-- Certificate Lightbox Modal -->
+    <div class="lightbox-modal" id="certLightbox" role="dialog" aria-modal="true">
+      <div class="lightbox-box">
+        <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close certificate">&times;</button>
+        <div class="lightbox-img-frame">
+          <img id="lightboxTargetImg" src="" alt="Verified Certificate" />
         </div>
-        <div class="modal-head-actions">
-          <a id="modalOpenExternal" href="" target="_blank" class="btn-modal-action" title="Open full resolution in new tab">
-            <i class="ph ph-arrows-out-simple"></i>
-            <span>Full Resolution</span>
-          </a>
-          <button class="modal-close-btn" onclick="closeCertModal()" aria-label="Close modal">
-            <i class="ph ph-x"></i>
-          </button>
+        <div class="lightbox-caption-bar">
+          <div>
+            <div class="lightbox-caption-text" id="lightboxTitle">Certificate Title</div>
+            <div class="lightbox-caption-sub" id="lightboxOrg">Organization · Date</div>
+          </div>
         </div>
-      </div>
-      <div class="modal-body">
-        <img id="modalImg" src="" alt="Certificate Document" class="modal-preview-img" />
-        <p id="modalDesc" class="m-desc"></p>
       </div>
     </div>
-  </div>
 
-  <script src="./assets/js/main.js"></script>
+    <!-- ==========================================================================
+         ACADEMICS / EDUCATION
+         ========================================================================== -->
+    <section class="timeline-section" id="academics">
+      <div class="container">
+        <span class="section-crumb">/ ACADEMICS</span>
+        <h2 class="section-headline">ACADEMIC JOURNEY &amp; FOUNDATIONS</h2>
+
+        <div class="timeline-list">
+          <div class="timeline-row">
+            <span class="timeline-date">2022 — 2026</span>
+            <div>
+              <h3 class="timeline-main-title">B.Tech in Data Science</h3>
+              <p class="timeline-sub-title">Narasaraopeta Engineering College</p>
+            </div>
+            <span class="timeline-detail-tag">CGPA: 7.56 / 10.0</span>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-date">2020 — 2022</span>
+            <div>
+              <h3 class="timeline-main-title">Intermediate (MPC)</h3>
+              <p class="timeline-sub-title">Sri Chaitanya Junior College</p>
+            </div>
+            <span class="timeline-detail-tag">Percentage: 68.5%</span>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-date">2019 — 2020</span>
+            <div>
+              <h3 class="timeline-main-title">SSC (10th Standard)</h3>
+              <p class="timeline-sub-title">Sai Adithya E.M. High School</p>
+            </div>
+            <span class="timeline-detail-tag">GPA: 10.0 / 10.0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EXPERIENCE SECTION
+         ========================================================================== -->
+    <section class="timeline-section" id="experience">
+      <div class="container">
+        <span class="section-crumb">/ EXPERIENCE</span>
+        <h2 class="section-headline">PROFESSIONAL EXPERIENCE &amp; INTERNSHIPS</h2>
+
+        <div class="timeline-list">
+          <div class="timeline-row">
+            <span class="timeline-date">Nov 2025 — Mar 2026</span>
+            <div>
+              <h3 class="timeline-main-title">Agentic AI Intern</h3>
+              <p class="timeline-sub-title">Datavalley India</p>
+            </div>
+            <span class="timeline-detail-tag">Autonomous Systems</span>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-date">May 2025 — Jun 2025</span>
+            <div>
+              <h3 class="timeline-main-title">Full Stack Java Intern</h3>
+              <p class="timeline-sub-title">SkillDzire</p>
+            </div>
+            <span class="timeline-detail-tag">Spring Boot &amp; REST</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ARTICLES / TECHNICAL HIGHLIGHTS
+         ========================================================================== -->
+    <section class="articles-section" id="articles">
+      <div class="container">
+        <span class="section-crumb">/ ARTICLES</span>
+        <h2 class="section-headline">FOCUS &amp; INNOVATION: STORIES BEYOND THE CODE</h2>
+
+        <div class="articles-grid">
+          <div class="article-card">
+            <div class="article-img-wrap">
+              <img src="./assets/images/profile-1-hd.jpg" alt="Building Agentic Systems" />
+            </div>
+            <div class="article-content">
+              <div>
+                <span class="article-tag-row">/ · ARTIFICIAL INTELLIGENCE · 2026</span>
+                <h3 class="article-title">Architecting Autonomous Agentic AI Workflows</h3>
+                <p class="article-summary">
+                  How multi-agent architectures use stateful memory, structured tool calling, and recursive self-reflection to automate complex engineering tasks.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-img-wrap">
+              <img src="./assets/images/profile-2-hd.jpg" alt="Machine Learning Fraud Detection" />
+            </div>
+            <div class="article-content">
+              <div>
+                <span class="article-tag-row">/ · MACHINE LEARNING · 2025</span>
+                <h3 class="article-title">Achieving 97% AUC in Real-Time Transaction Fraud</h3>
+                <p class="article-summary">
+                  Techniques for handling extreme class imbalances, feature extraction, and reducing false positives in mission-critical fraud models.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-img-wrap">
+              <img src="./assets/images/profile-3-hd.jpg" alt="Power BI Analytics" />
+            </div>
+            <div class="article-content">
+              <div>
+                <span class="article-tag-row">/ · DATA ANALYTICS · 2024</span>
+                <h3 class="article-title">Transforming Complex Aviation Telemetry into Dashboards</h3>
+                <p class="article-summary">
+                  Building operational Power BI models to visualize passenger density, delays, and airport ground bottlenecks with sub-second responsiveness.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION
+         ========================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-layout">
+          <div>
+            <span class="section-crumb">/ GET IN TOUCH</span>
+            <h2 class="contact-title">LET'S CREATE SOMETHING REMARKABLE TOGETHER</h2>
+            <p class="contact-tagline">
+              Whether you are looking to build autonomous Agentic AI workflows, deploy machine learning models, or develop enterprise full-stack solutions, let's talk.
+            </p>
+
+            <div class="contact-methods">
+              <a href="mailto:saiganeshsaisai@gmail.com" class="contact-method-link">
+                <div class="contact-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <span>saiganeshsaisai@gmail.com</span>
+              </a>
+
+              <a href="tel:+916304111353" class="contact-method-link">
+                <div class="contact-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <span>+91 63041 11353</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/puttigampala-sai-ganesh-chowdary-246665287/" target="_blank" rel="noopener noreferrer" class="contact-method-link">
+                <div class="contact-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </div>
+                <span>linkedin.com/in/puttigampala-sai-ganesh-chowdary</span>
+              </a>
+
+              <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer" class="contact-method-link">
+                <div class="contact-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </div>
+                <span>github.com/saiganesh4444</span>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-field">
+              <label for="userName">YOUR NAME</label>
+              <input type="text" id="userName" class="form-input" placeholder="e.g. John Doe" required />
+            </div>
+
+            <div class="form-field">
+              <label for="userEmail">YOUR EMAIL</label>
+              <input type="email" id="userEmail" class="form-input" placeholder="e.g. john@example.com" required />
+            </div>
+
+            <div class="form-field">
+              <label for="userMsg">YOUR MESSAGE</label>
+              <textarea id="userMsg" class="form-input" placeholder="Describe your project, question or proposal..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-form" id="submitBtn">SEND MESSAGE</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER & GIANT DISPLAY WORDMARK
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-row">
+        <p class="footer-brand-statement">
+          EVERY CHALLENGE HOLDS AN INTELLIGENT SOLUTION WAITING TO BE UNLOCKED.
+        </p>
+
+        <ul class="footer-nav-links">
+          <li><a href="#hero">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#gallery">GALLERY</a></li>
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#certificates">CERTIFICATES</a></li>
+          <li><a href="#academics">ACADEMICS</a></li>
+          <li><a href="#experience">EXPERIENCE</a></li>
+          <li><a href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-meta-row">
+        <span class="footer-copy">
+          &copy; 2026 PUTTIGAMPALA SAI GANESH CHOWDARY. ALL RIGHTS RESERVED.
+        </span>
+
+        <div class="footer-social-links">
+          <a href="https://www.linkedin.com/in/puttigampala-sai-ganesh-chowdary-246665287/" target="_blank" rel="noopener noreferrer" class="footer-social-link">LINKEDIN</a>
+          <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer" class="footer-social-link">GITHUB</a>
+          <a href="mailto:saiganeshsaisai@gmail.com" class="footer-social-link">EMAIL</a>
+          <a href="tel:+916304111353" class="footer-social-link">PHONE</a>
+        </div>
+      </div>
+
+      <!-- Giant Signature Wordmark Spanning Bottom of Viewport -->
+      <div class="footer-giant-wordmark">PUTTIGAMPALA</div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       SCRIPTS: LIGHTBOX MODAL, MOBILE DRAWER, & INTERACTIONS
+       ========================================================================== -->
+  <script>
+    // Mobile Drawer Navigation
+    const mobileMenuOpen = document.getElementById('mobileMenuOpen');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function openDrawer() {
+      mobileDrawer.classList.add('open');
+      drawerOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      mobileDrawer.classList.remove('open');
+      drawerOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileMenuOpen) mobileMenuOpen.addEventListener('click', openDrawer);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+    document.querySelectorAll('.mobile-drawer-link').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // Certificate Lightbox Functionality
+    const certLightbox = document.getElementById('certLightbox');
+    const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+    const lightboxTargetImg = document.getElementById('lightboxTargetImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxOrg = document.getElementById('lightboxOrg');
+
+    document.querySelectorAll('.cert-card-item').forEach(card => {
+      card.addEventListener('click', () => {
+        const certId = card.getAttribute('data-cert');
+        const title = card.getAttribute('data-title');
+        const org = card.getAttribute('data-org');
+
+        lightboxTargetImg.src = `./assets/certs/cert-${certId}.jpg`;
+        lightboxTitle.textContent = title;
+        lightboxOrg.textContent = org;
+
+        certLightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      certLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+    if (certLightbox) {
+      certLightbox.addEventListener('click', (e) => {
+        if (e.target === certLightbox) closeLightbox();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeDrawer();
+      }
+    });
+
+    // Contact Form Simulation
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'MESSAGE SENT SUCCESSFULLY ✓';
+        submitBtn.style.background = '#22c55e';
+        submitBtn.style.color = '#000000';
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = '';
+          submitBtn.style.color = '';
+          contactForm.reset();
+        }, 3000);
+      });
+    }
+
+    // Active nav indicator on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 120;
+        const sectionId = current.getAttribute('id');
+        const navLink = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
+        if (navLink) {
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLink.classList.add('active');
+          } else {
+            navLink.classList.remove('active');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
