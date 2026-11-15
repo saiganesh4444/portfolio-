@@ -9,685 +9,569 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='900' fill='%23ffffff'>P</text></svg>" />
 
-  <!-- Fonts: DM Sans, Plus Jakarta Sans, JetBrains Mono -->
+  <!-- Google Fonts: DM Sans & Inter (Exact Sienna typography) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Phosphor Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" />
 
-  <!-- Custom Stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-<body class="bg-[#09090b] text-[#f4f4f5] antialiased selection:bg-white selection:text-black">
+<body class="sienna-body">
 
-  <!-- Ambient Background Glows -->
-  <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-    <div class="ambient-glow glow-top"></div>
-    <div class="ambient-glow glow-middle"></div>
+  <!-- Ambient Glow Background -->
+  <div class="ambient-glow-wrapper">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
   </div>
 
-  <!-- Floating Island Navbar -->
-  <header class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-    <nav class="nav-container flex items-center justify-between w-full max-w-4xl px-5 py-3 rounded-full border border-white/10 bg-[#121216]/80 backdrop-blur-xl shadow-2xl shadow-black/40 transition-all duration-300">
+  <!-- Header / Navigation (Exact Sienna Floating Pill Bar) -->
+  <header class="sienna-header">
+    <nav class="sienna-nav">
       <!-- Logo / Name Initial -->
-      <a href="#hero" class="nav-brand flex items-center gap-2 group">
-        <span class="w-8 h-8 rounded-full bg-white text-black font-extrabold flex items-center justify-center text-sm tracking-tight group-hover:scale-105 transition-transform">
-          P
-        </span>
-        <span class="text-sm font-semibold tracking-tight text-white group-hover:text-zinc-300 transition-colors">
-          P. Sai Ganesh
-        </span>
+      <a href="#hero" class="nav-logo">
+        <span class="logo-mark">P</span>
+        <span class="logo-text">Puttigampala</span>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <div class="hidden md:flex items-center gap-7 text-xs uppercase tracking-wider font-medium text-zinc-400">
-        <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
-        <a href="#experience" class="nav-link hover:text-white transition-colors">Experience</a>
-        <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
-        <a href="#education" class="nav-link hover:text-white transition-colors">Education</a>
-        <a href="#certificates" class="nav-link hover:text-white transition-colors">Certificates</a>
-        <a href="#skills" class="nav-link hover:text-white transition-colors">Skills</a>
+      <!-- Navigation Links -->
+      <div class="nav-links-desktop">
+        <a href="#hero" class="s-nav-link active">Home</a>
+        <a href="#about" class="s-nav-link">About</a>
+        <a href="#gallery" class="s-nav-link">Gallery</a>
+        <a href="#services" class="s-nav-link">Services</a>
+        <a href="#education" class="s-nav-link">Education</a>
+        <a href="#experience" class="s-nav-link">Experience</a>
       </div>
 
       <!-- Action Button -->
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition-all shadow-sm">
-          <span>Let's Talk</span>
-          <i class="ph ph-arrow-up-right font-bold text-xs"></i>
+      <div class="nav-cta-wrapper">
+        <a href="#contact" class="btn-sienna-pill">
+          <span>Enquire</span>
+          <i class="ph ph-arrow-up-right font-bold"></i>
         </a>
-        <!-- Mobile Menu Trigger -->
-        <button id="mobile-menu-btn" class="md:hidden text-xl text-zinc-300 hover:text-white focus:outline-none p-1" aria-label="Toggle Navigation Menu">
-          <i class="ph ph-list" id="menu-icon"></i>
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Toggle menu">
+          <i class="ph ph-list" id="toggle-icon"></i>
         </button>
       </div>
     </nav>
 
-    <!-- Mobile Dropdown -->
-    <div id="mobile-menu" class="hidden absolute top-20 left-4 right-4 max-w-md mx-auto p-6 rounded-3xl bg-[#141418] border border-white/10 shadow-2xl backdrop-blur-2xl flex flex-col gap-4 text-center md:hidden">
-      <a href="#about" class="mobile-link text-sm font-medium text-zinc-300 hover:text-white py-2">About</a>
-      <a href="#experience" class="mobile-link text-sm font-medium text-zinc-300 hover:text-white py-2">Experience</a>
-      <a href="#projects" class="mobile-link text-sm font-medium text-zinc-300 hover:text-white py-2">Projects</a>
-      <a href="#education" class="mobile-link text-sm font-medium text-zinc-300 hover:text-white py-2">Education</a>
-      <a href="#certificates" class="mobile-link text-sm font-medium text-zinc-300 hover:text-white py-2">Certificates</a>
-      <a href="#skills" class="mobile-link text-sm font-medium text-zinc-300 hover:text-white py-2">Skills</a>
-      <a href="#contact" class="mobile-link inline-flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black font-semibold text-xs mt-2">
-        <span>Get in Touch</span>
-        <i class="ph ph-arrow-up-right font-bold"></i>
-      </a>
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu-drawer" class="mobile-drawer hidden">
+      <a href="#hero" class="m-link">Home</a>
+      <a href="#about" class="m-link">About</a>
+      <a href="#gallery" class="m-link">Gallery</a>
+      <a href="#services" class="m-link">Services</a>
+      <a href="#education" class="m-link">Education</a>
+      <a href="#experience" class="m-link">Experience</a>
+      <a href="#contact" class="m-link btn-m-cta">Get In Touch</a>
     </div>
   </header>
 
-  <main class="relative z-10 pt-32 pb-24 max-w-5xl mx-auto px-6 lg:px-8 space-y-36">
+  <main class="sienna-main">
 
-    <!-- Hero Section -->
-    <section id="hero" class="pt-12 sm:pt-20 flex flex-col items-start gap-8">
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-xs font-medium tracking-wide">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-        </span>
-        <span>Available for internships &amp; engineering opportunities</span>
-      </div>
-
-      <!-- Main Heading with Initial Putigampala emphasis -->
-      <div class="space-y-4 max-w-3xl">
-        <p class="text-xs font-mono uppercase tracking-widest text-zinc-400">Puttigampala Sai Ganesh Chowdary</p>
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
-          Architecting intelligent systems with <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-500">Agentic AI</span> &amp; Full-Stack precision.
+    <!-- Section: Hero (Exact Sienna Typography & Grid Layout) -->
+    <section id="hero" class="section-hero">
+      <div class="hero-header-block">
+        <h1 class="hero-massive-title">
+          Data Science &amp; Agentic AI Specialist crafting striking systems &amp; intelligent solutions.
         </h1>
-        <p class="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed font-normal pt-2">
-          B.Tech in Data Science (Class of 2026). Specializing in autonomous multi-agent workflows, scalable Java/Spring Boot microservices, and predictive machine learning models.
-        </p>
       </div>
 
-      <!-- CTAs & Socials -->
-      <div class="flex flex-wrap items-center gap-4 pt-2">
-        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-all shadow-lg hover:shadow-white/10">
-          <span>View Featured Projects</span>
-          <i class="ph ph-arrow-down font-bold"></i>
-        </a>
-        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white font-medium text-sm backdrop-blur-md transition-all">
-          <span>Get in Touch</span>
-          <i class="ph ph-arrow-up-right"></i>
-        </a>
-        <div class="flex items-center gap-3 pl-2 text-zinc-400">
-          <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full border border-white/10 hover:border-white/30 hover:text-white transition-all" aria-label="GitHub">
-            <i class="ph ph-github-logo text-lg"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/saiganesh" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full border border-white/10 hover:border-white/30 hover:text-white transition-all" aria-label="LinkedIn">
-            <i class="ph ph-linkedin-logo text-lg"></i>
-          </a>
-          <a href="mailto:saiganeshsaisai@gmail.com" class="p-2.5 rounded-full border border-white/10 hover:border-white/30 hover:text-white transition-all" aria-label="Email">
-            <i class="ph ph-envelope-simple text-lg"></i>
-          </a>
-        </div>
-      </div>
+      <div class="hero-bottom-grid">
+        <div class="hero-status-col">
+          <div class="status-pill">
+            <span class="pulse-dot"></span>
+            <span>available for work</span>
+          </div>
 
-      <!-- Metrics Row (Sienna Style) -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full pt-8 border-t border-white/10">
-        <div class="stat-card p-5 rounded-2xl bg-[#121216]/60 border border-white/5 hover:border-white/15 transition-all">
-          <div class="text-2xl sm:text-3xl font-bold tracking-tight text-white">95.46%</div>
-          <div class="text-xs text-zinc-400 mt-1">Fraud Detection Accuracy (WCFA-25)</div>
+          <!-- User avatar preview -->
+          <div class="user-hero-avatar-card">
+            <img src="./assets/images/profile-1.jpg" alt="Puttigampala Sai Ganesh Chowdary" class="hero-avatar-img" />
+            <div class="avatar-meta">
+              <span class="avatar-name">P. Sai Ganesh Chowdary</span>
+              <span class="avatar-role">B.Tech Data Science (2026)</span>
+            </div>
+          </div>
         </div>
-        <div class="stat-card p-5 rounded-2xl bg-[#121216]/60 border border-white/5 hover:border-white/15 transition-all">
-          <div class="text-2xl sm:text-3xl font-bold tracking-tight text-white">500+</div>
-          <div class="text-xs text-zinc-400 mt-1">Queries/Session Autonomous Agent</div>
-        </div>
-        <div class="stat-card p-5 rounded-2xl bg-[#121216]/60 border border-white/5 hover:border-white/15 transition-all">
-          <div class="text-2xl sm:text-3xl font-bold tracking-tight text-white">200+</div>
-          <div class="text-xs text-zinc-400 mt-1">App Users Onboarded (SkillDzire)</div>
-        </div>
-        <div class="stat-card p-5 rounded-2xl bg-[#121216]/60 border border-white/5 hover:border-white/15 transition-all">
-          <div class="text-2xl sm:text-3xl font-bold tracking-tight text-white">7.56</div>
-          <div class="text-xs text-zinc-400 mt-1">B.Tech Data Science CGPA</div>
+
+        <div class="hero-bio-col">
+          <p class="hero-bio-text">
+            Based in Andhra Pradesh, India, I am <strong>Puttigampala Sai Ganesh Chowdary</strong>, a passionate Data Science engineer and Agentic AI practitioner. From autonomous multi-agent pipelines to scalable Java/Spring Boot enterprise backends, my work is a reflection of bold engineering rigour and attention to detail.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-sienna-outline">
+              <span>Let's talk</span>
+              <i class="ph ph-arrow-down font-bold"></i>
+            </a>
+            <a href="#gallery" class="btn-sienna-ghost">
+              <span>Explore gallery</span>
+              <i class="ph ph-arrow-right"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="space-y-8 scroll-mt-28">
-      <div class="flex items-center gap-3">
-        <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">/ 01</span>
-        <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-400">About Me</h2>
-      </div>
+    <!-- Section: About (Two-Column Editorial with User Provided Photos) -->
+    <section id="about" class="section-about">
+      <div class="about-grid">
+        <!-- Left: Editorial Photo Container (User's Photo Aesthetic Frame) -->
+        <div class="about-visual-col">
+          <div class="about-img-frame">
+            <img id="main-about-photo" src="./assets/images/profile-1.jpg" alt="Puttigampala Sai Ganesh Chowdary Portrait" class="about-main-img" />
+            <div class="about-img-overlay">
+              <div class="overlay-badge">
+                <span class="overlay-title">Puttigampala Sai Ganesh Chowdary</span>
+                <span class="overlay-sub">Data Science · Agentic AI · Java Full-Stack</span>
+              </div>
+            </div>
+          </div>
 
-      <div class="grid md:grid-cols-12 gap-10 items-start">
-        <div class="md:col-span-7 space-y-5 text-base sm:text-lg text-zinc-300 leading-relaxed font-light">
-          <p>
-            I am <strong class="text-white font-semibold">Puttigampala Sai Ganesh Chowdary</strong>, a Data Science undergraduate at <strong class="text-white font-medium">Narasaraopeta Engineering College</strong> (2022–2026).
-          </p>
-          <p>
-            My engineering philosophy centers around merging mathematical rigour with robust software architecture. Whether it is deploying autonomous multi-agent frameworks at <strong class="text-white font-medium">Datavalley India</strong> or engineering enterprise full-stack web applications at <strong class="text-white font-medium">SkillDzire</strong>, I thrive at the convergence of data science, cloud engineering, and modern web systems.
-          </p>
-          <p class="text-sm text-zinc-400">
-            Dedicated to continuous mastery across deep learning architectures, Explainable AI (XAI), Spring Boot microservices, and interactive business intelligence.
-          </p>
+          <!-- Secondary photo thumbnails -->
+          <div class="about-thumbnails-row">
+            <div class="thumb-card active" onclick="switchAboutPhoto('./assets/images/profile-1.jpg', this)">
+              <img src="./assets/images/profile-1.jpg" alt="Profile View 1" />
+            </div>
+            <div class="thumb-card" onclick="switchAboutPhoto('./assets/images/profile-2.jpg', this)">
+              <img src="./assets/images/profile-2.jpg" alt="Profile View 2" />
+            </div>
+            <div class="thumb-card" onclick="switchAboutPhoto('./assets/images/profile-3.jpg', this)">
+              <img src="./assets/images/profile-3.jpg" alt="Profile View 3" />
+            </div>
+            <div class="thumb-card" onclick="switchAboutPhoto('./assets/images/profile-4.jpg', this)">
+              <img src="./assets/images/profile-4.jpg" alt="Profile View 4" />
+            </div>
+          </div>
         </div>
 
-        <div class="md:col-span-5 space-y-3">
-          <div class="p-6 rounded-3xl bg-[#121216] border border-white/10 space-y-4">
-            <h3 class="text-xs font-mono uppercase tracking-wider text-zinc-400">Core Highlights</h3>
-            <ul class="space-y-3 text-xs sm:text-sm text-zinc-300">
-              <li class="flex items-start gap-2.5">
-                <i class="ph ph-check-circle text-emerald-400 text-base mt-0.5"></i>
-                <span><strong class="text-white">Full Name:</strong> Puttigampala Sai Ganesh Chowdary</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="ph ph-check-circle text-emerald-400 text-base mt-0.5"></i>
-                <span><strong class="text-white">Degree:</strong> B.Tech in Data Science (2026 Batch)</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="ph ph-check-circle text-emerald-400 text-base mt-0.5"></i>
-                <span><strong class="text-white">Key Domains:</strong> Agentic AI, Full-Stack Java, ML/XAI</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="ph ph-check-circle text-emerald-400 text-base mt-0.5"></i>
-                <span><strong class="text-white">Location:</strong> Andhra Pradesh, India</span>
-              </li>
+        <!-- Right: Story, Academic Details & High-Impact Stats -->
+        <div class="about-text-col">
+          <div class="section-tag">/ About Me</div>
+          <h2 class="about-heading">
+            My passion is to craft intelligent systems that solve real-world complexities.
+          </h2>
+          <p class="about-desc">
+            Step into my world, where autonomous agent pipelines meet enterprise software execution, and complex data patterns transform into high-impact digital solutions. As a B.Tech Data Science student at <strong>Narasaraopeta Engineering College</strong>, I bridge mathematical modeling with cloud-native engineering.
+          </p>
+
+          <!-- Core stats grid (Sienna style) -->
+          <div class="stats-matrix">
+            <div class="stat-box">
+              <span class="stat-number">95.46%</span>
+              <span class="stat-label">ML Fraud Detection Accuracy</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Agent Queries Handled / Session</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">200+</span>
+              <span class="stat-label">Enterprise Test Users Served</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">7.56</span>
+              <span class="stat-label">B.Tech Data Science CGPA</span>
+            </div>
+          </div>
+
+          <!-- Academic Snapshot -->
+          <div class="academic-snapshot">
+            <div class="academic-row">
+              <span class="acad-degree">B.Tech Data Science</span>
+              <span class="acad-school">Narasaraopeta Engineering College</span>
+              <span class="acad-score">CGPA 7.56 (2022–2026)</span>
+            </div>
+            <div class="academic-row">
+              <span class="acad-degree">Intermediate (MPC)</span>
+              <span class="acad-school">Sri Chaitanya Junior College</span>
+              <span class="acad-score">68.5% (2020–2022)</span>
+            </div>
+            <div class="academic-row">
+              <span class="acad-degree">Secondary School (SSC)</span>
+              <span class="acad-school">Sai Adithya High School</span>
+              <span class="acad-score">CGPA 10.0 (2019–2020)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Gallery (Where Every Project & Certificate Tells a Story) -->
+    <section id="gallery" class="section-gallery">
+      <div class="gallery-header">
+        <div class="section-tag">/ Gallery</div>
+        <h2 class="gallery-heading">Where Every Project &amp; Certificate Tells a Story</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Item 1: Capstone Project -->
+        <article class="gallery-card group" onclick="openCertModal(this)"
+                 data-title="E-Commerce Transaction Fraud Detection"
+                 data-issuer="WCFA-25 Research Capstone · Nov 2025"
+                 data-desc="Built an advanced hybrid ANN + DNN fraud prevention engine delivering 95.46% accuracy and 97.04% AUC with Explainable AI (XAI), SMOTE class balancing, and LDA dimensional compression."
+                 data-img="./assets/certs/cert-1.jpg">
+          <div class="card-media">
+            <img src="./assets/certs/cert-1.jpg" alt="Fraud Detection Architecture" class="card-img" />
+            <div class="media-tag">/ Machine Learning · Nov 2025</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">E-Commerce Transaction Fraud Detection</h3>
+            <p class="card-subtitle">Hybrid ANN/DNN · 95.46% Accuracy · WCFA-25</p>
+          </div>
+        </article>
+
+        <!-- Item 2: Agentic AI Certificate -->
+        <article class="gallery-card group" onclick="openCertModal(this)"
+                 data-title="Agentic AI Internship Certificate"
+                 data-issuer="Datavalley India Pvt. Ltd. · Mar 2026"
+                 data-desc="Engineered autonomous workflows reducing manual task handling by 40% and automated 500+ unique queries per session."
+                 data-img="./assets/certs/cert-1.jpg">
+          <div class="card-media">
+            <img src="./assets/certs/cert-1.jpg" alt="Agentic AI Internship Certificate" class="card-img" />
+            <div class="media-tag">/ Internship · Mar 2026</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Agentic AI Internship</h3>
+            <p class="card-subtitle">Datavalley India · Autonomous Agent Systems</p>
+          </div>
+        </article>
+
+        <!-- Item 3: NPTEL Elite IoT -->
+        <article class="gallery-card group" onclick="openCertModal(this)"
+                 data-title="NPTEL Elite: Introduction to IoT"
+                 data-issuer="NPTEL / IIT Kharagpur · Apr 2025"
+                 data-desc="Certified Elite by IIT Kharagpur with 68% score covering sensor networks, IoT protocols, and connected architectures."
+                 data-img="./assets/certs/cert-2.jpg">
+          <div class="card-media">
+            <img src="./assets/certs/cert-2.jpg" alt="NPTEL IoT Certificate" class="card-img" />
+            <div class="media-tag">/ Certification · Apr 2025</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">NPTEL Elite: Intro to IoT</h3>
+            <p class="card-subtitle">IIT Kharagpur · Score 68% (Elite)</p>
+          </div>
+        </article>
+
+        <!-- Item 4: Full Stack Java -->
+        <article class="gallery-card group" onclick="openCertModal(this)"
+                 data-title="Full Stack Java Development Certificate"
+                 data-issuer="SkillDzire · Jun 2025"
+                 data-desc="Designed and deployed full-stack web applications using Spring Boot, React, and PostgreSQL for 200+ test users."
+                 data-img="./assets/certs/cert-4.jpg">
+          <div class="card-media">
+            <img src="./assets/certs/cert-4.jpg" alt="Full Stack Java Certificate" class="card-img" />
+            <div class="media-tag">/ Full Stack · Jun 2025</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Full Stack Java Development</h3>
+            <p class="card-subtitle">SkillDzire · Spring Boot &amp; React</p>
+          </div>
+        </article>
+
+        <!-- Item 5: Power BI Data Storytellers -->
+        <article class="gallery-card group" onclick="openCertModal(this)"
+                 data-title="Power BI Data Storytellers Workshop"
+                 data-issuer="Alice Soft · Jul 2024"
+                 data-desc="Specialized workshop in building executive dashboards, DAX queries, and narrative data visualization."
+                 data-img="./assets/certs/cert-3.jpg">
+          <div class="card-media">
+            <img src="./assets/certs/cert-3.jpg" alt="Power BI Workshop Certificate" class="card-img" />
+            <div class="media-tag">/ Analytics · Jul 2024</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Power BI Data Storytellers</h3>
+            <p class="card-subtitle">Alice Soft · Business Intelligence &amp; DAX</p>
+          </div>
+        </article>
+
+        <!-- Item 6: UI & UX Workshop -->
+        <article class="gallery-card group" onclick="openCertModal(this)"
+                 data-title="UI &amp; UX Design Workshop"
+                 data-issuer="Alice Soft · Dec 2024"
+                 data-desc="Comprehensive training in user experience heuristics, wireframing, and modern web interaction design."
+                 data-img="./assets/certs/cert-5.jpg">
+          <div class="card-media">
+            <img src="./assets/certs/cert-5.jpg" alt="UI & UX Certificate" class="card-img" />
+            <div class="media-tag">/ Design · Dec 2024</div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">UI &amp; UX Workshop</h3>
+            <p class="card-subtitle">Alice Soft · Design Systems &amp; Wireframing</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section: Services (How I Bring Your Vision to Life? - Sienna Numbered Accordion) -->
+    <section id="services" class="section-services">
+      <div class="services-header">
+        <div class="section-tag">/ Services</div>
+        <h2 class="services-heading">How I Bring Your Vision to Life?</h2>
+      </div>
+
+      <div class="services-list">
+        <!-- 01 -->
+        <div class="service-row">
+          <div class="service-num">/ 01</div>
+          <div class="service-main">
+            <h3 class="service-title">Agentic AI &amp; Autonomous Workflows</h3>
+            <p class="service-desc">Architecting multi-agent reasoning loops, autonomous tool-calling pipelines, and autonomous agent systems that reduce operational overhead.</p>
+          </div>
+          <div class="service-tags">
+            <span>Agentic Frameworks</span>
+            <span>Task Orchestration</span>
+            <span>LLM Tool-Calling</span>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="service-row">
+          <div class="service-num">/ 02</div>
+          <div class="service-main">
+            <h3 class="service-title">Full-Stack Java &amp; Spring Boot Microservices</h3>
+            <p class="service-desc">Developing resilient, enterprise-grade backend APIs, secure OAuth/MFA authentication, and high-performance React frontends.</p>
+          </div>
+          <div class="service-tags">
+            <span>Java 17/21</span>
+            <span>Spring Boot</span>
+            <span>REST APIs</span>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="service-row">
+          <div class="service-num">/ 03</div>
+          <div class="service-main">
+            <h3 class="service-title">Machine Learning &amp; Deep Neural Networks</h3>
+            <p class="service-desc">Training ANN/DNN models, implementing Explainable AI (XAI), and balancing extreme datasets with SMOTE and LDA.</p>
+          </div>
+          <div class="service-tags">
+            <span>ANN / DNN</span>
+            <span>Explainable AI</span>
+            <span>Scikit-Learn</span>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="service-row">
+          <div class="service-num">/ 04</div>
+          <div class="service-main">
+            <h3 class="service-title">Data Analytics &amp; Power BI Storytelling</h3>
+            <p class="service-desc">Creating executive dashboards with actionable insights that streamline departmental KPIs and boost operational efficiency by 15%+.</p>
+          </div>
+          <div class="service-tags">
+            <span>Power BI</span>
+            <span>SQL Analysis</span>
+            <span>Data Modeling</span>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="service-row">
+          <div class="service-num">/ 05</div>
+          <div class="service-main">
+            <h3 class="service-title">Cybersecurity Awareness &amp; Application Hardening</h3>
+            <p class="service-desc">Designing digital defense campaigns, phishing mitigation protocols, and implementing secure software lifecycle practices.</p>
+          </div>
+          <div class="service-tags">
+            <span>Defense Hygiene</span>
+            <span>Threat Awareness</span>
+            <span>MFA Security</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Education (Academic Foundations) -->
+    <section id="education" class="section-education">
+      <div class="education-header">
+        <div class="section-tag">/ Education</div>
+        <h2 class="education-heading">Academic Journey &amp; Credentials</h2>
+      </div>
+
+      <div class="education-cards-grid">
+        <div class="edu-sienna-card">
+          <div class="edu-top-row">
+            <span class="edu-step">01</span>
+            <span class="edu-timeline">2022 — 2026</span>
+          </div>
+          <h3 class="edu-degree-title">B.Tech in Data Science</h3>
+          <p class="edu-institution">Narasaraopeta Engineering College</p>
+          <div class="edu-footer">
+            <span class="edu-badge-highlight">CGPA: 7.56</span>
+            <span class="edu-location">Andhra Pradesh</span>
+          </div>
+        </div>
+
+        <div class="edu-sienna-card">
+          <div class="edu-top-row">
+            <span class="edu-step">02</span>
+            <span class="edu-timeline">2020 — 2022</span>
+          </div>
+          <h3 class="edu-degree-title">Intermediate (MPC)</h3>
+          <p class="edu-institution">Sri Chaitanya Junior College</p>
+          <div class="edu-footer">
+            <span class="edu-badge-highlight">Score: 68.5%</span>
+            <span class="edu-location">Andhra Pradesh</span>
+          </div>
+        </div>
+
+        <div class="edu-sienna-card">
+          <div class="edu-top-row">
+            <span class="edu-step">03</span>
+            <span class="edu-timeline">2019 — 2020</span>
+          </div>
+          <h3 class="edu-degree-title">Secondary School (SSC)</h3>
+          <p class="edu-institution">Sai Adithya High School</p>
+          <div class="edu-footer">
+            <span class="edu-badge-highlight">CGPA: 10.0 / 10.0</span>
+            <span class="edu-location">Andhra Pradesh</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Experience -->
+    <section id="experience" class="section-experience">
+      <div class="experience-header">
+        <div class="section-tag">/ Experience</div>
+        <h2 class="experience-heading">Professional Milestones</h2>
+      </div>
+
+      <div class="experience-timeline">
+        <!-- Experience 1 -->
+        <div class="exp-row">
+          <div class="exp-dates">Nov 2025 — Mar 2026</div>
+          <div class="exp-body">
+            <div class="exp-meta">
+              <span class="exp-role">Agentic AI Intern</span>
+              <span class="exp-org">Datavalley India Pvt. Ltd. · Remote</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Engineered autonomous system workflows using Agentic AI frameworks, reducing manual query handling by 40%.</li>
+              <li>Processed and analyzed 500+ unique data queries per session using intelligent agent pipelines.</li>
+              <li>Conducted hands-on AI training sessions for APSCHE-affiliated students across multiple institutions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="exp-row">
+          <div class="exp-dates">May 2025 — Jun 2025</div>
+          <div class="exp-body">
+            <div class="exp-meta">
+              <span class="exp-role">Full Stack Java Intern</span>
+              <span class="exp-org">SkillDzire · Hyderabad</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built a full-stack web application using Java, Spring Boot, and React, onboarding 200+ test users.</li>
+              <li>Achieved 20% faster delivery through optimized CI/CD pipeline automation and agile team practices.</li>
+              <li>Implemented multi-factor authentication (MFA) protocols to bolster application security.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="space-y-8 scroll-mt-28">
-      <div class="flex items-center gap-3">
-        <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">/ 02</span>
-        <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-400">Work Experience</h2>
-      </div>
-
-      <div class="space-y-6">
-        <!-- Job 1 -->
-        <div class="experience-card group p-7 sm:p-8 rounded-3xl bg-[#121216]/80 border border-white/10 hover:border-white/25 transition-all">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-4 mb-5">
-            <div>
-              <span class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Internship · Remote</span>
-              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-zinc-200 transition-colors">Agentic AI Intern</h3>
-              <p class="text-sm font-medium text-zinc-400">Datavalley India Pvt. Ltd.</p>
-            </div>
-            <div class="text-xs font-mono text-zinc-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 w-fit">
-              Nov 2025 — Mar 2026
-            </div>
-          </div>
-          <ul class="space-y-2.5 text-sm text-zinc-300 font-light list-disc list-inside">
-            <li>Engineered autonomous system workflows using Agentic AI frameworks, reducing manual query handling by 40%.</li>
-            <li>Processed and analyzed 500+ unique data queries per session using intelligent agent pipelines.</li>
-            <li>Conducted hands-on technical AI training sessions for APSCHE-affiliated students across institutions.</li>
-          </ul>
-        </div>
-
-        <!-- Job 2 -->
-        <div class="experience-card group p-7 sm:p-8 rounded-3xl bg-[#121216]/80 border border-white/10 hover:border-white/25 transition-all">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-4 mb-5">
-            <div>
-              <span class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Internship · Hyderabad</span>
-              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-zinc-200 transition-colors">Full Stack Java Intern</h3>
-              <p class="text-sm font-medium text-zinc-400">SkillDzire</p>
-            </div>
-            <div class="text-xs font-mono text-zinc-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 w-fit">
-              May 2025 — Jun 2025
-            </div>
-          </div>
-          <ul class="space-y-2.5 text-sm text-zinc-300 font-light list-disc list-inside">
-            <li>Architected and shipped a full-stack web application using Java, Spring Boot, and React, onboarding 200+ test users.</li>
-            <li>Accelerated delivery turnaround by 20% by implementing an automated CI/CD pipeline and agile sprint cycles.</li>
-            <li>Implemented Multi-Factor Authentication (MFA) protocols to strengthen user account security and session safety.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="space-y-8 scroll-mt-28">
-      <div class="flex items-center gap-3">
-        <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">/ 03</span>
-        <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-400">Selected Projects</h2>
-      </div>
-
-      <div class="grid md:grid-cols-12 gap-6">
-        <!-- Featured Project (Full Width Card) -->
-        <div class="md:col-span-12 group p-8 sm:p-10 rounded-3xl bg-[#121216] border border-white/10 hover:border-white/30 transition-all space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-white text-black tracking-wide">
-              FEATURED CAPSTONE · WCFA-25
-            </span>
-            <span class="text-xs font-mono text-zinc-400">Nov 2025</span>
-          </div>
-
-          <div class="space-y-3">
-            <h3 class="text-2xl sm:text-3xl font-bold text-white">E-Commerce Transaction Fraud Detection</h3>
-            <p class="text-sm sm:text-base text-zinc-300 leading-relaxed font-light">
-              Engineered an end-to-end fraud detection architecture combining Artificial Neural Networks (ANN) and Deep Neural Networks (DNN). Resolved extreme class imbalance using SMOTE and applied Linear Discriminant Analysis (LDA) for dimensional optimization. Integrated Explainable AI (XAI) to produce transparent, auditable decision trees.
-            </p>
-          </div>
-
-          <!-- Highlight Badges -->
-          <div class="flex flex-wrap gap-4 pt-2">
-            <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs text-white">
-              <span class="text-zinc-400">Model Accuracy:</span> <strong class="font-bold text-emerald-400">95.46%</strong>
-            </div>
-            <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs text-white">
-              <span class="text-zinc-400">ROC / AUC Score:</span> <strong class="font-bold text-emerald-400">97.04%</strong>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-2 pt-2 border-t border-white/5">
-            <span class="skill-tag">ANN &amp; DNN</span>
-            <span class="skill-tag">Explainable AI (XAI)</span>
-            <span class="skill-tag">SMOTE</span>
-            <span class="skill-tag">LDA</span>
-            <span class="skill-tag">Python &amp; Scikit-Learn</span>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="md:col-span-6 group p-7 sm:p-8 rounded-3xl bg-[#121216]/70 border border-white/10 hover:border-white/25 transition-all flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between text-xs font-mono text-zinc-400">
-              <span>CYBERSECURITY &amp; COMMUNITY</span>
-              <span>May 2025</span>
-            </div>
-            <h3 class="text-xl font-bold text-white">Cyber Crime Awareness Campaign</h3>
-            <p class="text-sm text-zinc-300 font-light leading-relaxed">
-              Researched, designed, and executed a digital defense and cyber safety initiative educating academic communities on social engineering, phishing vectors, and secure digital hygiene.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-2 pt-3 border-t border-white/5">
-            <span class="skill-tag">Phishing Prevention</span>
-            <span class="skill-tag">Digital Defense</span>
-            <span class="skill-tag">Community Outreach</span>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="md:col-span-6 group p-7 sm:p-8 rounded-3xl bg-[#121216]/70 border border-white/10 hover:border-white/25 transition-all flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between text-xs font-mono text-zinc-400">
-              <span>DATA ANALYTICS &amp; BI</span>
-              <span>Aug 2024</span>
-            </div>
-            <h3 class="text-xl font-bold text-white">Airport Authority Data Analytics</h3>
-            <p class="text-sm text-zinc-300 font-light leading-relaxed">
-              Designed multi-departmental Power BI dashboards for four key airport management units, consolidating real-time transit telemetry and improving operational turnaround efficiency by 15%.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-2 pt-3 border-t border-white/5">
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">Data Storytelling</span>
-            <span class="skill-tag">Operations Analytics</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education Section (Academic Qualifications) -->
-    <section id="education" class="space-y-8 scroll-mt-28">
-      <div class="flex items-center gap-3">
-        <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">/ 04</span>
-        <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-400">Academic Qualifications</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- Degree 1 -->
-        <div class="edu-card p-7 rounded-3xl bg-[#121216] border border-white/10 hover:border-white/30 transition-all flex flex-col justify-between space-y-6">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white text-lg">
-              <i class="ph ph-graduation-cap"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white">B.Tech in Data Science</h3>
-            <p class="text-xs text-zinc-400 font-medium">Narasaraopeta Engineering College</p>
-          </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
-            <span class="font-mono text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
-              CGPA: 7.56
-            </span>
-            <span class="font-mono text-zinc-500">2022 — 2026</span>
-          </div>
-        </div>
-
-        <!-- Degree 2 -->
-        <div class="edu-card p-7 rounded-3xl bg-[#121216] border border-white/10 hover:border-white/30 transition-all flex flex-col justify-between space-y-6">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white text-lg">
-              <i class="ph ph-books"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white">Intermediate (MPC)</h3>
-            <p class="text-xs text-zinc-400 font-medium">Sri Chaitanya Junior College</p>
-          </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
-            <span class="font-mono text-zinc-300 font-medium bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
-              Score: 68.5%
-            </span>
-            <span class="font-mono text-zinc-500">2020 — 2022</span>
-          </div>
-        </div>
-
-        <!-- Degree 3 -->
-        <div class="edu-card p-7 rounded-3xl bg-[#121216] border border-white/10 hover:border-white/30 transition-all flex flex-col justify-between space-y-6">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white text-lg">
-              <i class="ph ph-certificate"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white">Secondary School (SSC)</h3>
-            <p class="text-xs text-zinc-400 font-medium">Sai Adithya High School</p>
-          </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
-            <span class="font-mono text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
-              CGPA: 10.0 / 10.0
-            </span>
-            <span class="font-mono text-zinc-500">2019 — 2020</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications Section (Sienna Gallery Aesthetic with Modal) -->
-    <section id="certificates" class="space-y-8 scroll-mt-28">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div class="space-y-2">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">/ 05</span>
-            <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-400">Accreditations &amp; Certificates</h2>
-          </div>
-          <p class="text-xl sm:text-2xl font-bold text-white">Verified Credentials &amp; Certifications</p>
-        </div>
-        <div class="text-xs text-zinc-400 font-mono">
-          Click any card to preview full certificate
-        </div>
-      </div>
-
-      <!-- Certificate Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Cert 1 -->
-        <div class="cert-item group cursor-pointer rounded-3xl overflow-hidden bg-[#121216] border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col"
-             data-cert-title="Agentic AI Internship"
-             data-cert-issuer="Datavalley India Pvt. Ltd."
-             data-cert-date="March 2026"
-             data-cert-img="./assets/certs/cert-1.jpg">
-          <div class="relative aspect-[4/3] overflow-hidden bg-black/40">
-            <img src="./assets/certs/cert-1.jpg" alt="Agentic AI Internship Certificate" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#121216] via-transparent to-transparent opacity-80"></div>
-            <span class="absolute top-3 left-3 text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">
-              AI / Internship
-            </span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-            <div>
-              <h3 class="text-base font-bold text-white group-hover:text-zinc-200 transition-colors">Agentic AI Internship</h3>
-              <p class="text-xs text-zinc-400">Datavalley India · Mar 2026</p>
-            </div>
-            <button class="inline-flex items-center gap-2 text-xs font-semibold text-white/80 group-hover:text-white pt-2 border-t border-white/5">
-              <span>Inspect Document</span>
-              <i class="ph ph-arrow-up-right font-bold"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Cert 2 -->
-        <div class="cert-item group cursor-pointer rounded-3xl overflow-hidden bg-[#121216] border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col"
-             data-cert-title="NPTEL Elite: Introduction to IoT"
-             data-cert-issuer="NPTEL / IIT Kharagpur"
-             data-cert-date="Apr 2025 · Score 68%"
-             data-cert-img="./assets/certs/cert-2.jpg">
-          <div class="relative aspect-[4/3] overflow-hidden bg-black/40">
-            <img src="./assets/certs/cert-2.jpg" alt="NPTEL IoT Elite Certificate" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#121216] via-transparent to-transparent opacity-80"></div>
-            <span class="absolute top-3 left-3 text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md text-emerald-300 border border-emerald-500/30">
-              IIT Kharagpur · Elite
-            </span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-            <div>
-              <h3 class="text-base font-bold text-white group-hover:text-zinc-200 transition-colors">NPTEL Elite: Intro to IoT</h3>
-              <p class="text-xs text-zinc-400">IIT Kharagpur · Apr 2025 (68%)</p>
-            </div>
-            <button class="inline-flex items-center gap-2 text-xs font-semibold text-white/80 group-hover:text-white pt-2 border-t border-white/5">
-              <span>Inspect Document</span>
-              <i class="ph ph-arrow-up-right font-bold"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Cert 3 -->
-        <div class="cert-item group cursor-pointer rounded-3xl overflow-hidden bg-[#121216] border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col"
-             data-cert-title="Power BI Data Storytellers"
-             data-cert-issuer="Alice Soft"
-             data-cert-date="July 2024"
-             data-cert-img="./assets/certs/cert-3.jpg">
-          <div class="relative aspect-[4/3] overflow-hidden bg-black/40">
-            <img src="./assets/certs/cert-3.jpg" alt="Power BI Certificate" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#121216] via-transparent to-transparent opacity-80"></div>
-            <span class="absolute top-3 left-3 text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">
-              Analytics Workshop
-            </span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-            <div>
-              <h3 class="text-base font-bold text-white group-hover:text-zinc-200 transition-colors">Power BI Data Storytellers</h3>
-              <p class="text-xs text-zinc-400">Alice Soft · Jul 2024</p>
-            </div>
-            <button class="inline-flex items-center gap-2 text-xs font-semibold text-white/80 group-hover:text-white pt-2 border-t border-white/5">
-              <span>Inspect Document</span>
-              <i class="ph ph-arrow-up-right font-bold"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Cert 4 -->
-        <div class="cert-item group cursor-pointer rounded-3xl overflow-hidden bg-[#121216] border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col"
-             data-cert-title="Full Stack Java Development"
-             data-cert-issuer="SkillDzire"
-             data-cert-date="June 2025"
-             data-cert-img="./assets/certs/cert-4.jpg">
-          <div class="relative aspect-[4/3] overflow-hidden bg-black/40">
-            <img src="./assets/certs/cert-4.jpg" alt="Full Stack Java Certificate" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#121216] via-transparent to-transparent opacity-80"></div>
-            <span class="absolute top-3 left-3 text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">
-              Full Stack Java
-            </span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-            <div>
-              <h3 class="text-base font-bold text-white group-hover:text-zinc-200 transition-colors">Full Stack Java Development</h3>
-              <p class="text-xs text-zinc-400">SkillDzire · Jun 2025</p>
-            </div>
-            <button class="inline-flex items-center gap-2 text-xs font-semibold text-white/80 group-hover:text-white pt-2 border-t border-white/5">
-              <span>Inspect Document</span>
-              <i class="ph ph-arrow-up-right font-bold"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Cert 5 -->
-        <div class="cert-item group cursor-pointer rounded-3xl overflow-hidden bg-[#121216] border border-white/10 hover:border-white/30 transition-all duration-300 flex flex-col"
-             data-cert-title="UI &amp; UX Design Workshop"
-             data-cert-issuer="Alice Soft"
-             data-cert-date="December 2024"
-             data-cert-img="./assets/certs/cert-5.jpg">
-          <div class="relative aspect-[4/3] overflow-hidden bg-black/40">
-            <img src="./assets/certs/cert-5.jpg" alt="UI & UX Certificate" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#121216] via-transparent to-transparent opacity-80"></div>
-            <span class="absolute top-3 left-3 text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">
-              Product Design
-            </span>
-          </div>
-          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-            <div>
-              <h3 class="text-base font-bold text-white group-hover:text-zinc-200 transition-colors">UI &amp; UX Workshop</h3>
-              <p class="text-xs text-zinc-400">Alice Soft · Dec 2024</p>
-            </div>
-            <button class="inline-flex items-center gap-2 text-xs font-semibold text-white/80 group-hover:text-white pt-2 border-t border-white/5">
-              <span>Inspect Document</span>
-              <i class="ph ph-arrow-up-right font-bold"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="space-y-8 scroll-mt-28">
-      <div class="flex items-center gap-3">
-        <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">/ 06</span>
-        <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-400">Technical Arsenal</h2>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Languages -->
-        <div class="p-6 rounded-3xl bg-[#121216] border border-white/10 space-y-4">
-          <div class="flex items-center gap-2 text-sm font-semibold text-white">
-            <i class="ph ph-code text-base text-zinc-400"></i>
-            <span>Languages</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">HTML5 / CSS3</span>
-            <span class="skill-tag">JavaScript</span>
-          </div>
-        </div>
-
-        <!-- Frameworks & AI -->
-        <div class="p-6 rounded-3xl bg-[#121216] border border-white/10 space-y-4">
-          <div class="flex items-center gap-2 text-sm font-semibold text-white">
-            <i class="ph ph-cpu text-base text-zinc-400"></i>
-            <span>AI &amp; Frameworks</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag">Agentic AI</span>
-            <span class="skill-tag">Spring Boot</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">ANN / DNN</span>
-            <span class="skill-tag">Explainable AI</span>
-          </div>
-        </div>
-
-        <!-- Data & Analytics -->
-        <div class="p-6 rounded-3xl bg-[#121216] border border-white/10 space-y-4">
-          <div class="flex items-center gap-2 text-sm font-semibold text-white">
-            <i class="ph ph-chart-line text-base text-zinc-400"></i>
-            <span>Data Science &amp; BI</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">SMOTE</span>
-            <span class="skill-tag">LDA Optimization</span>
-            <span class="skill-tag">Scikit-Learn</span>
-            <span class="skill-tag">Data Storytelling</span>
-          </div>
-        </div>
-
-        <!-- Tools & Practices -->
-        <div class="p-6 rounded-3xl bg-[#121216] border border-white/10 space-y-4">
-          <div class="flex items-center gap-2 text-sm font-semibold text-white">
-            <i class="ph ph-wrench text-base text-zinc-400"></i>
-            <span>Tools &amp; Methods</span>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag">Git &amp; GitHub</span>
-            <span class="skill-tag">CI/CD Pipelines</span>
-            <span class="skill-tag">UI / UX Design</span>
-            <span class="skill-tag">IoT Integration</span>
-            <span class="skill-tag">REST APIs</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact & Footer Section (Sienna Editorial Callout) -->
-    <section id="contact" class="space-y-12 scroll-mt-28">
-      <div class="p-8 sm:p-14 rounded-3xl bg-[#121216] border border-white/10 relative overflow-hidden space-y-8">
-        <div class="space-y-4 max-w-xl">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">/ 07</span>
-            <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-400">Let's Connect</h2>
-          </div>
-          <h3 class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-            Have a project or opportunity in mind?
-          </h3>
-          <p class="text-sm sm:text-base text-zinc-400 font-light">
-            I am currently open to internship opportunities, data engineering initiatives, and AI agent developments.
+    <!-- Section: Contact (Sienna Editorial Callout) -->
+    <section id="contact" class="section-contact">
+      <div class="contact-callout-box">
+        <div class="contact-headline-group">
+          <div class="section-tag">/ Contact</div>
+          <h2 class="contact-huge-title">
+            Every challenge holds a breakthrough waiting to be engineered.
+          </h2>
+          <p class="contact-sub-text">
+            I am available for engineering roles, technical internships, and innovative AI collaborations. Let's start the conversation.
           </p>
         </div>
 
-        <!-- Direct Contact Cards -->
-        <div class="grid sm:grid-cols-2 gap-4 pt-2">
-          <a href="mailto:saiganeshsaisai@gmail.com" class="p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center gap-4 group">
-            <div class="w-12 h-12 rounded-xl bg-white text-black flex items-center justify-center text-xl font-bold group-hover:scale-105 transition-transform">
+        <div class="contact-channels-grid">
+          <!-- LinkedIn Channel (Verified URL with real profile) -->
+          <a href="https://www.linkedin.com/in/puttigampala-sai-ganesh-chowdary-246665287/" target="_blank" rel="noopener noreferrer" class="contact-item-card">
+            <div class="item-icon-box">
+              <i class="ph ph-linkedin-logo"></i>
+            </div>
+            <div class="item-info">
+              <span class="item-type">LinkedIn Profile</span>
+              <span class="item-value">puttigampala-sai-ganesh-chowdary</span>
+            </div>
+            <i class="ph ph-arrow-up-right item-arrow"></i>
+          </a>
+
+          <!-- Email Channel -->
+          <a href="mailto:saiganeshsaisai@gmail.com" class="contact-item-card">
+            <div class="item-icon-box">
               <i class="ph ph-envelope-simple"></i>
             </div>
-            <div>
-              <div class="text-xs font-mono text-zinc-400 uppercase">Direct Email</div>
-              <div class="text-sm font-semibold text-white">saiganeshsaisai@gmail.com</div>
+            <div class="item-info">
+              <span class="item-type">Direct Email</span>
+              <span class="item-value">saiganeshsaisai@gmail.com</span>
             </div>
+            <i class="ph ph-arrow-up-right item-arrow"></i>
           </a>
 
-          <a href="tel:+916304111353" class="p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all flex items-center gap-4 group">
-            <div class="w-12 h-12 rounded-xl bg-white text-black flex items-center justify-center text-xl font-bold group-hover:scale-105 transition-transform">
+          <!-- GitHub Channel -->
+          <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer" class="contact-item-card">
+            <div class="item-icon-box">
+              <i class="ph ph-github-logo"></i>
+            </div>
+            <div class="item-info">
+              <span class="item-type">GitHub Profile</span>
+              <span class="item-value">github.com/saiganesh4444</span>
+            </div>
+            <i class="ph ph-arrow-up-right item-arrow"></i>
+          </a>
+
+          <!-- Phone Channel -->
+          <a href="tel:+916304111353" class="contact-item-card">
+            <div class="item-icon-box">
               <i class="ph ph-phone"></i>
             </div>
-            <div>
-              <div class="text-xs font-mono text-zinc-400 uppercase">Direct Call / WhatsApp</div>
-              <div class="text-sm font-semibold text-white">+91 63041 11353</div>
+            <div class="item-info">
+              <span class="item-type">Phone / WhatsApp</span>
+              <span class="item-value">+91 63041 11353</span>
             </div>
+            <i class="ph ph-arrow-up-right item-arrow"></i>
           </a>
-        </div>
-
-        <!-- Social Channels -->
-        <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs">
-          <div class="flex items-center gap-6">
-            <a href="https://www.linkedin.com/in/saiganesh" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white transition-colors flex items-center gap-1.5">
-              <i class="ph ph-linkedin-logo text-base"></i>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white transition-colors flex items-center gap-1.5">
-              <i class="ph ph-github-logo text-base"></i>
-              <span>GitHub</span>
-            </a>
-          </div>
-
-          <button id="copy-email-btn" class="text-zinc-400 hover:text-white transition-colors flex items-center gap-1.5 font-mono cursor-pointer">
-            <i class="ph ph-copy"></i>
-            <span id="copy-email-text">Copy Email</span>
-          </button>
         </div>
       </div>
 
-      <!-- Footer Subtext -->
-      <footer class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-mono">
-        <div>
-          &copy; 2026 Puttigampala Sai Ganesh Chowdary. All rights reserved.
+      <!-- Footer Bottom -->
+      <footer class="sienna-footer">
+        <div class="footer-left">
+          <span>&copy; 2026 Puttigampala Sai Ganesh Chowdary. All rights reserved.</span>
         </div>
-        <div class="flex items-center gap-2">
-          <span>Crafted with Sienna Minimalist Aesthetic</span>
+        <div class="footer-social-links">
+          <a href="https://www.linkedin.com/in/puttigampala-sai-ganesh-chowdary-246665287/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/saiganesh4444" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:saiganeshsaisai@gmail.com">Email</a>
         </div>
       </footer>
     </section>
 
   </main>
 
-  <!-- High-Res Certificate Lightbox Modal -->
-  <div id="cert-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 backdrop-blur-md p-4 sm:p-8 transition-opacity duration-300">
-    <div class="relative max-w-4xl w-full bg-[#141418] border border-white/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#16161b]">
+  <!-- Interactive Document Lightbox Modal -->
+  <div id="certModal" class="sienna-modal hidden" onclick="handleModalBackdrop(event)">
+    <div class="modal-dialog">
+      <div class="modal-head">
         <div>
-          <h4 id="modal-title" class="text-base font-bold text-white">Certificate Preview</h4>
-          <p id="modal-subtitle" class="text-xs text-zinc-400"></p>
+          <h4 id="modalTitle" class="m-title">Document Inspection</h4>
+          <p id="modalIssuer" class="m-issuer"></p>
         </div>
-        <button id="modal-close" class="p-2 rounded-full hover:bg-white/10 text-zinc-300 hover:text-white transition-colors" aria-label="Close Modal">
-          <i class="ph ph-x text-lg"></i>
+        <button class="modal-close-btn" onclick="closeCertModal()" aria-label="Close modal">
+          <i class="ph ph-x"></i>
         </button>
       </div>
-      <!-- Modal Image Container -->
-      <div class="p-4 sm:p-6 overflow-auto flex items-center justify-center bg-black/60">
-        <img id="modal-img" src="" alt="Certificate Full Document" class="max-h-[70vh] w-auto max-w-full rounded-xl object-contain shadow-2xl border border-white/5" />
+      <div class="modal-body">
+        <img id="modalImg" src="" alt="Document Preview" class="modal-preview-img" />
+        <p id="modalDesc" class="m-desc"></p>
       </div>
     </div>
   </div>

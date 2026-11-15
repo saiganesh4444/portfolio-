@@ -1,7 +1,7 @@
 # Puttigampala Sai Ganesh Chowdary — Portfolio
 
-Modern, high-performance portfolio crafted with the **Sienna** minimalist editorial aesthetic.
+Exact **Sienna** minimal editorial design template applied with real academic credentials, verified certificates, user portrait gallery, and direct social links.
 
-- **Live URL:** https://saiganesh4444.github.io/portfolio-/
-- **Specializations:** Agentic AI, Machine Learning, Full-Stack Java Development
-- **Academic:** B.Tech in Data Science, Narasaraopeta Engineering College (2022-2026)
+- **Live Working URL:** https://saiganesh4444.github.io/portfolio-/
+- **LinkedIn:** https://www.linkedin.com/in/puttigampala-sai-ganesh-chowdary-246665287/
+- **GitHub:** https://github.com/saiganesh4444
