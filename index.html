@@ -55,6 +55,8 @@
       color: var(--text-white);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     body {
@@ -62,6 +64,7 @@
       background-color: var(--bg-black);
       color: var(--text-white);
       line-height: 1.6;
+      max-width: 100%;
       overflow-x: hidden;
     }
 
@@ -226,6 +229,18 @@
       cursor: pointer;
     }
 
+    @media (max-width: 1024px) {
+      .nav-menu {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+      .btn-enquire {
+        display: none !important;
+      }
+    }
+
     /* Mobile Drawer */
     .mobile-drawer {
       position: fixed;
@@ -313,15 +328,17 @@
 
     .hero-display-title {
       font-family: var(--font-display);
-      font-size: clamp(64px, 13.5vw, 195px);
+      font-size: clamp(32px, 12.5vw, 195px);
       font-weight: 900;
       letter-spacing: -0.04em;
-      line-height: 0.88;
+      line-height: 0.9;
       text-transform: uppercase;
       color: var(--text-white);
-      margin: 0 auto 48px;
+      margin: 0 auto 40px;
       user-select: none;
       text-align: center;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .hero-photos-grid {
@@ -329,6 +346,22 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 20px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-section {
+        padding-top: 110px;
+        padding-bottom: 50px;
+      }
+      .hero-photos-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        margin: 20px auto 0;
+        gap: 20px;
+      }
+      .hero-photo-card {
+        aspect-ratio: 4/5;
+      }
     }
 
     .hero-photo-card {
@@ -427,6 +460,16 @@
       grid-template-columns: 1.1fr 1fr;
       gap: 64px;
       align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .about-section {
+        padding: 70px 0;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
     }
 
     .status-pill {
@@ -576,6 +619,35 @@
       padding-top: 36px;
       max-width: 900px;
       margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .about-highlight-card {
+        padding: 40px 24px;
+        margin-top: 40px;
+      }
+      .highlight-quote {
+        font-size: 20px;
+        margin-bottom: 24px;
+      }
+      .highlight-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding-top: 24px;
+      }
+      .stat-val {
+        font-size: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .highlight-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .stat-val {
+        font-size: 26px;
+      }
     }
 
     .stat-box {
@@ -853,8 +925,39 @@
 
     .certs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .certificates-section {
+        padding: 70px 0;
+      }
+      .certs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .lightbox-modal {
+        padding: 16px;
+      }
+      .lightbox-img-frame {
+        max-height: 65vh;
+      }
+      .lightbox-close-btn {
+        top: -44px;
+        right: 0;
+        width: 36px;
+        height: 36px;
+      }
+      .lightbox-caption-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-top: 12px;
+      }
+      .lightbox-caption-text {
+        font-size: 15px;
+      }
     }
 
     .cert-card-item {
@@ -1227,9 +1330,20 @@
     }
 
     @media (max-width: 900px) {
+      .contact-section {
+        padding: 80px 0;
+      }
       .contact-layout {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 40px;
+      }
+      .contact-form {
+        padding: 24px 18px;
+      }
+      .btn-submit-form {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
     }
 
@@ -1311,7 +1425,7 @@
 
     .form-input {
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: 16px; /* Prevents iOS auto-zoom on input focus */
       color: var(--text-white);
       background: #000000;
       border: 1px solid var(--border-card);
@@ -1446,7 +1560,7 @@
     /* Giant Wordmark At Very Bottom of Page (Signature Sienna Feature) */
     .footer-giant-wordmark {
       font-family: var(--font-display);
-      font-size: clamp(60px, 14vw, 220px);
+      font-size: clamp(28px, 12vw, 220px);
       font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 0.82;
@@ -1454,9 +1568,29 @@
       color: #171717;
       text-align: center;
       user-select: none;
-      margin-top: 60px;
-      margin-bottom: -15px;
+      margin-top: 50px;
+      margin-bottom: -10px;
+      word-break: break-word;
+      overflow-wrap: break-word;
       transition: color 0.4s var(--ease);
+    }
+
+    @media (max-width: 850px) {
+      .site-footer {
+        padding-top: 60px;
+      }
+      .footer-top-row {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .footer-nav-links {
+        gap: 14px 20px;
+      }
+      .footer-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
     }
 
     .footer-giant-wordmark:hover {
