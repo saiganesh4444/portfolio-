@@ -351,6 +351,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 15%;
       transition: transform 0.6s var(--ease);
     }
 
@@ -467,6 +468,28 @@
       line-height: 1.15;
       text-transform: uppercase;
       color: var(--text-white);
+    }
+
+    .about-portrait-card {
+      margin-top: 28px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .about-portrait-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .about-portrait-card:hover img {
+      transform: scale(1.04);
     }
 
     .about-right {
@@ -652,6 +675,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 20%;
       transition: transform 0.6s var(--ease);
     }
 
@@ -1174,6 +1198,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 20%;
       transition: transform 0.6s var(--ease);
     }
 
@@ -1537,7 +1562,7 @@
         <!-- 3-Column Photography Cards with Sai Ganesh's Photos -->
         <div class="hero-photos-grid">
           <div class="hero-photo-card">
-            <img src="./assets/images/profile-1-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 1" />
+            <img src="./assets/images/photo-1.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 1" />
             <div class="hero-photo-overlay">
               <span class="hero-photo-tag">ENGINEER</span>
               <h3 class="hero-photo-title">Sai Ganesh Chowdary</h3>
@@ -1545,7 +1570,7 @@
           </div>
 
           <div class="hero-photo-card">
-            <img src="./assets/images/profile-2-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 2" />
+            <img src="./assets/images/photo-4.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 2" />
             <div class="hero-photo-overlay">
               <span class="hero-photo-tag">SPECIALIZATION</span>
               <h3 class="hero-photo-title">Data Science &amp; Agentic AI</h3>
@@ -1553,7 +1578,7 @@
           </div>
 
           <div class="hero-photo-card">
-            <img src="./assets/images/profile-3-hd.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 3" />
+            <img src="./assets/images/photo-2.jpg" alt="Puttigampala Sai Ganesh Chowdary - Portrait 3" />
             <div class="hero-photo-overlay">
               <span class="hero-photo-tag">DEVELOPER</span>
               <h3 class="hero-photo-title">Full-Stack &amp; ML Systems</h3>
@@ -1577,6 +1602,9 @@
             <h2 class="about-headline">
               ANDHRA PRADESH-BASED DATA SCIENCE &amp; AGENTIC AI SPECIALIST.
             </h2>
+            <div class="about-portrait-card">
+              <img src="./assets/images/photo-3.jpg" alt="Puttigampala Sai Ganesh Chowdary" />
+            </div>
           </div>
 
           <div class="about-right">
@@ -1634,7 +1662,7 @@
           <!-- Item 1 -->
           <div class="gallery-item">
             <div class="gallery-img-box">
-              <img src="./assets/images/profile-4-hd.jpg" alt="E-Commerce Fraud Detection" />
+              <img src="./assets/images/photo-5.jpg" alt="E-Commerce Fraud Detection" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · MACHINE LEARNING · 2025</span>
@@ -1648,7 +1676,7 @@
           <!-- Item 2 (Offset Column) -->
           <div class="gallery-item offset-col">
             <div class="gallery-img-box">
-              <img src="./assets/images/profile-1-hd.jpg" alt="Agentic AI Autonomous Systems" />
+              <img src="./assets/images/photo-4.jpg" alt="Agentic AI Autonomous Systems" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · ARTIFICIAL INTELLIGENCE · 2026</span>
@@ -1662,7 +1690,7 @@
           <!-- Item 3 -->
           <div class="gallery-item">
             <div class="gallery-img-box">
-              <img src="./assets/images/profile-2-hd.jpg" alt="Cyber Crime Awareness Campaign" />
+              <img src="./assets/images/photo-1.jpg" alt="Cyber Crime Awareness Campaign" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · FULL-STACK WEB · 2025</span>
@@ -1676,7 +1704,7 @@
           <!-- Item 4 (Offset Column) -->
           <div class="gallery-item offset-col">
             <div class="gallery-img-box">
-              <img src="./assets/images/profile-3-hd.jpg" alt="Airport Authority Analytics" />
+              <img src="./assets/images/photo-2.jpg" alt="Airport Authority Analytics" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · DATA ANALYTICS &amp; BI · 2024</span>
@@ -1999,7 +2027,7 @@
         <div class="articles-grid">
           <div class="article-card">
             <div class="article-img-wrap">
-              <img src="./assets/images/profile-1-hd.jpg" alt="Building Agentic Systems" />
+              <img src="./assets/images/photo-4.jpg" alt="Building Agentic Systems" />
             </div>
             <div class="article-content">
               <div>
@@ -2014,7 +2042,7 @@
 
           <div class="article-card">
             <div class="article-img-wrap">
-              <img src="./assets/images/profile-2-hd.jpg" alt="Machine Learning Fraud Detection" />
+              <img src="./assets/images/photo-1.jpg" alt="Machine Learning Fraud Detection" />
             </div>
             <div class="article-content">
               <div>
@@ -2029,7 +2057,7 @@
 
           <div class="article-card">
             <div class="article-img-wrap">
-              <img src="./assets/images/profile-3-hd.jpg" alt="Power BI Analytics" />
+              <img src="./assets/images/photo-5.jpg" alt="Power BI Analytics" />
             </div>
             <div class="article-content">
               <div>
