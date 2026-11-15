@@ -470,28 +470,6 @@
       color: var(--text-white);
     }
 
-    .about-portrait-card {
-      margin-top: 28px;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      aspect-ratio: 16/10;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-card);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .about-portrait-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      transition: transform 0.6s var(--ease);
-    }
-
-    .about-portrait-card:hover img {
-      transform: scale(1.04);
-    }
-
     .about-right {
       display: flex;
       flex-direction: column;
@@ -771,32 +749,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100px;
-      position: relative;
+      height: 120px;
       margin: 16px 0;
-    }
-
-    .tilted-chip {
-      padding: 8px 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border-card);
       border-radius: var(--radius-sm);
-      font-family: var(--font-display);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-white);
-      position: absolute;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .service-preview-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.4s var(--ease);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
 
-    .chip-left {
-      transform: rotate(-6deg) translateX(-18px);
-    }
-
-    .chip-right {
-      transform: rotate(6deg) translateX(18px);
-      background: rgba(255, 255, 255, 0.12);
+    .service-card:hover .service-preview-img {
+      transform: scale(1.04);
     }
 
     .service-card:hover .chip-left {
@@ -1602,9 +1571,6 @@
             <h2 class="about-headline">
               ANDHRA PRADESH-BASED DATA SCIENCE &amp; AGENTIC AI SPECIALIST.
             </h2>
-            <div class="about-portrait-card">
-              <img src="./assets/images/photo-3.jpg" alt="Puttigampala Sai Ganesh Chowdary" />
-            </div>
           </div>
 
           <div class="about-right">
@@ -1662,7 +1628,7 @@
           <!-- Item 1 -->
           <div class="gallery-item">
             <div class="gallery-img-box">
-              <img src="./assets/images/photo-5.jpg" alt="E-Commerce Fraud Detection" />
+              <img src="./assets/images/project-fraud.svg" alt="E-Commerce Transaction Fraud Detection" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · MACHINE LEARNING · 2025</span>
@@ -1676,7 +1642,7 @@
           <!-- Item 2 (Offset Column) -->
           <div class="gallery-item offset-col">
             <div class="gallery-img-box">
-              <img src="./assets/images/photo-4.jpg" alt="Agentic AI Autonomous Systems" />
+              <img src="./assets/images/project-agentic.svg" alt="Agentic AI Multi-Agent Workflows" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · ARTIFICIAL INTELLIGENCE · 2026</span>
@@ -1690,7 +1656,7 @@
           <!-- Item 3 -->
           <div class="gallery-item">
             <div class="gallery-img-box">
-              <img src="./assets/images/photo-1.jpg" alt="Cyber Crime Awareness Campaign" />
+              <img src="./assets/images/project-cyber.svg" alt="Cyber Crime Awareness Campaign" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · FULL-STACK WEB · 2025</span>
@@ -1704,7 +1670,7 @@
           <!-- Item 4 (Offset Column) -->
           <div class="gallery-item offset-col">
             <div class="gallery-img-box">
-              <img src="./assets/images/photo-2.jpg" alt="Airport Authority Analytics" />
+              <img src="./assets/images/project-airport.svg" alt="Airport Authority Analytics" />
             </div>
             <div class="gallery-meta">
               <span class="gallery-tag-date">/ · DATA ANALYTICS &amp; BI · 2024</span>
@@ -1731,8 +1697,7 @@
           <div class="service-card">
             <span class="service-num">/ 01</span>
             <div class="service-preview-visual">
-              <div class="tilted-chip chip-left">Multi-Agent</div>
-              <div class="tilted-chip chip-right">LangChain</div>
+              <img src="./assets/images/service-01.svg" alt="Agentic AI Systems" class="service-preview-img"/>
             </div>
             <div class="service-footer">
               <h3 class="service-title">Agentic AI Systems</h3>
@@ -1744,8 +1709,7 @@
           <div class="service-card">
             <span class="service-num">/ 02</span>
             <div class="service-preview-visual">
-              <div class="tilted-chip chip-left">Scikit-Learn</div>
-              <div class="tilted-chip chip-right">95% Accuracy</div>
+              <img src="./assets/images/service-02.svg" alt="Machine Learning" class="service-preview-img"/>
             </div>
             <div class="service-footer">
               <h3 class="service-title">Machine Learning</h3>
@@ -1757,8 +1721,7 @@
           <div class="service-card">
             <span class="service-num">/ 03</span>
             <div class="service-preview-visual">
-              <div class="tilted-chip chip-left">Spring Boot</div>
-              <div class="tilted-chip chip-right">REST APIs</div>
+              <img src="./assets/images/service-03.svg" alt="Full-Stack Java" class="service-preview-img"/>
             </div>
             <div class="service-footer">
               <h3 class="service-title">Full-Stack Java</h3>
@@ -1770,8 +1733,7 @@
           <div class="service-card">
             <span class="service-num">/ 04</span>
             <div class="service-preview-visual">
-              <div class="tilted-chip chip-left">Power BI</div>
-              <div class="tilted-chip chip-right">DAX ETL</div>
+              <img src="./assets/images/service-04.svg" alt="Data Analytics &amp; BI" class="service-preview-img"/>
             </div>
             <div class="service-footer">
               <h3 class="service-title">Data Analytics &amp; BI</h3>
@@ -1783,8 +1745,7 @@
           <div class="service-card">
             <span class="service-num">/ 05</span>
             <div class="service-preview-visual">
-              <div class="tilted-chip chip-left">Pandas</div>
-              <div class="tilted-chip chip-right">Automation</div>
+              <img src="./assets/images/service-05.svg" alt="Python Engineering" class="service-preview-img"/>
             </div>
             <div class="service-footer">
               <h3 class="service-title">Python Engineering</h3>
@@ -1796,8 +1757,7 @@
           <div class="service-card">
             <span class="service-num">/ 06</span>
             <div class="service-preview-visual">
-              <div class="tilted-chip chip-left">IIT Kharagpur</div>
-              <div class="tilted-chip chip-right">IoT Elite</div>
+              <img src="./assets/images/service-06.svg" alt="Cloud &amp; Smart IoT" class="service-preview-img"/>
             </div>
             <div class="service-footer">
               <h3 class="service-title">Cloud &amp; Smart IoT</h3>
@@ -2027,7 +1987,7 @@
         <div class="articles-grid">
           <div class="article-card">
             <div class="article-img-wrap">
-              <img src="./assets/images/photo-4.jpg" alt="Building Agentic Systems" />
+              <img src="./assets/images/project-agentic.svg" alt="Building Agentic Systems" />
             </div>
             <div class="article-content">
               <div>
@@ -2042,7 +2002,7 @@
 
           <div class="article-card">
             <div class="article-img-wrap">
-              <img src="./assets/images/photo-1.jpg" alt="Machine Learning Fraud Detection" />
+              <img src="./assets/images/project-fraud.svg" alt="Machine Learning Fraud Detection" />
             </div>
             <div class="article-content">
               <div>
@@ -2057,7 +2017,7 @@
 
           <div class="article-card">
             <div class="article-img-wrap">
-              <img src="./assets/images/photo-5.jpg" alt="Power BI Analytics" />
+              <img src="./assets/images/project-airport.svg" alt="Power BI Analytics" />
             </div>
             <div class="article-content">
               <div>

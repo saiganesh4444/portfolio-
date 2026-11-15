@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" width="100%" height="100%">
+  <rect width="400" height="180" rx="14" fill="#0d1117" stroke="#ffffff" stroke-opacity="0.08"/>
+  <rect x="30" y="25" width="340" height="115" rx="8" fill="#161b22" stroke="#ffffff" stroke-opacity="0.12"/>
+  <rect x="30" y="25" width="340" height="24" rx="8" fill="#21262d"/>
+  <circle cx="48" cy="37" r="4" fill="#ff5f56"/>
+  <circle cx="62" cy="37" r="4" fill="#ffbd2e"/>
+  <circle cx="76" cy="37" r="4" fill="#27c93f"/>
+  <text x="100" y="41" fill="#8b949e" font-family="'JetBrains Mono',monospace" font-size="10">ApplicationController.java</text>
+  <text x="50" y="72" fill="#ff7b72" font-family="'JetBrains Mono',monospace" font-size="11">@RestController</text>
+  <text x="50" y="92" fill="#d2a8ff" font-family="'JetBrains Mono',monospace" font-size="11">@RequestMapping<tspan fill="#a5d6ff">("/api/v1")</tspan></text>
+  <text x="50" y="114" fill="#79c0ff" font-family="'JetBrains Mono',monospace" font-size="11">public class <tspan fill="#ffa657">OrderService</tspan> { ... }</text>
+  <text x="200" y="165" fill="#58a6ff" font-family="'DM Sans',sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">SPRING BOOT &amp; REST ARCHITECTURE</text>
+</svg>

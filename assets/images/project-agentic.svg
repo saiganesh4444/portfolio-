@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgAgentic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="50%" stop-color="#11111c"/>
+      <stop offset="100%" stop-color="#07070a"/>
+    </linearGradient>
+    <linearGradient id="glowPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="blurFilter">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bgAgentic)"/>
+
+  <!-- Matrix Dot Grid -->
+  <g fill="#ffffff" fill-opacity="0.06">
+    <!-- Generated grid dots -->
+    <circle cx="100" cy="100" r="1.5"/><circle cx="200" cy="100" r="1.5"/><circle cx="300" cy="100" r="1.5"/><circle cx="400" cy="100" r="1.5"/><circle cx="500" cy="100" r="1.5"/><circle cx="600" cy="100" r="1.5"/><circle cx="700" cy="100" r="1.5"/><circle cx="800" cy="100" r="1.5"/><circle cx="900" cy="100" r="1.5"/><circle cx="1000" cy="100" r="1.5"/><circle cx="1100" cy="100" r="1.5"/>
+    <circle cx="100" cy="200" r="1.5"/><circle cx="200" cy="200" r="1.5"/><circle cx="300" cy="200" r="1.5"/><circle cx="400" cy="200" r="1.5"/><circle cx="500" cy="200" r="1.5"/><circle cx="600" cy="200" r="1.5"/><circle cx="700" cy="200" r="1.5"/><circle cx="800" cy="200" r="1.5"/><circle cx="900" cy="200" r="1.5"/><circle cx="1000" cy="200" r="1.5"/><circle cx="1100" cy="200" r="1.5"/>
+    <circle cx="100" cy="300" r="1.5"/><circle cx="200" cy="300" r="1.5"/><circle cx="300" cy="300" r="1.5"/><circle cx="400" cy="300" r="1.5"/><circle cx="500" cy="300" r="1.5"/><circle cx="600" cy="300" r="1.5"/><circle cx="700" cy="300" r="1.5"/><circle cx="800" cy="300" r="1.5"/><circle cx="900" cy="300" r="1.5"/><circle cx="1000" cy="300" r="1.5"/><circle cx="1100" cy="300" r="1.5"/>
+    <circle cx="100" cy="400" r="1.5"/><circle cx="200" cy="400" r="1.5"/><circle cx="300" cy="400" r="1.5"/><circle cx="400" cy="400" r="1.5"/><circle cx="500" cy="400" r="1.5"/><circle cx="600" cy="400" r="1.5"/><circle cx="700" cy="400" r="1.5"/><circle cx="800" cy="400" r="1.5"/><circle cx="900" cy="400" r="1.5"/><circle cx="1000" cy="400" r="1.5"/><circle cx="1100" cy="400" r="1.5"/>
+    <circle cx="100" cy="500" r="1.5"/><circle cx="200" cy="500" r="1.5"/><circle cx="300" cy="500" r="1.5"/><circle cx="400" cy="500" r="1.5"/><circle cx="500" cy="500" r="1.5"/><circle cx="600" cy="500" r="1.5"/><circle cx="700" cy="500" r="1.5"/><circle cx="800" cy="500" r="1.5"/><circle cx="900" cy="500" r="1.5"/><circle cx="1000" cy="500" r="1.5"/><circle cx="1100" cy="500" r="1.5"/>
+    <circle cx="100" cy="600" r="1.5"/><circle cx="200" cy="600" r="1.5"/><circle cx="300" cy="600" r="1.5"/><circle cx="400" cy="600" r="1.5"/><circle cx="500" cy="600" r="1.5"/><circle cx="600" cy="600" r="1.5"/><circle cx="700" cy="600" r="1.5"/><circle cx="800" cy="600" r="1.5"/><circle cx="900" cy="600" r="1.5"/><circle cx="1000" cy="600" r="1.5"/><circle cx="1100" cy="600" r="1.5"/>
+    <circle cx="100" cy="700" r="1.5"/><circle cx="200" cy="700" r="1.5"/><circle cx="300" cy="700" r="1.5"/><circle cx="400" cy="700" r="1.5"/><circle cx="500" cy="700" r="1.5"/><circle cx="600" cy="700" r="1.5"/><circle cx="700" cy="700" r="1.5"/><circle cx="800" cy="700" r="1.5"/><circle cx="900" cy="700" r="1.5"/><circle cx="1000" cy="700" r="1.5"/><circle cx="1100" cy="700" r="1.5"/>
+  </g>
+
+  <!-- Ambient glow backdrop -->
+  <circle cx="600" cy="400" r="280" fill="#a855f7" opacity="0.08" filter="url(#blurFilter)"/>
+
+  <!-- Connecting Graph Paths -->
+  <g stroke="#a855f7" stroke-width="2" stroke-opacity="0.4" stroke-dasharray="6,4">
+    <!-- Center to Top -->
+    <path d="M 600 370 L 600 180"/>
+    <!-- Center to Top-Left -->
+    <path d="M 520 370 L 320 250"/>
+    <!-- Center to Top-Right -->
+    <path d="M 680 370 L 880 250"/>
+    <!-- Center to Bottom-Left -->
+    <path d="M 520 430 L 320 550"/>
+    <!-- Center to Bottom-Right -->
+    <path d="M 680 430 L 880 550"/>
+    <!-- Satellite Interlinks -->
+    <path d="M 320 250 L 600 180 L 880 250" stroke="#6366f1" stroke-opacity="0.25"/>
+    <path d="M 320 550 L 880 550" stroke="#6366f1" stroke-opacity="0.2"/>
+  </g>
+
+  <!-- CENTRAL NODE: Agentic Supervisor / LLM Planner -->
+  <g transform="translate(600, 400)">
+    <circle cx="0" cy="0" r="85" fill="#141424" stroke="#a855f7" stroke-width="3" filter="url(#blurFilter)"/>
+    <circle cx="0" cy="0" r="80" fill="#131422" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="48" fill="#a855f7" fill-opacity="0.2"/>
+    <polygon points="0,-25 22,-8 22,22 0,35 -22,22 -22,-8" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="8" fill="#ffffff"/>
+    <text x="0" y="55" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">ORCHESTRATOR</text>
+  </g>
+
+  <!-- SATELLITE NODE 1: Prompt Reasoning Loop (Top) -->
+  <g transform="translate(600, 180)">
+    <rect x="-95" y="-35" width="190" height="70" rx="14" fill="#161726" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.5"/>
+    <circle cx="-65" cy="0" r="16" fill="#38bdf8" fill-opacity="0.2"/>
+    <circle cx="-65" cy="0" r="6" fill="#38bdf8"/>
+    <text x="-35" y="-5" fill="#888888" font-family="'Inter',sans-serif" font-size="10" font-weight="600">AGENT 01</text>
+    <text x="-35" y="14" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700">Reasoning Engine</text>
+  </g>
+
+  <!-- SATELLITE NODE 2: Tool Execution / API (Top Left) -->
+  <g transform="translate(320, 250)">
+    <rect x="-95" y="-35" width="190" height="70" rx="14" fill="#161726" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.5"/>
+    <circle cx="-65" cy="0" r="16" fill="#10b981" fill-opacity="0.2"/>
+    <circle cx="-65" cy="0" r="6" fill="#10b981"/>
+    <text x="-35" y="-5" fill="#888888" font-family="'Inter',sans-serif" font-size="10" font-weight="600">AGENT 02</text>
+    <text x="-35" y="14" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700">Tool Calling &amp; APIs</text>
+  </g>
+
+  <!-- SATELLITE NODE 3: Vector Memory / RAG (Top Right) -->
+  <g transform="translate(880, 250)">
+    <rect x="-95" y="-35" width="190" height="70" rx="14" fill="#161726" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.5"/>
+    <circle cx="-65" cy="0" r="16" fill="#ec4899" fill-opacity="0.2"/>
+    <circle cx="-65" cy="0" r="6" fill="#ec4899"/>
+    <text x="-35" y="-5" fill="#888888" font-family="'Inter',sans-serif" font-size="10" font-weight="600">AGENT 03</text>
+    <text x="-35" y="14" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700">Vector Embeddings</text>
+  </g>
+
+  <!-- SATELLITE NODE 4: Code Generation & Execution (Bottom Left) -->
+  <g transform="translate(320, 550)">
+    <rect x="-95" y="-35" width="190" height="70" rx="14" fill="#161726" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.5"/>
+    <circle cx="-65" cy="0" r="16" fill="#f59e0b" fill-opacity="0.2"/>
+    <circle cx="-65" cy="0" r="6" fill="#f59e0b"/>
+    <text x="-35" y="-5" fill="#888888" font-family="'Inter',sans-serif" font-size="10" font-weight="600">AGENT 04</text>
+    <text x="-35" y="14" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700">Code Sandbox</text>
+  </g>
+
+  <!-- SATELLITE NODE 5: Automated Verification (Bottom Right) -->
+  <g transform="translate(880, 550)">
+    <rect x="-95" y="-35" width="190" height="70" rx="14" fill="#161726" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.5"/>
+    <circle cx="-65" cy="0" r="16" fill="#6366f1" fill-opacity="0.2"/>
+    <circle cx="-65" cy="0" r="6" fill="#6366f1"/>
+    <text x="-35" y="-5" fill="#888888" font-family="'Inter',sans-serif" font-size="10" font-weight="600">AGENT 05</text>
+    <text x="-35" y="14" fill="#ffffff" font-family="'DM Sans',sans-serif" font-size="14" font-weight="700">Critic &amp; Verify</text>
+  </g>
+
+  <!-- Bottom Banner Tag -->
+  <rect x="420" y="690" width="360" height="42" rx="21" fill="#181828" stroke="#ffffff" stroke-opacity="0.12"/>
+  <text x="600" y="716" fill="#a855f7" font-family="'DM Sans',sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">AUTONOMOUS MULTI-AGENT ARCHITECTURE</text>
+</svg>
