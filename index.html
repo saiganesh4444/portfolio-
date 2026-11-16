@@ -9,292 +9,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='900' fill='%23ffffff'>P</text></svg>" />
 
-  <!-- Google Fonts: DM Sans & Inter (Exact Sienna Framer Typography) -->
+  <!-- Google Fonts: JetBrains Mono (Nothing OS Glyphs), DM Sans & Inter (Sienna Framer Typography) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- JetBrains Mono for Nothing OS Technical Glyphs & Micro-labels -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <!-- Lenis Momentum Inertial Scroll (Apple Trackpad Physics) -->
-  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js">
-    // ==========================================================================
-    // LENIS INERTIAL SMOOTH SCROLL (Apple Trackpad Physics)
-    // ==========================================================================
-    let lenis = null;
-    if (typeof Lenis !== 'undefined') {
-      lenis = new Lenis({
-        duration: 1.25,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1.1,
-        touchMultiplier: 1.5,
-      });
-
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-    }
-
-    // ==========================================================================
-    // APPLE & NOTHING OS FLUID PRECISION CURSOR
-    // ==========================================================================
-    const cursorDot = document.getElementById('cursorDot');
-    const cursorRing = document.getElementById('cursorRing');
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
-    let isTouch = false;
-
-    window.addEventListener('touchstart', () => { isTouch = true; }, { once: true });
-
-    if (cursorDot && cursorRing) {
-      window.addEventListener('mousemove', (e) => {
-        if (isTouch) return;
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursorDot.style.left = `${mouseX}px`;
-        cursorDot.style.top = `${mouseY}px`;
-      });
-
-      function renderCursor() {
-        if (!isTouch) {
-          // Smooth spring lerp lag
-          ringX += (mouseX - ringX) * 0.18;
-          ringY += (mouseY - ringY) * 0.18;
-          cursorRing.style.left = `${ringX}px`;
-          cursorRing.style.top = `${ringY}px`;
-        }
-        requestAnimationFrame(renderCursor);
-      }
-      requestAnimationFrame(renderCursor);
-
-      // Interactive hover expansions
-      const hoverTargets = document.querySelectorAll('a, button, .cert-card-item, .hero-photo-card, .gallery-item, .service-card, .article-card, input, textarea');
-      hoverTargets.forEach((target) => {
-        target.addEventListener('mouseenter', () => {
-          cursorRing.classList.add('cursor-hover');
-        });
-        target.addEventListener('mouseleave', () => {
-          cursorRing.classList.remove('cursor-hover');
-        });
-        target.addEventListener('mousedown', () => {
-          cursorRing.classList.add('cursor-active');
-        });
-        target.addEventListener('mouseup', () => {
-          cursorRing.classList.remove('cursor-active');
-        });
-      });
-    }
-
-    // ==========================================================================
-    // 3D SPATIAL TILT CARD PHYSICS & DYNAMIC SPECULAR SHEEN (Apple VisionOS)
-    // ==========================================================================
-    const tiltCardSelectors = [
-      '.hero-photo-card',
-      '.gallery-item',
-      '.service-card',
-      '.cert-card-item',
-      '.about-highlight-card',
-      '.article-card',
-      '.contact-form'
-    ];
-
-    const allTiltCards = document.querySelectorAll(tiltCardSelectors.join(', '));
-
-    allTiltCards.forEach((card) => {
-      // Add dynamic specular reflection sheen if not present
-      if (!card.querySelector('.card-sheen')) {
-        const sheen = document.createElement('div');
-        sheen.className = 'card-sheen';
-        card.appendChild(sheen);
-      }
-
-      let bounds = null;
-
-      card.addEventListener('mouseenter', () => {
-        bounds = card.getBoundingClientRect();
-      });
-
-      card.addEventListener('mousemove', (e) => {
-        if (!bounds) bounds = card.getBoundingClientRect();
-        const x = e.clientX - bounds.left;
-        const y = e.clientY - bounds.top;
-        const centerX = bounds.width / 2;
-        const centerY = bounds.height / 2;
-
-        // Smooth tilt angles (-10 to +10 degrees)
-        const rotateX = ((y - centerY) / centerY) * -11;
-        const rotateY = ((x - centerX) / centerX) * 11;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(14px) scale3d(1.025, 1.025, 1.025)`;
-
-        const sheen = card.querySelector('.card-sheen');
-        if (sheen) {
-          sheen.style.opacity = '1';
-          sheen.style.background = `radial-gradient(circle 320px at ${x}px ${y}px, rgba(255, 255, 255, 0.28), transparent 70%)`;
-        }
-      });
-
-      card.addEventListener('mouseleave', () => {
-        bounds = null;
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale3d(1, 1, 1)';
-        const sheen = card.querySelector('.card-sheen');
-        if (sheen) {
-          sheen.style.opacity = '0';
-        }
-      });
-    });
-
-    // ==========================================================================
-    // HERO WORDMARK 3D PARALLAX & TITANIUM LIGHTING
-    // ==========================================================================
-    const heroTitle = document.querySelector('.hero-display-title');
-    const heroSection = document.querySelector('.hero-section');
-
-    if (heroTitle && heroSection) {
-      heroSection.addEventListener('mousemove', (e) => {
-        const rect = heroSection.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-        heroTitle.style.transform = `perspective(800px) rotateX(${-y * 14}deg) rotateY(${x * 14}deg) translateZ(25px)`;
-      });
-
-      heroSection.addEventListener('mouseleave', () => {
-        heroTitle.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-      });
-    }
-
-    // ==========================================================================
-    // APPLE MAGNETIC BUTTON PHYSICS
-    // ==========================================================================
-    const magneticBtns = document.querySelectorAll('.btn-enquire, .btn-solid, .btn-outline, .btn-submit-form, .cert-arrow-icon, .brand-logo');
-
-    magneticBtns.forEach((btn) => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.04)`;
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0px, 0px) scale(1)';
-      });
-    });
-
-    // ==========================================================================
-    // NOTHING OS INTERACTIVE AMBIENT CANVAS (Particles & Dot Matrix Proximity)
-    // ==========================================================================
-    const canvas = document.getElementById('ambientCanvas');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      let width = canvas.width = window.innerWidth;
-      let height = canvas.height = window.innerHeight;
-
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      });
-
-      // Ambient particle nodes
-      const particleCount = Math.min(width > 768 ? 45 : 22, 50);
-      const particles = [];
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
-          radius: Math.random() * 1.8 + 0.8,
-          alpha: Math.random() * 0.5 + 0.2,
-          isRed: Math.random() > 0.85 // Nothing red accent particles
-        });
-      }
-
-      function drawParticles() {
-        ctx.clearRect(0, 0, width, height);
-
-        // Update and draw particles
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-
-          if (p.x < 0) p.x = width;
-          if (p.x > width) p.x = 0;
-          if (p.y < 0) p.y = height;
-          if (p.y > height) p.y = 0;
-
-          // Proximity to mouse
-          const dx = mouseX - p.x;
-          const dy = mouseY - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          if (p.isRed) {
-            ctx.fillStyle = `rgba(255, 40, 81, ${p.alpha})`;
-          } else {
-            ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-          }
-          ctx.fill();
-
-          // Connect nearby particles
-          for (let j = i + 1; j < particles.length; j++) {
-            const p2 = particles[j];
-            const pDist = Math.hypot(p.x - p2.x, p.y - p2.y);
-            if (pDist < 110) {
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(p2.x, p2.y);
-              ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - pDist / 110) * 0.12})`;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-            }
-          }
-        }
-
-        requestAnimationFrame(drawParticles);
-      }
-      requestAnimationFrame(drawParticles);
-    }
-
-    // ==========================================================================
-    // SCROLL-DRIVEN 3D ENTRY ANIMATION
-    // ==========================================================================
-    const revealElements = document.querySelectorAll(
-      '.hero-photo-card, .gallery-item, .service-card, .cert-card-item, .timeline-row, .article-card, .about-grid, .about-highlight-card'
-    );
-
-    revealElements.forEach((el) => {
-      el.classList.add('reveal-3d');
-    });
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    revealElements.forEach((el) => revealObserver.observe(el));
-
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400;1,9..40,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400;1,9..40,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
     /* ==========================================================================
        SIENNA FRAMER TEMPLATE DESIGN SYSTEM
        Theme: Pure Pitch Black (#000000 / #050505), Charcoal (#111111 / #141414),
@@ -330,7 +49,7 @@
     }
 
     html {
-      scroll-behavior: smooth;
+      /* Native instant hardware scroll */
       background-color: var(--bg-black);
       color: var(--text-white);
       -webkit-font-smoothing: antialiased;
@@ -1921,11 +1640,10 @@
     .ambient-orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(140px);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.28;
-      transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+      opacity: 0.35;
+      transform: translateZ(0);
       will-change: transform;
     }
 
@@ -1934,7 +1652,7 @@
       left: 10%;
       width: 480px;
       height: 480px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.6) 0%, rgba(139, 92, 246, 0.2) 60%, transparent 75%);
+      background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.25) 0%, rgba(139, 92, 246, 0.12) 40%, transparent 70%);
       animation: floatOrb1 20s infinite alternate ease-in-out;
     }
 
@@ -1943,7 +1661,7 @@
       right: 5%;
       width: 520px;
       height: 520px;
-      background: radial-gradient(circle, rgba(255, 40, 81, 0.5) 0%, rgba(244, 63, 94, 0.2) 50%, transparent 75%);
+      background: radial-gradient(circle at 50% 50%, rgba(255, 40, 81, 0.22) 0%, rgba(244, 63, 94, 0.1) 40%, transparent 70%);
       animation: floatOrb2 24s infinite alternate ease-in-out;
     }
 
@@ -1952,7 +1670,7 @@
       left: 30%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(168, 85, 247, 0.15) 60%, transparent 80%);
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, rgba(168, 85, 247, 0.08) 45%, transparent 70%);
       animation: floatOrb3 28s infinite alternate ease-in-out;
     }
 
@@ -2107,8 +1825,8 @@
     .article-card,
     .contact-form {
       background: var(--apple-glass) !important;
-      backdrop-filter: blur(30px) saturate(190%) !important;
-      -webkit-backdrop-filter: blur(30px) saturate(190%) !important;
+      backdrop-filter: blur(12px) saturate(140%) !important; transform: translateZ(0);
+      -webkit-backdrop-filter: blur(12px) saturate(140%) !important; transform: translateZ(0);
       border: 1px solid var(--apple-glass-border) !important;
       box-shadow: 0 28px 56px -12px rgba(0, 0, 0, 0.8), 
                   inset 0 1px 0 0 var(--apple-glass-highlight),
@@ -2981,7 +2699,36 @@
        SCRIPTS: LIGHTBOX MODAL, MOBILE DRAWER, & INTERACTIONS
        ========================================================================== -->
   <script>
-    // Mobile Drawer Navigation
+    // ==========================================================================
+    // INSTANT HARDWARE SCROLL + SMOOTH ANCHOR CLICK NAVIGATION
+    // Zero JS-interception latency on wheel or touch scroll
+    // ==========================================================================
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Passive scroll detection for high-refresh rate decoupling
+    let isScrolling = false;
+    let scrollTimer = null;
+    window.addEventListener('scroll', () => {
+      isScrolling = true;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        isScrolling = false;
+      }, 100);
+    }, { passive: true });
+
+    // ==========================================================================
+    // MOBILE DRAWER NAVIGATION
+    // ==========================================================================
     const mobileMenuOpen = document.getElementById('mobileMenuOpen');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
     const mobileDrawer = document.getElementById('mobileDrawer');
@@ -3003,18 +2750,20 @@
     if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeDrawer);
     if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
 
-    document.querySelectorAll('.mobile-drawer-link').forEach(link => {
+    document.querySelectorAll('.mobile-drawer-link').forEach((link) => {
       link.addEventListener('click', closeDrawer);
     });
 
-    // Certificate Lightbox Functionality
+    // ==========================================================================
+    // CERTIFICATE LIGHTBOX MODAL
+    // ==========================================================================
     const certLightbox = document.getElementById('certLightbox');
     const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
     const lightboxTargetImg = document.getElementById('lightboxTargetImg');
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxOrg = document.getElementById('lightboxOrg');
 
-    document.querySelectorAll('.cert-card-item').forEach(card => {
+    document.querySelectorAll('.cert-card-item').forEach((card) => {
       card.addEventListener('click', () => {
         const certId = card.getAttribute('data-cert');
         const title = card.getAttribute('data-title');
@@ -3048,7 +2797,9 @@
       }
     });
 
-    // Real Email Delivery to saiganeshsaisai@gmail.com via FormSubmit AJAX
+    // ==========================================================================
+    // CONTACT FORM EMAIL SUBMISSION (FormSubmit AJAX)
+    // ==========================================================================
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
       contactForm.addEventListener('submit', async (e) => {
@@ -3097,7 +2848,6 @@
             throw new Error('Network response not ok');
           }
         } catch (err) {
-          // Fallback to mailto if network or adblock prevents ajax
           window.location.href = `mailto:saiganeshsaisai@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(nameVal)}&body=${encodeURIComponent(msgVal)}%0A%0AFrom: ${encodeURIComponent(nameVal)} (${encodeURIComponent(emailVal)})`;
           submitBtn.disabled = false;
           submitBtn.textContent = 'OPENING EMAIL APP...';
@@ -3108,45 +2858,30 @@
       });
     }
 
-    // Active nav indicator on scroll
-    const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
-      const scrollY = window.pageYOffset;
-      sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 120;
-        const sectionId = current.getAttribute('id');
-        const navLink = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
-        if (navLink) {
-          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLink.classList.add('active');
-          } else {
-            navLink.classList.remove('active');
-          }
+    // ==========================================================================
+    // ACTIVE NAV OBSERVER (Zero Layout Thrashing)
+    // ==========================================================================
+    const navSections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            const href = link.getAttribute('href');
+            if (href === `#${id}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
         }
       });
+    }, {
+      rootMargin: '-15% 0px -75% 0px',
+      threshold: 0
     });
-  
-    // ==========================================================================
-    // LENIS INERTIAL SMOOTH SCROLL (Apple Trackpad Physics)
-    // ==========================================================================
-    let lenis = null;
-    if (typeof Lenis !== 'undefined') {
-      lenis = new Lenis({
-        duration: 1.25,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1.1,
-        touchMultiplier: 1.5,
-      });
-
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-    }
+    navSections.forEach((s) => navObserver.observe(s));
 
     // ==========================================================================
     // APPLE & NOTHING OS FLUID PRECISION CURSOR
@@ -3160,7 +2895,7 @@
     let ringY = mouseY;
     let isTouch = false;
 
-    window.addEventListener('touchstart', () => { isTouch = true; }, { once: true });
+    window.addEventListener('touchstart', () => { isTouch = true; }, { once: true, passive: true });
 
     if (cursorDot && cursorRing) {
       window.addEventListener('mousemove', (e) => {
@@ -3169,13 +2904,12 @@
         mouseY = e.clientY;
         cursorDot.style.left = `${mouseX}px`;
         cursorDot.style.top = `${mouseY}px`;
-      });
+      }, { passive: true });
 
       function renderCursor() {
         if (!isTouch) {
-          // Smooth spring lerp lag
-          ringX += (mouseX - ringX) * 0.18;
-          ringY += (mouseY - ringY) * 0.18;
+          ringX += (mouseX - ringX) * 0.2;
+          ringY += (mouseY - ringY) * 0.2;
           cursorRing.style.left = `${ringX}px`;
           cursorRing.style.top = `${ringY}px`;
         }
@@ -3183,26 +2917,25 @@
       }
       requestAnimationFrame(renderCursor);
 
-      // Interactive hover expansions
       const hoverTargets = document.querySelectorAll('a, button, .cert-card-item, .hero-photo-card, .gallery-item, .service-card, .article-card, input, textarea');
       hoverTargets.forEach((target) => {
         target.addEventListener('mouseenter', () => {
           cursorRing.classList.add('cursor-hover');
-        });
+        }, { passive: true });
         target.addEventListener('mouseleave', () => {
           cursorRing.classList.remove('cursor-hover');
-        });
+        }, { passive: true });
         target.addEventListener('mousedown', () => {
           cursorRing.classList.add('cursor-active');
-        });
+        }, { passive: true });
         target.addEventListener('mouseup', () => {
           cursorRing.classList.remove('cursor-active');
-        });
+        }, { passive: true });
       });
     }
 
     // ==========================================================================
-    // 3D SPATIAL TILT CARD PHYSICS & DYNAMIC SPECULAR SHEEN (Apple VisionOS)
+    // 3D SPATIAL TILT CARD PHYSICS & SPECULAR SHEEN (Apple VisionOS)
     // ==========================================================================
     const tiltCardSelectors = [
       '.hero-photo-card',
@@ -3217,7 +2950,6 @@
     const allTiltCards = document.querySelectorAll(tiltCardSelectors.join(', '));
 
     allTiltCards.forEach((card) => {
-      // Add dynamic specular reflection sheen if not present
       if (!card.querySelector('.card-sheen')) {
         const sheen = document.createElement('div');
         sheen.className = 'card-sheen';
@@ -3228,27 +2960,27 @@
 
       card.addEventListener('mouseenter', () => {
         bounds = card.getBoundingClientRect();
-      });
+      }, { passive: true });
 
       card.addEventListener('mousemove', (e) => {
+        if (isScrolling) return;
         if (!bounds) bounds = card.getBoundingClientRect();
         const x = e.clientX - bounds.left;
         const y = e.clientY - bounds.top;
         const centerX = bounds.width / 2;
         const centerY = bounds.height / 2;
 
-        // Smooth tilt angles (-10 to +10 degrees)
-        const rotateX = ((y - centerY) / centerY) * -11;
-        const rotateY = ((x - centerX) / centerX) * 11;
+        const rotateX = ((y - centerY) / centerY) * -10;
+        const rotateY = ((x - centerX) / centerX) * 10;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(14px) scale3d(1.025, 1.025, 1.025)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(12px) scale3d(1.02, 1.02, 1.02)`;
 
         const sheen = card.querySelector('.card-sheen');
         if (sheen) {
           sheen.style.opacity = '1';
-          sheen.style.background = `radial-gradient(circle 320px at ${x}px ${y}px, rgba(255, 255, 255, 0.28), transparent 70%)`;
+          sheen.style.background = `radial-gradient(circle 300px at ${x}px ${y}px, rgba(255, 255, 255, 0.25), transparent 70%)`;
         }
-      });
+      }, { passive: true });
 
       card.addEventListener('mouseleave', () => {
         bounds = null;
@@ -3257,27 +2989,27 @@
         if (sheen) {
           sheen.style.opacity = '0';
         }
-      });
+      }, { passive: true });
     });
 
     // ==========================================================================
-    // HERO WORDMARK 3D PARALLAX & TITANIUM LIGHTING
+    // HERO WORDMARK 3D PARALLAX
     // ==========================================================================
     const heroTitle = document.querySelector('.hero-display-title');
     const heroSection = document.querySelector('.hero-section');
 
     if (heroTitle && heroSection) {
       heroSection.addEventListener('mousemove', (e) => {
+        if (isScrolling) return;
         const rect = heroSection.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-        heroTitle.style.transform = `perspective(800px) rotateX(${-y * 14}deg) rotateY(${x * 14}deg) translateZ(25px)`;
-      });
+        heroTitle.style.transform = `perspective(800px) rotateX(${-y * 12}deg) rotateY(${x * 12}deg) translateZ(20px)`;
+      }, { passive: true });
 
       heroSection.addEventListener('mouseleave', () => {
         heroTitle.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-      });
+      }, { passive: true });
     }
 
     // ==========================================================================
@@ -3287,19 +3019,20 @@
 
     magneticBtns.forEach((btn) => {
       btn.addEventListener('mousemove', (e) => {
+        if (isScrolling) return;
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.04)`;
-      });
+        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px) scale(1.03)`;
+      }, { passive: true });
 
       btn.addEventListener('mouseleave', () => {
         btn.style.transform = 'translate(0px, 0px) scale(1)';
-      });
+      }, { passive: true });
     });
 
     // ==========================================================================
-    // NOTHING OS INTERACTIVE AMBIENT CANVAS (Particles & Dot Matrix Proximity)
+    // NOTHING OS INTERACTIVE AMBIENT CANVAS (High-Efficiency 60fps)
     // ==========================================================================
     const canvas = document.getElementById('ambientCanvas');
     if (canvas) {
@@ -3310,28 +3043,26 @@
       window.addEventListener('resize', () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-      });
+      }, { passive: true });
 
-      // Ambient particle nodes
-      const particleCount = Math.min(width > 768 ? 45 : 22, 50);
+      const particleCount = Math.min(width > 768 ? 24 : 12, 28);
       const particles = [];
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
-          radius: Math.random() * 1.8 + 0.8,
-          alpha: Math.random() * 0.5 + 0.2,
-          isRed: Math.random() > 0.85 // Nothing red accent particles
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          radius: Math.random() * 1.6 + 0.8,
+          alpha: Math.random() * 0.45 + 0.15,
+          isRed: Math.random() > 0.85
         });
       }
 
       function drawParticles() {
         ctx.clearRect(0, 0, width, height);
 
-        // Update and draw particles
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
           p.x += p.vx;
@@ -3342,11 +3073,6 @@
           if (p.y < 0) p.y = height;
           if (p.y > height) p.y = 0;
 
-          // Proximity to mouse
-          const dx = mouseX - p.x;
-          const dy = mouseY - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           if (p.isRed) {
@@ -3356,17 +3082,19 @@
           }
           ctx.fill();
 
-          // Connect nearby particles
-          for (let j = i + 1; j < particles.length; j++) {
-            const p2 = particles[j];
-            const pDist = Math.hypot(p.x - p2.x, p.y - p2.y);
-            if (pDist < 110) {
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(p2.x, p2.y);
-              ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - pDist / 110) * 0.12})`;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
+          // Connect nearby particles only when idle
+          if (!isScrolling) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const p2 = particles[j];
+              const pDist = Math.hypot(p.x - p2.x, p.y - p2.y);
+              if (pDist < 85) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - pDist / 85) * 0.08})`;
+                ctx.lineWidth = 0.6;
+                ctx.stroke();
+              }
             }
           }
         }
@@ -3395,7 +3123,7 @@
       });
     }, {
       threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
+      rootMargin: '0px 0px -30px 0px'
     });
 
     revealElements.forEach((el) => revealObserver.observe(el));
