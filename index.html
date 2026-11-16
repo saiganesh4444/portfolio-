@@ -1689,63 +1689,7 @@
       100% { transform: translate(60px, -50px) scale(1.12); }
     }
 
-    /* Apple Precision Trackpad & Nothing OS Fluid Cursor */
-    .cursor-dot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 7px;
-      height: 7px;
-      background-color: var(--nothing-red);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background-color 0.2s;
-      box-shadow: 0 0 10px var(--nothing-red-glow);
-    }
-
-    .cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 38px;
-      height: 38px;
-      border: 1.5px solid rgba(255, 255, 255, 0.35);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-color 0.3s, 
-                  background-color 0.3s, 
-                  transform 0.08s linear;
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-    }
-
-    .cursor-ring.cursor-hover {
-      width: 68px;
-      height: 68px;
-      border-color: rgba(255, 255, 255, 0.65);
-      background-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-    }
-
-    .cursor-ring.cursor-active {
-      transform: translate(-50%, -50%) scale(0.85);
-      background-color: rgba(255, 40, 81, 0.15);
-      border-color: var(--nothing-red);
-    }
-
-    @media (hover: none) and (pointer: coarse) {
-      .cursor-dot, .cursor-ring {
-        display: none !important;
-      }
-    }
-
-    /* Nothing OS Micro Status Bar */
+/* Nothing OS Micro Status Bar */
     .nothing-status-bar {
       width: 100%;
       padding: 6px 48px;
@@ -1981,10 +1925,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Apple Trackpad & Nothing OS Fluid Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- Nothing OS Signature Ambient Dot Matrix & 3D Interactive Canvas -->
   <div class="nothing-grid-bg"></div>
@@ -2882,57 +2822,6 @@
       threshold: 0
     });
     navSections.forEach((s) => navObserver.observe(s));
-
-    // ==========================================================================
-    // APPLE & NOTHING OS FLUID PRECISION CURSOR
-    // ==========================================================================
-    const cursorDot = document.getElementById('cursorDot');
-    const cursorRing = document.getElementById('cursorRing');
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
-    let isTouch = false;
-
-    window.addEventListener('touchstart', () => { isTouch = true; }, { once: true, passive: true });
-
-    if (cursorDot && cursorRing) {
-      window.addEventListener('mousemove', (e) => {
-        if (isTouch) return;
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursorDot.style.left = `${mouseX}px`;
-        cursorDot.style.top = `${mouseY}px`;
-      }, { passive: true });
-
-      function renderCursor() {
-        if (!isTouch) {
-          ringX += (mouseX - ringX) * 0.2;
-          ringY += (mouseY - ringY) * 0.2;
-          cursorRing.style.left = `${ringX}px`;
-          cursorRing.style.top = `${ringY}px`;
-        }
-        requestAnimationFrame(renderCursor);
-      }
-      requestAnimationFrame(renderCursor);
-
-      const hoverTargets = document.querySelectorAll('a, button, .cert-card-item, .hero-photo-card, .gallery-item, .service-card, .article-card, input, textarea');
-      hoverTargets.forEach((target) => {
-        target.addEventListener('mouseenter', () => {
-          cursorRing.classList.add('cursor-hover');
-        }, { passive: true });
-        target.addEventListener('mouseleave', () => {
-          cursorRing.classList.remove('cursor-hover');
-        }, { passive: true });
-        target.addEventListener('mousedown', () => {
-          cursorRing.classList.add('cursor-active');
-        }, { passive: true });
-        target.addEventListener('mouseup', () => {
-          cursorRing.classList.remove('cursor-active');
-        }, { passive: true });
-      });
-    }
 
     // ==========================================================================
     // 3D SPATIAL TILT CARD PHYSICS & SPECULAR SHEEN (Apple VisionOS)
