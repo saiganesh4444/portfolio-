@@ -12,6 +12,286 @@
   <!-- Google Fonts: DM Sans & Inter (Exact Sienna Framer Typography) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- JetBrains Mono for Nothing OS Technical Glyphs & Micro-labels -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <!-- Lenis Momentum Inertial Scroll (Apple Trackpad Physics) -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js">
+    // ==========================================================================
+    // LENIS INERTIAL SMOOTH SCROLL (Apple Trackpad Physics)
+    // ==========================================================================
+    let lenis = null;
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.25,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1.1,
+        touchMultiplier: 1.5,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // ==========================================================================
+    // APPLE & NOTHING OS FLUID PRECISION CURSOR
+    // ==========================================================================
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+    let isTouch = false;
+
+    window.addEventListener('touchstart', () => { isTouch = true; }, { once: true });
+
+    if (cursorDot && cursorRing) {
+      window.addEventListener('mousemove', (e) => {
+        if (isTouch) return;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      });
+
+      function renderCursor() {
+        if (!isTouch) {
+          // Smooth spring lerp lag
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          cursorRing.style.left = `${ringX}px`;
+          cursorRing.style.top = `${ringY}px`;
+        }
+        requestAnimationFrame(renderCursor);
+      }
+      requestAnimationFrame(renderCursor);
+
+      // Interactive hover expansions
+      const hoverTargets = document.querySelectorAll('a, button, .cert-card-item, .hero-photo-card, .gallery-item, .service-card, .article-card, input, textarea');
+      hoverTargets.forEach((target) => {
+        target.addEventListener('mouseenter', () => {
+          cursorRing.classList.add('cursor-hover');
+        });
+        target.addEventListener('mouseleave', () => {
+          cursorRing.classList.remove('cursor-hover');
+        });
+        target.addEventListener('mousedown', () => {
+          cursorRing.classList.add('cursor-active');
+        });
+        target.addEventListener('mouseup', () => {
+          cursorRing.classList.remove('cursor-active');
+        });
+      });
+    }
+
+    // ==========================================================================
+    // 3D SPATIAL TILT CARD PHYSICS & DYNAMIC SPECULAR SHEEN (Apple VisionOS)
+    // ==========================================================================
+    const tiltCardSelectors = [
+      '.hero-photo-card',
+      '.gallery-item',
+      '.service-card',
+      '.cert-card-item',
+      '.about-highlight-card',
+      '.article-card',
+      '.contact-form'
+    ];
+
+    const allTiltCards = document.querySelectorAll(tiltCardSelectors.join(', '));
+
+    allTiltCards.forEach((card) => {
+      // Add dynamic specular reflection sheen if not present
+      if (!card.querySelector('.card-sheen')) {
+        const sheen = document.createElement('div');
+        sheen.className = 'card-sheen';
+        card.appendChild(sheen);
+      }
+
+      let bounds = null;
+
+      card.addEventListener('mouseenter', () => {
+        bounds = card.getBoundingClientRect();
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        if (!bounds) bounds = card.getBoundingClientRect();
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
+        const centerX = bounds.width / 2;
+        const centerY = bounds.height / 2;
+
+        // Smooth tilt angles (-10 to +10 degrees)
+        const rotateX = ((y - centerY) / centerY) * -11;
+        const rotateY = ((x - centerX) / centerX) * 11;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(14px) scale3d(1.025, 1.025, 1.025)`;
+
+        const sheen = card.querySelector('.card-sheen');
+        if (sheen) {
+          sheen.style.opacity = '1';
+          sheen.style.background = `radial-gradient(circle 320px at ${x}px ${y}px, rgba(255, 255, 255, 0.28), transparent 70%)`;
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        bounds = null;
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale3d(1, 1, 1)';
+        const sheen = card.querySelector('.card-sheen');
+        if (sheen) {
+          sheen.style.opacity = '0';
+        }
+      });
+    });
+
+    // ==========================================================================
+    // HERO WORDMARK 3D PARALLAX & TITANIUM LIGHTING
+    // ==========================================================================
+    const heroTitle = document.querySelector('.hero-display-title');
+    const heroSection = document.querySelector('.hero-section');
+
+    if (heroTitle && heroSection) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        heroTitle.style.transform = `perspective(800px) rotateX(${-y * 14}deg) rotateY(${x * 14}deg) translateZ(25px)`;
+      });
+
+      heroSection.addEventListener('mouseleave', () => {
+        heroTitle.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+      });
+    }
+
+    // ==========================================================================
+    // APPLE MAGNETIC BUTTON PHYSICS
+    // ==========================================================================
+    const magneticBtns = document.querySelectorAll('.btn-enquire, .btn-solid, .btn-outline, .btn-submit-form, .cert-arrow-icon, .brand-logo');
+
+    magneticBtns.forEach((btn) => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.04)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px) scale(1)';
+      });
+    });
+
+    // ==========================================================================
+    // NOTHING OS INTERACTIVE AMBIENT CANVAS (Particles & Dot Matrix Proximity)
+    // ==========================================================================
+    const canvas = document.getElementById('ambientCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      // Ambient particle nodes
+      const particleCount = Math.min(width > 768 ? 45 : 22, 50);
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 1.8 + 0.8,
+          alpha: Math.random() * 0.5 + 0.2,
+          isRed: Math.random() > 0.85 // Nothing red accent particles
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update and draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          // Proximity to mouse
+          const dx = mouseX - p.x;
+          const dy = mouseY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          if (p.isRed) {
+            ctx.fillStyle = `rgba(255, 40, 81, ${p.alpha})`;
+          } else {
+            ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+          }
+          ctx.fill();
+
+          // Connect nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const pDist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (pDist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - pDist / 110) * 0.12})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(drawParticles);
+      }
+      requestAnimationFrame(drawParticles);
+    }
+
+    // ==========================================================================
+    // SCROLL-DRIVEN 3D ENTRY ANIMATION
+    // ==========================================================================
+    const revealElements = document.querySelectorAll(
+      '.hero-photo-card, .gallery-item, .service-card, .cert-card-item, .timeline-row, .article-card, .about-grid, .about-highlight-card'
+    );
+
+    revealElements.forEach((el) => {
+      el.classList.add('reveal-3d');
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400;1,9..40,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -1596,9 +1876,424 @@
     .footer-giant-wordmark:hover {
       color: #262626;
     }
+  
+    /* ==========================================================================
+       APPLE & NOTHING OS 3D DIMENSIONAL INTERFACE STYLES
+       Spatial glassmorphism, 3D card tilt, specular glare, Nothing OS dot-matrix,
+       luminous ambient lighting, magnetic physics, and custom fluid precision cursor.
+       ========================================================================== */
+
+    :root {
+      --nothing-red: #ff2851;
+      --nothing-red-glow: rgba(255, 40, 81, 0.45);
+      --apple-blue: #38bdf8;
+      --apple-glass: rgba(14, 14, 18, 0.72);
+      --apple-glass-border: rgba(255, 255, 255, 0.1);
+      --apple-glass-highlight: rgba(255, 255, 255, 0.18);
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* Ambient Background Dot-Matrix Grid (Nothing OS Signature) */
+    .nothing-grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 90% 70% at 50% 35%, black 40%, transparent 95%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 35%, black 40%, transparent 95%);
+      opacity: 0.85;
+    }
+
+    /* Interactive 3D Ambient Canvas */
+    #ambientCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    /* Apple Vision Luminous Ambient Glow Orbs */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.28;
+      transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+      will-change: transform;
+    }
+
+    .ambient-orb-1 {
+      top: 5%;
+      left: 10%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.6) 0%, rgba(139, 92, 246, 0.2) 60%, transparent 75%);
+      animation: floatOrb1 20s infinite alternate ease-in-out;
+    }
+
+    .ambient-orb-2 {
+      top: 45%;
+      right: 5%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(255, 40, 81, 0.5) 0%, rgba(244, 63, 94, 0.2) 50%, transparent 75%);
+      animation: floatOrb2 24s infinite alternate ease-in-out;
+    }
+
+    .ambient-orb-3 {
+      bottom: 10%;
+      left: 30%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(168, 85, 247, 0.15) 60%, transparent 80%);
+      animation: floatOrb3 28s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatOrb1 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(80px, 60px) scale(1.15); }
+    }
+
+    @keyframes floatOrb2 {
+      0% { transform: translate(0, 0) scale(1.1); }
+      100% { transform: translate(-70px, -90px) scale(0.9); }
+    }
+
+    @keyframes floatOrb3 {
+      0% { transform: translate(0, 0) scale(0.95); }
+      100% { transform: translate(60px, -50px) scale(1.12); }
+    }
+
+    /* Apple Precision Trackpad & Nothing OS Fluid Cursor */
+    .cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      background-color: var(--nothing-red);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+      box-shadow: 0 0 10px var(--nothing-red-glow);
+    }
+
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.3s, 
+                  background-color 0.3s, 
+                  transform 0.08s linear;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    .cursor-ring.cursor-hover {
+      width: 68px;
+      height: 68px;
+      border-color: rgba(255, 255, 255, 0.65);
+      background-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .cursor-ring.cursor-active {
+      transform: translate(-50%, -50%) scale(0.85);
+      background-color: rgba(255, 40, 81, 0.15);
+      border-color: var(--nothing-red);
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      .cursor-dot, .cursor-ring {
+        display: none !important;
+      }
+    }
+
+    /* Nothing OS Micro Status Bar */
+    .nothing-status-bar {
+      width: 100%;
+      padding: 6px 48px;
+      background: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: #71717a;
+      text-transform: uppercase;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nothing-status-left, .nothing-status-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .glyph-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #e4e4e7;
+    }
+
+    .glyph-indicator .glyph-led {
+      width: 6px;
+      height: 6px;
+      background: var(--nothing-red);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--nothing-red);
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    @media (max-width: 1024px) {
+      .nothing-status-bar {
+        padding: 5px 20px;
+        font-size: 10px;
+      }
+      .nothing-status-right {
+        display: none;
+      }
+    }
+
+    /* Shift Site Header Down to accommodate Top System Bar */
+    .site-header {
+      top: 28px !important;
+    }
+
+    /* Apple Titanium Beveled Display Wordmark */
+    .hero-display-title {
+      background: linear-gradient(180deg, #FFFFFF 0%, #E4E4E7 40%, #A1A1AA 75%, #52525B 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.9)) drop-shadow(0 2px 10px rgba(255, 255, 255, 0.08)) !important;
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    /* Apple VisionOS Spatial Glassmorphism & 3D Interactive Card Physics */
+    .hero-photo-card,
+    .gallery-item,
+    .service-card,
+    .cert-card-item,
+    .about-highlight-card,
+    .article-card,
+    .contact-form {
+      background: var(--apple-glass) !important;
+      backdrop-filter: blur(30px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(30px) saturate(190%) !important;
+      border: 1px solid var(--apple-glass-border) !important;
+      box-shadow: 0 28px 56px -12px rgba(0, 0, 0, 0.8), 
+                  inset 0 1px 0 0 var(--apple-glass-highlight),
+                  inset 0 0 24px rgba(255, 255, 255, 0.02) !important;
+      transform-style: preserve-3d !important;
+      perspective: 1100px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease) !important;
+      will-change: transform;
+    }
+
+    .hero-photo-card:hover,
+    .gallery-item:hover,
+    .service-card:hover,
+    .cert-card-item:hover,
+    .article-card:hover {
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      box-shadow: 0 35px 70px -10px rgba(0, 0, 0, 0.9), 
+                  0 0 30px rgba(255, 255, 255, 0.08),
+                  inset 0 1px 0 0 rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* 3D Specular Sheen & Glare Overlay */
+    .card-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      mix-blend-mode: overlay;
+      transition: opacity 0.35s ease;
+      background: radial-gradient(circle 320px at 50% 50%, rgba(255, 255, 255, 0.28), transparent 70%);
+    }
+
+    /* 3D Spatial Layering - Floating Content Elements */
+    .hero-photo-card img,
+    .gallery-img-box,
+    .service-preview-visual,
+    .article-img-wrap {
+      transform: translateZ(28px);
+      transition: transform 0.5s var(--ease);
+      border-radius: var(--radius-sm);
+    }
+
+    .hero-photo-overlay,
+    .gallery-meta,
+    .service-footer,
+    .article-content {
+      transform: translateZ(38px);
+      transition: transform 0.5s var(--ease);
+    }
+
+    .hero-photo-title,
+    .gallery-title,
+    .service-title,
+    .cert-title-link,
+    .article-title {
+      transform: translateZ(46px);
+    }
+
+    .cert-arrow-icon,
+    .cert-badge-idx,
+    .service-num,
+    .status-pill {
+      transform: translateZ(52px);
+    }
+
+    /* Apple Magnetic Buttons */
+    .btn-enquire,
+    .btn-solid,
+    .btn-outline,
+    .btn-submit-form,
+    .cert-arrow-icon,
+    .contact-icon-box {
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), 
+                  box-shadow 0.3s ease, 
+                  background-color 0.3s ease !important;
+      will-change: transform;
+    }
+
+    .btn-solid:hover,
+    .btn-submit-form:hover {
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.35), 0 0 15px rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .btn-outline:hover,
+    .btn-enquire:hover {
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* Nothing OS Status Pill Upgrade */
+    .status-pill {
+      font-family: var(--font-mono) !important;
+      font-size: 11px !important;
+      letter-spacing: 0.1em !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-dot-pulse {
+      background: var(--nothing-red) !important;
+      box-shadow: 0 0 12px var(--nothing-red) !important;
+    }
+
+    /* 3D Entry Reveal on Scroll */
+    .reveal-3d {
+      opacity: 0;
+      transform: perspective(1000px) translateY(45px) rotateX(6deg) scale(0.97);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-3d.active {
+      opacity: 1;
+      transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+    }
+
+    /* Nothing OS Marquee Matrix Accent */
+    .marquee-wrapper {
+      background: #050505 !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .marquee-content span {
+      font-family: var(--font-display);
+      letter-spacing: 0.14em;
+    }
+
+    /* Modern Scrollbar - Apple Minimalist Style */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Apple Trackpad & Nothing OS Fluid Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Nothing OS Signature Ambient Dot Matrix & 3D Interactive Canvas -->
+  <div class="nothing-grid-bg"></div>
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Apple VisionOS Ambient Glow Orbs -->
+  <div class="ambient-orb ambient-orb-1"></div>
+  <div class="ambient-orb ambient-orb-2"></div>
+  <div class="ambient-orb ambient-orb-3"></div>
+
+  <!-- Nothing OS Micro Status Bar -->
+  <div class="nothing-status-bar">
+    <div class="nothing-status-left">
+      <span class="glyph-indicator">
+        <span class="glyph-led"></span>
+        <span>SYS.READY // 3D MATRIX ENGINE</span>
+      </span>
+      <span>•</span>
+      <span>AI AGENT ARCHITECTURE</span>
+    </div>
+    <div class="nothing-status-right">
+      <span>B.TECH DATA SCIENCE (2022-2026)</span>
+      <span>•</span>
+      <span>ANDHRA PRADESH, IN</span>
+    </div>
+  </div>
+
 
   <!-- ==========================================================================
        SITE HEADER & FIXED NAVIGATION
@@ -2431,6 +3126,280 @@
         }
       });
     });
+  
+    // ==========================================================================
+    // LENIS INERTIAL SMOOTH SCROLL (Apple Trackpad Physics)
+    // ==========================================================================
+    let lenis = null;
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.25,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1.1,
+        touchMultiplier: 1.5,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // ==========================================================================
+    // APPLE & NOTHING OS FLUID PRECISION CURSOR
+    // ==========================================================================
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+    let isTouch = false;
+
+    window.addEventListener('touchstart', () => { isTouch = true; }, { once: true });
+
+    if (cursorDot && cursorRing) {
+      window.addEventListener('mousemove', (e) => {
+        if (isTouch) return;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      });
+
+      function renderCursor() {
+        if (!isTouch) {
+          // Smooth spring lerp lag
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          cursorRing.style.left = `${ringX}px`;
+          cursorRing.style.top = `${ringY}px`;
+        }
+        requestAnimationFrame(renderCursor);
+      }
+      requestAnimationFrame(renderCursor);
+
+      // Interactive hover expansions
+      const hoverTargets = document.querySelectorAll('a, button, .cert-card-item, .hero-photo-card, .gallery-item, .service-card, .article-card, input, textarea');
+      hoverTargets.forEach((target) => {
+        target.addEventListener('mouseenter', () => {
+          cursorRing.classList.add('cursor-hover');
+        });
+        target.addEventListener('mouseleave', () => {
+          cursorRing.classList.remove('cursor-hover');
+        });
+        target.addEventListener('mousedown', () => {
+          cursorRing.classList.add('cursor-active');
+        });
+        target.addEventListener('mouseup', () => {
+          cursorRing.classList.remove('cursor-active');
+        });
+      });
+    }
+
+    // ==========================================================================
+    // 3D SPATIAL TILT CARD PHYSICS & DYNAMIC SPECULAR SHEEN (Apple VisionOS)
+    // ==========================================================================
+    const tiltCardSelectors = [
+      '.hero-photo-card',
+      '.gallery-item',
+      '.service-card',
+      '.cert-card-item',
+      '.about-highlight-card',
+      '.article-card',
+      '.contact-form'
+    ];
+
+    const allTiltCards = document.querySelectorAll(tiltCardSelectors.join(', '));
+
+    allTiltCards.forEach((card) => {
+      // Add dynamic specular reflection sheen if not present
+      if (!card.querySelector('.card-sheen')) {
+        const sheen = document.createElement('div');
+        sheen.className = 'card-sheen';
+        card.appendChild(sheen);
+      }
+
+      let bounds = null;
+
+      card.addEventListener('mouseenter', () => {
+        bounds = card.getBoundingClientRect();
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        if (!bounds) bounds = card.getBoundingClientRect();
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
+        const centerX = bounds.width / 2;
+        const centerY = bounds.height / 2;
+
+        // Smooth tilt angles (-10 to +10 degrees)
+        const rotateX = ((y - centerY) / centerY) * -11;
+        const rotateY = ((x - centerX) / centerX) * 11;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(14px) scale3d(1.025, 1.025, 1.025)`;
+
+        const sheen = card.querySelector('.card-sheen');
+        if (sheen) {
+          sheen.style.opacity = '1';
+          sheen.style.background = `radial-gradient(circle 320px at ${x}px ${y}px, rgba(255, 255, 255, 0.28), transparent 70%)`;
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        bounds = null;
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale3d(1, 1, 1)';
+        const sheen = card.querySelector('.card-sheen');
+        if (sheen) {
+          sheen.style.opacity = '0';
+        }
+      });
+    });
+
+    // ==========================================================================
+    // HERO WORDMARK 3D PARALLAX & TITANIUM LIGHTING
+    // ==========================================================================
+    const heroTitle = document.querySelector('.hero-display-title');
+    const heroSection = document.querySelector('.hero-section');
+
+    if (heroTitle && heroSection) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        heroTitle.style.transform = `perspective(800px) rotateX(${-y * 14}deg) rotateY(${x * 14}deg) translateZ(25px)`;
+      });
+
+      heroSection.addEventListener('mouseleave', () => {
+        heroTitle.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+      });
+    }
+
+    // ==========================================================================
+    // APPLE MAGNETIC BUTTON PHYSICS
+    // ==========================================================================
+    const magneticBtns = document.querySelectorAll('.btn-enquire, .btn-solid, .btn-outline, .btn-submit-form, .cert-arrow-icon, .brand-logo');
+
+    magneticBtns.forEach((btn) => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px) scale(1.04)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px) scale(1)';
+      });
+    });
+
+    // ==========================================================================
+    // NOTHING OS INTERACTIVE AMBIENT CANVAS (Particles & Dot Matrix Proximity)
+    // ==========================================================================
+    const canvas = document.getElementById('ambientCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      // Ambient particle nodes
+      const particleCount = Math.min(width > 768 ? 45 : 22, 50);
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          radius: Math.random() * 1.8 + 0.8,
+          alpha: Math.random() * 0.5 + 0.2,
+          isRed: Math.random() > 0.85 // Nothing red accent particles
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update and draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          // Proximity to mouse
+          const dx = mouseX - p.x;
+          const dy = mouseY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          if (p.isRed) {
+            ctx.fillStyle = `rgba(255, 40, 81, ${p.alpha})`;
+          } else {
+            ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+          }
+          ctx.fill();
+
+          // Connect nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const pDist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (pDist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - pDist / 110) * 0.12})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(drawParticles);
+      }
+      requestAnimationFrame(drawParticles);
+    }
+
+    // ==========================================================================
+    // SCROLL-DRIVEN 3D ENTRY ANIMATION
+    // ==========================================================================
+    const revealElements = document.querySelectorAll(
+      '.hero-photo-card, .gallery-item, .service-card, .cert-card-item, .timeline-row, .article-card, .about-grid, .about-highlight-card'
+    );
+
+    revealElements.forEach((el) => {
+      el.classList.add('reveal-3d');
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
   </script>
 </body>
 </html>
